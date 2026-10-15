@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PNC Capstone · Modules 5–6 · 120-Question NGN Practice Exam</title>
+<style>
+:root{--black:#0e0a14;--night:#170f22;--purple:#3b1d5e;--purple2:#2a1545;--violet:#5a2f8c;--lav:#c8b4f0;--lav2:#efe8ff;--orange:#ff8a2a;--orange-d:#a94a00;--cream:#fff8ec;--ink:#231833;--muted:#64557a;--ok:#1e7a4f;--okbg:#e2f5ea;--no:#b3283a;--nobg:#fde6e9;--part:#8a5a00;--partbg:#fff1d6}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;color:var(--cream);background:var(--black);min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(900px 600px at 90% -10%,#3d1f63 0%,transparent 60%),radial-gradient(800px 500px at -10% 110%,#2b1240 0%,transparent 60%),var(--black)}
+.fog{position:fixed;left:-20%;right:-20%;bottom:-40px;height:220px;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(200,180,240,.12),transparent);filter:blur(10px);animation:fog 22s ease-in-out infinite alternate}
+@keyframes fog{to{transform:translateX(8%)}}
+.stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2}
+button{font:inherit}
+.wrap{max-width:920px;margin:0 auto;padding:16px 16px 80px}
+.hidden{display:none!important}
+/* buttons */
+.btn{border:0;border-radius:999px;padding:11px 20px;font-weight:700;cursor:pointer;background:var(--orange);color:#1a0f00;transition:transform .12s,box-shadow .2s;min-height:44px}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 0 18px rgba(255,138,42,.55)}
+.btn:focus-visible,.opt:focus-visible,.cell:focus-visible,.mode:focus-within,.ghostbtn:focus-visible{outline:3px solid var(--lav);outline-offset:2px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sec{background:transparent;color:var(--cream);border:2px solid var(--lav)}
+.panel .btn.sec,.mbox .btn.sec{color:var(--violet);border-color:var(--violet)}
+.btn.sec:hover:not(:disabled){box-shadow:0 0 14px rgba(200,180,240,.4)}
+.btn.dark{background:var(--purple);color:var(--cream);border:1px solid #6d4aa0}
+.btn.flag-on{background:#ffd9b5;color:#5a2500}
+.btn.small{padding:7px 14px;min-height:36px;font-size:.9rem}
+/* start */
+.hero{text-align:center;padding:28px 8px 8px}
+.hero h1{font-size:clamp(1.9rem,6vw,3rem);margin:8px 0 4px;color:var(--orange);text-shadow:0 0 22px rgba(255,138,42,.45)}
+.hero p{color:var(--lav);margin:4px 0}
+.ghost{width:86px;animation:float 4s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(255,255,255,.35))}
+@keyframes float{50%{transform:translateY(-10px)}}
+.lantern{display:inline-block;animation:flicker 3.2s infinite}
+@keyframes flicker{0%,100%{opacity:1}45%{opacity:.85}50%{opacity:.6}55%{opacity:.95}}
+.panel{background:var(--cream);color:var(--ink);border-radius:22px;padding:22px clamp(16px,4vw,32px);margin:18px 0;box-shadow:0 0 0 2px rgba(200,180,240,.35),0 20px 50px rgba(0,0,0,.5);position:relative}
+.panel h2{color:var(--violet);margin:0 0 10px;font-size:1.45rem}
+.panel h3{color:var(--violet);margin:18px 0 8px;font-size:1.15rem}
+.web{position:absolute;top:0;right:0;width:90px;height:90px;opacity:.35;pointer-events:none}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:12px 0}
+.fact{background:var(--lav2);border-radius:14px;padding:10px;text-align:center}
+.fact b{display:block;font-size:1.5rem;color:var(--violet);font-family:Georgia,serif}
+.fact span{font-size:.82rem;color:var(--muted);font-weight:600}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:10px 0}
+.mode{display:block;border:2px solid #d9cbf3;border-radius:16px;padding:14px 16px;cursor:pointer;background:#fff;transition:border-color .15s}
+.mode input{accent-color:var(--violet);width:18px;height:18px;vertical-align:-3px;margin-right:6px}
+.mode b{color:var(--violet)}
+.mode p{margin:6px 0 0;font-size:.92rem;color:var(--muted)}
+.mode.sel{border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,138,42,.25)}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:8px 0;font-weight:600}
+.chk input{width:20px;height:20px;accent-color:var(--violet);margin-top:2px;flex:0 0 auto}
+.chk small{display:block;font-weight:400;color:var(--muted)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row.end{justify-content:flex-end}
+.row.between{justify-content:space-between}
+.note{font-size:.9rem;color:var(--muted)}
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(14,10,20,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,180,240,.2)}
+.topin{max-width:920px;margin:0 auto;padding:10px 16px 10px}
+.brand{font-family:Georgia,serif;color:var(--orange);font-weight:700;font-size:1.1rem}
+.modepill{font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--purple);color:var(--lav);border-radius:999px;padding:4px 10px;border:1px solid #6d4aa0}
+.bar{height:10px;border-radius:99px;background:#2c2140;overflow:hidden;margin:8px 0 6px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),#ffb36b);width:0;transition:width .4s}
+.stats{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.88rem;color:var(--lav)}
+.stats b{color:var(--cream)}
+.stats .okc b{color:#7fe0ad}.stats .noc b{color:#ff9aa8}
+/* question */
+.qhead{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+.qnum{font-family:Georgia,serif;font-size:1.25rem;font-weight:700;color:var(--violet);margin-right:6px}
+.chip{font-size:.74rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:3px 10px;background:var(--lav2);color:var(--violet)}
+.chip.sata{background:var(--orange);color:#1a0f00}
+.chip.case{background:var(--purple);color:var(--cream)}
+.chip.flag{background:#ffd9b5;color:#5a2500}
+.case{background:#f4eefe;border-left:5px solid var(--violet);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.97rem}
+.case summary{cursor:pointer;font-weight:800;color:var(--violet)}
+.case p{margin:8px 0 0}
+.update{background:#fff1e3;border-left:5px solid var(--orange);border-radius:12px;padding:10px 14px;margin:10px 0;font-size:.97rem}
+.update b{color:var(--orange-d)}
+.stem{font-weight:700;font-size:1.06rem;margin:12px 0}
+.instr{font-size:.9rem;color:var(--orange-d);font-weight:700;margin:-4px 0 8px}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:2px solid #ddd0f2;border-radius:14px;background:#fff;color:var(--ink);padding:11px 14px;cursor:pointer;transition:border-color .12s,background .12s;min-height:48px}
+.opt:hover:not(:disabled){border-color:var(--orange)}
+.opt .k{flex:0 0 30px;height:30px;display:grid;place-items:center;border-radius:50%;border:2px solid var(--violet);color:var(--violet);font-weight:800;font-size:.9rem}
+.opt.sata .k{border-radius:7px}
+.opt.sel{border-color:var(--violet);background:#f1eaff}
+.opt.sel .k{background:var(--violet);color:#fff}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--okbg)}
+.opt.right .k{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--no);background:var(--nobg)}
+.opt.wrong .k{background:var(--no);border-color:var(--no);color:#fff}
+.opt.missed{border-style:dashed;border-color:var(--ok)}
+.tagl{margin-left:auto;font-size:.75rem;font-weight:800;white-space:nowrap;padding-left:8px}
+.saved{font-size:.88rem;font-weight:700;color:var(--ok)}
+.unsaved{font-size:.88rem;font-weight:700;color:var(--orange-d)}
+/* feedback */
+.fb{margin-top:16px;border-radius:16px;padding:14px 16px;border:2px solid}
+.fb.ok{background:var(--okbg);border-color:var(--ok)}
+.fb.no{background:var(--nobg);border-color:var(--no)}
+.fb.part{background:var(--partbg);border-color:#d79b2a}
+.fb h3{margin:0 0 6px;font-size:1.15rem;color:var(--ink)}
+.fb p{margin:6px 0}
+.why{list-style:none;padding:0;margin:8px 0}
+.why li{padding:7px 0;border-top:1px dashed rgba(35,24,51,.18);font-size:.95rem}
+.why .L{font-weight:800;display:inline-block;min-width:28px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.meta span{background:#fff;border:1px solid #d9cbf3;border-radius:999px;padding:3px 10px;font-size:.8rem;color:var(--violet);font-weight:700}
+.trap{background:#2a1545;color:var(--cream);border-radius:12px;padding:10px 14px;margin-top:10px;font-size:.95rem}
+.trap b{color:var(--orange)}
+/* nav */
+.nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;margin-top:18px}
+.nav .grp{display:flex;gap:8px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px;margin:10px 0}
+.cell{position:relative;height:42px;border-radius:10px;border:2px solid #d9cbf3;background:#fff;color:var(--ink);font-weight:800;cursor:pointer;font-size:.9rem}
+.cell.ans{background:#e6dcfa;border-color:var(--violet)}
+.cell.c{background:var(--okbg);border-color:var(--ok);color:var(--ok)}
+.cell.x{background:var(--nobg);border-color:var(--no);color:var(--no)}
+.cell.p{background:var(--partbg);border-color:#d79b2a;color:var(--part)}
+.cell.cur{outline:3px solid var(--orange);outline-offset:1px}
+.cell.fl::after{content:"🚩";position:absolute;top:-9px;right:-6px;font-size:.8rem}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.8rem;color:var(--muted)}
+/* report */
+.verdict{text-align:center;padding:18px;border-radius:18px;background:linear-gradient(150deg,var(--purple),var(--black));color:var(--cream);margin-bottom:14px}
+.verdict .big{font-family:Georgia,serif;font-size:3rem;color:var(--orange);line-height:1}
+.verdict h2{color:var(--cream);margin:8px 0 4px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{background:var(--lav2);border-radius:14px;padding:12px}
+.tile small{display:block;color:var(--muted);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em}
+.tile b{font-size:1.35rem;color:var(--violet);font-family:Georgia,serif}
+.tile span{display:block;font-size:.85rem;color:var(--muted)}
+.hbar{display:grid;grid-template-columns:minmax(120px,190px) 1fr 52px;gap:10px;align-items:center;margin:6px 0;font-size:.92rem}
+.hbar .t{height:14px;background:#e9e1f7;border-radius:99px;overflow:hidden}
+.hbar .t i{display:block;height:100%;border-radius:99px}
+.hbar .v{text-align:right;font-weight:800;color:var(--violet)}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.92rem;min-width:440px}
+th{background:var(--violet);color:#fff;text-align:left;padding:8px 10px}
+td{padding:8px 10px;border-top:1px solid #eadff9}
+tr:nth-child(even) td{background:#faf6ff}
+.reclist li{margin:8px 0}
+#toast{position:fixed;left:50%;bottom:18px;transform:translate(-50%,140px);background:var(--purple);color:var(--cream);border:2px solid var(--orange);padding:10px 16px;border-radius:14px;z-index:60;transition:transform .3s;max-width:92vw;font-weight:700}
+#toast.show{transform:translate(-50%,0)}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(10,6,16,.75);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}
+.mbox{background:var(--cream);color:var(--ink);border-radius:20px;padding:22px;max-width:480px;width:100%;box-shadow:0 0 0 3px var(--violet)}
+.mbox h3{margin:0 0 8px;color:var(--violet);font-family:Georgia,serif}
+@media(max-width:600px){body{font-size:16px}.nav .grp{width:100%}.nav .grp .btn{flex:1}.hbar{grid-template-columns:1fr 46px}.hbar .t{grid-column:1/-1;order:3}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.top,.nav,.fog,.stars{display:none!important}}
+
+.fact{background:var(--lav2)}
+/* NGN item types */
+.case .tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;border-bottom:2px solid #d9cbf3}
+.tab{border:1px solid #d9cbf3;border-bottom:0;background:#fff;color:var(--violet);font-weight:700;font-size:.85rem;padding:7px 12px;border-radius:10px 10px 0 0;cursor:pointer;min-height:36px}
+.tab.on{background:var(--violet);color:#fff;border-color:var(--violet)}
+.tabp{background:#fff;border:1px solid #e3d5f7;border-top:0;border-radius:0 0 12px 12px;padding:10px 12px}
+.tabp p{margin:0}
+table.ehr{min-width:0;font-size:.88rem}
+table.ehr th{background:#5a2f8c;padding:6px 8px}table.ehr td{padding:6px 8px}
+table.mx{min-width:520px;font-size:.92rem}
+table.mx th{font-size:.82rem;text-align:center}table.mx th:first-child{text-align:left}
+table.mx td:first-child{font-weight:600;color:var(--ink)}
+.mxc{text-align:center}
+.mxc label{display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;padding:4px}
+.mxc input{width:20px;height:20px;accent-color:var(--violet)}
+.mxl{position:absolute;left:-9999px}
+.mxc.right{background:var(--okbg)!important}.mxc.missed{background:var(--okbg)!important;box-shadow:inset 0 0 0 2px var(--ok)}.mxc.wrong{background:var(--nobg)!important}
+.cloze{background:#fff;border:2px solid #ddd0f2;border-radius:14px;padding:14px 16px;line-height:2.4;font-size:1rem}
+.cloze select{font:inherit;font-size:.95rem;max-width:100%;padding:6px 8px;border-radius:8px;border:2px solid var(--violet);background:#f7f2ff;color:var(--ink);margin:2px 0}
+.cloze select.right{border-color:var(--ok);background:var(--okbg)}.cloze select.wrong{border-color:var(--no);background:var(--nobg)}
+@media(max-width:600px){.cloze select{width:100%}}
+
+/* ===== Professional theme layer ===== */
+:root{--violet:#1f3a5f;--lav2:#eef6fb;--orange:#0e7490;--orange-d:#9a3412;--purple:#1f3a5f;--purple2:#16304f;--ink:#1f2937;--muted:#5b6b7f;--cream:#ffffff}
+body{background:#eef2f6;color:#1f2937}
+body::before,.fog,.stars{display:none!important}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif}
+.top{background:rgba(255,255,255,.97);border-bottom:1px solid #d8dee6;box-shadow:0 1px 2px rgba(15,23,42,.05)}
+.brand{color:#1f3a5f}
+.modepill{background:#e6f4f7;color:#0e5466;border:1px solid #b6dde6}
+.bar{background:#e2e8f0}.bar i{background:linear-gradient(90deg,#0e7490,#1f3a5f)}
+.stats{color:#475569}.stats b{color:#1f2937}.stats .okc b{color:#15803d}.stats .noc b{color:#b91c1c}
+.btn{background:#1f3a5f;color:#fff;font-weight:600}
+.btn:hover:not(:disabled){transform:none;background:#16304f;box-shadow:0 2px 8px rgba(15,23,42,.18)}
+.btn.sec,.top .btn.sec,.panel .btn.sec,.mbox .btn.sec{background:#fff;color:#1f3a5f;border:1px solid #cbd5e1}
+.btn.sec:hover:not(:disabled){background:#f1f5f9;box-shadow:none}
+.btn.dark{background:#1f3a5f;color:#fff;border:1px solid #1f3a5f}
+.btn.flag-on{background:#fef3c7;color:#92400e;border-color:#f59e0b}
+.hero{padding:30px 8px 4px}
+.hero h1{color:#1f3a5f;text-shadow:none;font-size:clamp(1.7rem,5vw,2.5rem)}
+.hero p{color:#475569}
+.hero .note{color:#5b6b7f!important}
+.examicon{width:58px;height:58px;border-radius:14px;background:#1f3a5f;display:grid;place-items:center;margin:0 auto}
+.panel{background:#fff;color:#1f2937;border:1px solid #dde3ea;border-radius:16px;box-shadow:0 1px 3px rgba(15,23,42,.06),0 12px 32px rgba(15,23,42,.06)}
+.panel h2,.panel h3{color:#1f3a5f}
+.web{display:none}
+.fact{background:#f1f5f9}.fact b{color:#1f3a5f}
+.mode{border:1px solid #cbd5e1}.mode b{color:#1f3a5f}.mode.sel{border-color:#0e7490;box-shadow:0 0 0 3px rgba(14,116,144,.15)}
+.mode input,.chk input{accent-color:#0e7490}
+.qnum{color:#1f3a5f}
+.chip{background:#e2e8f0;color:#1f3a5f}.chip.sata{background:#0e7490;color:#fff}.chip.case{background:#1f3a5f;color:#fff}.chip.flag{background:#fef3c7;color:#92400e}
+.case{background:#f8fafc;border-left-color:#1f3a5f}.case summary{color:#1f3a5f}
+.update{background:#fff7ed;border-left-color:#b45309}.update b{color:#9a3412}
+.instr{color:#0e5466}
+.opt{border:1px solid #cbd5e1}
+.opt:hover:not(:disabled){border-color:#0e7490}
+.opt .k{border-color:#1f3a5f;color:#1f3a5f}
+.opt.sel{border-color:#0e7490;background:#e0f2fe}.opt.sel .k{background:#0e7490;border-color:#0e7490}
+.fb h3{color:#1f2937}
+.meta span{border-color:#cbd5e1;color:#1f3a5f}
+.trap{background:#1f3a5f;color:#fff}.trap b{color:#fde68a}
+.cell{border:1px solid #cbd5e1}.cell.ans{background:#e0f2fe;border-color:#0e7490}.cell.cur{outline-color:#b45309}
+.verdict{background:linear-gradient(150deg,#1f3a5f,#16304f);color:#fff}
+.verdict .big{color:#fff}.verdict h2{color:#fff}
+.verdict p{color:#cbd5e1!important}
+.tile{background:#f1f5f9}.tile b{color:#1f3a5f}
+.hbar .t{background:#e2e8f0}.hbar .v{color:#1f3a5f}
+th{background:#1f3a5f}tr:nth-child(even) td{background:#f8fafc}td{border-top-color:#edf1f5}
+#toast{background:#1f3a5f;border:1px solid #0e7490;color:#fff}
+.mbox{box-shadow:0 0 0 1px #cbd5e1,0 20px 50px rgba(15,23,42,.25)}.mbox h3{color:#1f3a5f}
+.tab{border-color:#cbd5e1;color:#1f3a5f}.tab.on{background:#1f3a5f;border-color:#1f3a5f}
+.case .tabs{border-bottom-color:#cbd5e1}.tabp{border-color:#e2e8f0}
+table.ehr th{background:#334155}
+.mxc input{accent-color:#0e7490}
+.cloze{border:1px solid #cbd5e1}.cloze select{border-color:#1f3a5f;background:#f8fafc}
+
+</style>
+</head>
+<body>
+<div class="stars" id="stars" aria-hidden="true"></div>
+<div class="fog" aria-hidden="true"></div>
+<header class="top hidden" id="top"><div class="topin">
+  <div class="row between"><div class="row"><span class="brand">PNC Capstone · Practice Exam</span><span class="modepill" id="modePill"></span></div>
+  <div class="row"><button class="btn small dark" id="mapBtn" aria-expanded="false">Question map</button><button class="btn small sec" id="finishBtn">Finish exam</button></div></div>
+  <div class="bar" role="progressbar" aria-label="Percent completed" aria-valuemin="0" aria-valuemax="100" id="pbar"><i id="pbarI"></i></div>
+  <div class="stats" id="stats" aria-live="polite"></div>
+</div></header>
+<main class="wrap" id="app"></main>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle"><div class="mbox" id="mbox"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+/* ===== NGN CASE STUDIES 1–5 ===== */
+const STEPS={RC:'Recognize Cues',AC:'Analyze Cues',PH:'Prioritize Hypotheses',GS:'Generate Solutions',TA:'Take Action',EO:'Evaluate Outcomes'};
+const TOPICS={
+T1:['Safety events & error classification','Re-study medical error vs adverse event vs near miss vs sentinel/never events, omission vs commission, and the reasonable-and-prudent standard for negligence.'],
+T2:['Incident reporting & documentation','Review who files the incident report and when, what goes in it, and what never goes in the chart (no mention of the report, no blame or speculation).'],
+T3:['Just Culture & safety culture','Practice classifying human error (console), at-risk behavior (coach) and reckless behavior (discipline); review how leaders build psychological safety.'],
+T4:['High-reliability organizations','Drill the five HRO principles: sensitivity to operations, preoccupation with failure, reluctance to simplify, deference to expertise, commitment to resilience.'],
+T5:['Systems thinking & latent failures','Review active vs latent failures, the Swiss Cheese Model, and why patterns across staff point to the process.'],
+T6:['RCA & countermeasures','Review the RCA sequence, common RCA mistakes, Fishbone categories, and strong vs weak countermeasures (forcing functions > reminders).'],
+T7:['QI methods, PDSA & tools','Review the Model for Improvement, aim statements, small PDSA tests, and tool choice (Pareto, fishbone, run chart, flowchart).'],
+T8:['Quality measures (Donabedian, STEEEP, indicators)','Sort structure vs process vs outcome, the six STEEEP aims, nurse-sensitive indicators, benchmarking, and TJC/CMS/VBP/NPSG roles.'],
+T9:['Preventable risks, technology & engagement','Review falls, VTE, HAIs/CLABSI, pressure injury, failure to rescue, BCMA/alarm workarounds, and patient/family engagement.'],
+T10:['SBAR, assertion & escalation','Practice SBAR (especially Assessment and Recommendation), the five assertion steps, the Two-Challenge Rule, CUS and chain of command.'],
+T11:['Handoffs & closed-loop communication','Review I-PASS, bedside handoff, call-out, check-back and teach-back distinctions.'],
+T12:['TeamSTEPPS tools & team outcomes','Review brief/huddle/debrief, STEP, STAR, I\'M SAFE, cross-monitoring, task assistance and TeamSTEPPS outcomes.'],
+T13:['Communication techniques, barriers & conflict','Review therapeutic vs non-therapeutic responses, barriers (authority gradient, filtration), styles, fallacies, DESC and collaborative negotiation.'],
+T14:['Culture, health literacy & transitions','Review qualified interpreters, speaking to the patient, teach-back, plain language, disability adaptations and safe discharge planning.'],
+T15:['Collaboration & shared decision-making','Review SHARE and nurse–patient, intraprofessional, interprofessional and interorganizational collaboration.']
+};
+const CASES={};const Q=[];
+const addCase=(k,n,title,tabs)=>{CASES[k]={n,title,tabs};};
+
+/* ---------------- CASE 1 ---------------- */
+addCase('C1',1,'The 90-Second Handoff',[
+['Nurses\' Notes','1630: 74-year-old male transferred from ED to telemetry for atrial fibrillation with rapid ventricular response. ED nurse gave a 90-second phone report: "He\'s stable, the drip is running, and his family is on the way." No standardized handoff tool was used.\n1640: On arrival the patient states, "I feel lightheaded when I sit up." Skin cool to touch. Alert and oriented ×4. Lungs clear. Diltiazem infusing at 15 mg/hr per pump display.'],
+['Vital Signs',[['Time','HR','BP','RR','SpO2'],['1430 (ED)','148 irregular','134/82','20','95% RA'],['1515 (ED)','96 irregular','118/70','18','96% RA'],['1640 (unit)','48 irregular','86/50','18','96% RA']]],
+['Orders / MAR',[['Order / dose','Time'],['Metoprolol 5 mg IV push — given','1440'],['Metoprolol 5 mg IV push — given','1455'],['Diltiazem infusion — start at 15 mg/hr','1500'],['Diltiazem infusion — decrease to 5 mg/hr','1530'],['Potassium 4.1 mEq/L (resulted)','1520']]]]);
+
+Q.push(
+{id:'c1_1',cs:'C1',mod:6,t:'sata',step:'RC',topic:'T11',concept:'Recognizing cues after an incomplete handoff',
+q:'The nurse reviews the medical record at 1640. Which findings require immediate follow-up? Select all that apply.',
+o:[['Heart rate 48 beats/min','1',''],['Potassium 4.1 mEq/L',0,''],['Blood pressure 86/50 mm Hg',1,''],['Report of lightheadedness when sitting up',1,''],['SpO2 96% on room air',0,''],['Diltiazem infusing at 15 mg/hr',1,''],['Irregular cardiac rhythm',0,'']].map(x=>x),
+r:'Bradycardia, hypotension and symptomatic lightheadedness after two beta-blocker doses plus a calcium-channel blocker infusion indicate excessive rate-control effect. The pump is still running at three times the active order (5 mg/hr since 1530), so the error is ongoing. Potassium and oxygenation are normal, and an irregular rhythm is expected with atrial fibrillation.',
+trap:'The ED called him "stable." NGN tests whether you trust current objective data over someone else\'s label.',
+why:['Bradycardia indicates excessive rate-control effect.','Within normal limits; not an immediate concern.','Hypotension suggests hypoperfusion.','Symptom of reduced cerebral perfusion and a fall risk.','Adequate oxygenation.','The infusion is running at 3× the active order — an active, ongoing error.','Expected with atrial fibrillation; the concern is the rate, not the irregularity.']},
+{id:'c1_2',cs:'C1',mod:6,t:'matrix',step:'AC',topic:'T11',concept:'Linking cues to drug effect vs communication failure',
+q:'For each finding, indicate what it is most consistent with.',
+cols:['Excessive rate-control drug effect','Handoff/verification failure','Expected or not significant'],
+rows:[['Heart rate 48 and BP 86/50',0,'Two metoprolol doses plus diltiazem at 15 mg/hr produce bradycardia and hypotension.'],['Report limited to "stable, drip is running"',1,'A vague, unstructured report omits the rate change and current status.'],['Rate decrease ordered at 1530 never made on the pump',1,'The order change was not carried through or verified at transfer.'],['Irregularly irregular rhythm',2,'Expected with atrial fibrillation.'],['Cool skin and lightheadedness',0,'Signs of reduced perfusion from excess drug effect.']],
+r:'Separating the physiologic problem (excess drug effect) from the system problem (handoff and order-verification failure) lets the nurse treat the patient now and address the process later.',
+trap:'Some cues describe the patient; others describe the process. NGN matrix items often mix both.'},
+{id:'c1_3',cs:'C1',mod:5,t:'mc',step:'PH',topic:'T9',concept:'Prioritizing the most immediate threat',
+q:'Which problem is the nurse\'s priority at this time?',
+o:[['Risk for falls related to orthostatic lightheadedness',0,'A real risk, but it results from the underlying hypoperfusion, which must be corrected first.'],['Decreased cardiac output from excessive diltiazem infusion',1,'Correct. Ongoing hypoperfusion from a drug still infusing at an unsafe rate is the most immediate physiologic threat.'],['Ineffective team communication between the ED and telemetry',0,'Contributed to the event, but it is a system issue to address after the patient is safe.'],['Knowledge deficit about new-onset atrial fibrillation',0,'Important for discharge, not a priority during instability.']],
+r:'Use ABCs and "what will harm the patient first." Ongoing hypoperfusion from an infusion still running at three times the ordered rate outranks fall risk, teaching needs and system communication problems.',
+trap:'Every option is a legitimate problem. The priority is the one causing harm right now.'},
+{id:'c1_4',cs:'C1',mod:5,t:'mc',step:'TA',topic:'T9',concept:'Stop the source of harm before anything else',
+q:'Which action should the nurse take first?',
+o:[['Call the ED nurse to clarify why the infusion rate was not changed',0,'Investigating the cause can wait; harm is ongoing.'],['Place the patient flat and recheck the blood pressure in 5 minutes',0,'Supportive, but the infusion would keep running at an unsafe rate.'],['Stop the diltiazem infusion and remain with the patient',1,'Correct. Removing the source of harm is the first action; then notify the provider.'],['Notify the provider using SBAR and request new orders',0,'Essential and immediate — but after stopping the drug causing harm.']],
+r:'When a medication is actively causing harm, the first action is to stop it (per protocol), stay with the patient and monitor. Provider notification follows immediately; investigation and reporting come after the patient is safe.',
+trap:'"Notify the provider" is often right — but not when an action within nursing scope (stopping a harmful infusion) must happen first.'},
+{id:'c1_5',cs:'C1',mod:6,t:'cloze',step:'GS',topic:'T10',concept:'SBAR Assessment and Recommendation',
+q:'Complete the nurse\'s SBAR call by choosing from the lists of options.',
+text:'Assessment: "I believe he is experiencing {0}." Recommendation: "I am requesting {1}."',
+blanks:[[['symptomatic bradycardia and hypotension from excess diltiazem','hypovolemic hypotension from poor oral intake in the ED','a return of atrial fibrillation with rapid ventricular response'],0,'Findings (HR 48, BP 86/50, lightheadedness) after rate-control drugs point to excess drug effect.'],[['bedside evaluation now and orders for the infusion and blood pressure','a cardiology consult and a repeat 12-lead ECG in the morning','an order to recheck vital signs in 1 hour and call if worse'],0,'A strong Recommendation is specific, actionable and timely.']],
+r:'SBAR Assessment states the nurse\'s clinical interpretation backed by data; the Recommendation requests a specific, actionable response. Counseling staff is not part of a clinical escalation call.',
+trap:'"What do you want me to do?" and next-day consults are classic weak Recommendations.'},
+{id:'c1_6',cs:'C1',mod:5,t:'mc',step:'EO',topic:'T7',concept:'Choosing data that match the QI aim',
+q:'After a review finds 3 of the last 10 ED transfers arrived with infusion rates that did not match active orders, the unit adopts I-PASS with a joint bedside infusion check. Which finding best indicates that the change is effective?',
+o:[['Staff surveys show nurses feel more confident giving report',0,'Perception data do not show whether the error rate changed.'],['Average phone report time decreases to under 60 seconds',0,'Faster is not safer; this could signal less thorough handoffs.'],['All telemetry nurses complete the I-PASS training module',0,'An activity measure — it shows training occurred, not that outcomes improved.'],['Transfers with infusion rates matching active orders rise to 98%',1,'Correct. A process measure that directly matches the problem being fixed.']],
+r:'Evaluate a QI change with data that match the aim and compare with baseline (70% matching). Training counts and satisfaction surveys do not show whether the targeted failure decreased.',
+trap:'Completion of training is the most tempting wrong answer — it measures effort, not results.'});
+
+/* ---------------- CASE 2 ---------------- */
+addCase('C2',2,'The 0300 Fall',[
+['Nurses\' Notes','0305: Patient found on floor beside bed, lying on left side. States, "I was trying to get to the bathroom — I pushed the button forever." Alert and oriented ×3. Reports severe left hip pain. Left leg appears shortened and externally rotated. Bed alarm found turned off.'],
+['History / MAR','82-year-old admitted 2 days ago with pneumonia. Morse Fall Scale 65 (high risk). Atrial fibrillation on apixaban 5 mg twice daily. Zolpidem 5 mg PO given at 2300 for sleep. Furosemide 40 mg PO given at 2100.'],
+['Staffing','Night shift: 1 UAP for 14 patients after an unreplaced sick call. Bed alarm turned off at 2330 by the night nurse, who later states, "It false-alarms constantly — we all do it." No prior reports of false alarms on file.']]);
+
+Q.push(
+{id:'c2_1',cs:'C2',mod:5,t:'sata',step:'RC',topic:'T9',concept:'Recognizing high-risk cues after a fall',
+q:'Which findings are most concerning to the nurse at 0305? Select all that apply.',
+o:[['Left leg shortened and externally rotated',1,'Suggests hip fracture.'],['Alert and oriented ×3',0,'Reassuring; not an immediate concern.'],['Takes apixaban 5 mg twice daily',1,'Anticoagulation raises the risk of intracranial or hip bleeding after a fall.'],['Received zolpidem at 2300',1,'Sedative-hypnotics impair balance and can mask neurologic changes.'],['Admitting diagnosis of pneumonia',0,'Background; not an immediate post-fall cue.'],['Severe left hip pain',1,'Consistent with fracture; requires immobilization and evaluation.'],['States she was trying to reach the bathroom',0,'Explains the mechanism; useful for prevention, not an immediate safety cue.']],
+r:'After a fall, priority cues are signs of serious injury (deformity, severe pain) and factors that increase the risk of hidden injury (anticoagulation — intracranial hemorrhage; sedation — altered neurologic assessment).',
+trap:'"Alert and oriented" is reassuring now — but on an anticoagulant, a head bleed can declare itself later, so neuro checks continue.'},
+{id:'c2_2',cs:'C2',mod:5,t:'mc',step:'TA',topic:'T9',concept:'Assess before moving after a fall',
+q:'Which action should the nurse take first?',
+o:[['Use a mechanical lift with two staff to return the patient to bed',0,'Moving a suspected hip fracture before assessment can worsen the injury.'],['Notify the provider immediately and request a portable x-ray of the left hip',0,'Necessary soon, but assessment comes first.'],['Assess neurologic status and the left leg before moving her',1,'Correct. Assess LOC, head injury signs and neurovascular status with the patient kept still.'],['Complete an incident report while her statements and the scene details are still fresh',0,'Reporting follows immediate patient care.']],
+r:'Immediate patient safety comes first: keep the patient still, call for help, and perform a focused assessment (neurologic status — she is anticoagulated and sedated — plus neurovascular checks of the affected leg). Then notify the provider, move safely, document and report.',
+trap:'"With a mechanical lift" makes moving sound safe — but moving a suspected fracture before assessment is still wrong.'},
+{id:'c2_3',cs:'C2',mod:5,t:'matrix',step:'GS',topic:'T2',concept:'Medical record vs incident report',
+q:'For each statement, indicate where it belongs.',
+cols:['Medical record (may also appear in report)','Incident report only','Neither document'],
+rows:[['"Left leg shortened and externally rotated; pain 8/10."',0,'Objective assessment belongs in the chart.'],['"Patient stated, \'I pushed the button forever.\'"',0,'A direct quote is objective and belongs in the chart.'],['Names of the staff who witnessed the scene',1,'Witness information is part of the incident report.'],['"Incident report completed and sent to risk management."',2,'Never chart that a report was filed; the report itself does not record its own filing.'],['"Fall occurred because the unit was understaffed."',2,'Speculation and blame belong in neither document.']],
+r:'The chart contains objective findings, quotes, notifications, interventions and responses. The incident report adds witnesses and the factual timeline. Neither contains blame, speculation, or a chart note that a report was filed.',
+trap:'A patient\'s quote that implies a delay is still objective. Your conclusion about the cause is not.'},
+{id:'c2_4',cs:'C2',mod:5,t:'mc',step:'AC',topic:'T6',concept:'RCA: multiple validated system causes',
+q:'The RCA team presents four conclusions. Which conclusion reflects a properly conducted root cause analysis?',
+o:[['The UAP did not answer the call light, so the UAP should complete retraining',0,'Stops at an individual and ignores why one UAP covered 14 patients.'],['The patient did not wait for assistance despite being told to call for help',0,'Blames the patient and ignores sedation, diuretic timing and system factors.'],['The night nurse disabled the bed alarm, and that decision was the single cause of this fall',0,'A single-cause, individual conclusion — a classic RCA mistake.'],['Sedation timing, a disabled alarm and an unreplaced sick call each contributed',1,'Correct. Multiple validated system contributors, each needing a countermeasure.']],
+r:'Common RCA mistakes include stopping at a person and focusing on only one root cause. A strong RCA identifies several validated contributors (medication timing, alarm practices, staffing replacement process) and develops a countermeasure for each.',
+trap:'Watch for "single cause." Complex events almost never have one.'},
+{id:'c2_5',cs:'C2',mod:5,t:'mc',step:'PH',topic:'T3',concept:'Just Culture: at-risk behavior',
+q:'Based on the night nurse\'s statement about the bed alarm, which classification and response best reflect Just Culture?',
+o:[['Human error — console the nurse and retrain all night-shift staff on correct bed-alarm use',0,'Disabling the alarm was a deliberate choice, not a slip or lapse.'],['Reckless behavior — the nurse knowingly disabled a safety device, so begin progressive discipline',0,'Reckless requires conscious disregard of a known, substantial risk; here the risk was normalized and underestimated.'],['At-risk behavior — coach the nurse and examine the false-alarm problem',1,'Correct. A normalized shortcut ("we all do it") is at-risk behavior: coach and remove the incentive.'],['No individual accountability — staffing was the real root cause',0,'Just Culture still holds people accountable for their behavioral choices.']],
+r:'At-risk behavior is a choice whose risk is not recognized or seems justified, often because the shortcut has become normal. The response is coaching plus fixing what makes the shortcut attractive (false alarms, settings) and encouraging reporting of the problem.',
+trap:'"We all do it" signals normalized deviance — at-risk behavior → COACH, not punish.'},
+{id:'c2_6',cs:'C2',mod:5,t:'sata',step:'EO',topic:'T7',concept:'Evaluating countermeasures with the right data',
+q:'Three months after implementing a sick-call replacement process, alarm-sensitivity adjustments and sedative review for high-fall-risk patients, which findings indicate the countermeasures are working? Select all that apply.',
+o:[['Falls with injury per 1,000 patient-days decreased from baseline',1,'Outcome measure matched to the aim.'],['Fall-related incident reports decreased to zero',0,'Could reflect underreporting; fewer reports is not proof of fewer falls.'],['Audits show bed alarms active for 96% of high-risk patients',1,'Process measure showing the countermeasure is being used.'],['All staff completed the fall-prevention module',0,'Activity measure, not an outcome.'],['Sedative-hypnotic orders for high-fall-risk older adults decreased',1,'Process measure tied to a validated root cause.'],['The manager reports improved morale on night shift',0,'Not a measure of fall prevention.']],
+r:'Evaluate with outcome and process measures that match the aim and compare with baseline. A sudden drop to zero reports can mean events are not being reported, which is a safety-culture warning sign.',
+trap:'"Zero incident reports" sounds like success — in a Just Culture it may signal that people stopped reporting.'});
+
+/* ---------------- CASE 3 ---------------- */
+addCase('C3',3,'The Insulin Problem on 5 East',[
+['Event Summary',[['Event type (last 3 months)','Count'],['Rapid-acting insulin given >60 min after tray arrival','6'],['Insulin given without a documented pre-meal glucose','3'],['Wrong dose from misreading the sliding scale','2']]],
+['Staff Interviews','"Trays show up at random times and nobody tells us." · "We have one glucometer for 28 patients." · "The rapid-acting and long-acting pens look almost the same and share a bin." · "On the workstation-on-wheels screen, the sliding-scale table gets cut off."'],
+['Unit Data','Median tray-to-insulin time (baseline): 58 minutes. Target set by diabetes educator: ≤ 30 minutes.']]);
+
+Q.push(
+{id:'c3_1',cs:'C3',mod:5,t:'sata',step:'RC',topic:'T5',concept:'Identifying latent conditions',
+q:'Which findings represent latent conditions? Select all that apply.',
+o:[['Look-alike insulin pens stored in a shared bin',1,'Storage/design condition that sets nurses up to fail.'],['A nurse misread the scale and gave 8 units instead of 4',0,'An unsafe act at the point of care — an active failure.'],['Meal trays arrive without notification to nurses',1,'Upstream workflow condition.'],['One glucometer for 28 patients',1,'Equipment/resource condition.'],['A nurse gave insulin without checking a glucose',0,'Active failure, even though a latent shortage contributed.'],['The sliding-scale table is truncated on the screen',1,'Interface design flaw.'],['Six doses were given late',0,'This is the outcome being analyzed, not a condition causing it.']],
+r:'Latent conditions are hidden system weaknesses (design, equipment, workflow, staffing) that make active failures more likely. Classify the act itself: a misread is active even when a latent screen problem set it up.',
+trap:'Results ("doses were late") are neither active nor latent — they are the outcome under study.'},
+{id:'c3_2',cs:'C3',mod:5,t:'mc',step:'AC',topic:'T7',concept:'Choosing QI tools in sequence',
+q:'The team wants to determine which event type to target first and then explore everything contributing to it. Which approach is most appropriate?',
+o:[['Fishbone diagram of all 11 events, followed by 5 Whys on each event',0,'Analyzes everything at once instead of focusing on the biggest problem.'],['Run chart of monthly events, followed by a flowchart of the insulin process',0,'A run chart shows change over time; it does not rank categories.'],['Pareto chart of event types, followed by a fishbone on the top category',1,'Correct. Pareto ranks the categories; fishbone organizes causes of the largest one.'],['Flowchart of medication administration, followed by a Pareto of root causes',0,'Root causes are not yet known, so they cannot be ranked.']],
+r:'A Pareto chart identifies the "vital few" (timing errors: 6 of 11). A fishbone then organizes that problem\'s causes into categories, often followed by 5 Whys on selected branches.',
+trap:'Pareto answers WHICH problem; fishbone answers WHY.'},
+{id:'c3_3',cs:'C3',mod:5,t:'cloze',step:'PH',topic:'T7',concept:'Writing a strong aim statement',
+q:'Complete the team\'s aim statement by choosing from the lists of options.',
+text:'"Reduce {0} on 5 East {1}."',
+blanks:[[['median tray-to-insulin time from 58 to 30 minutes or less','insulin timing errors as much as possible across all shifts','the delay between meal trays and insulin significantly'],0,'Specific and measurable, and matched to the largest problem.'],[['within 8 weeks','through staff education on insulin timing','whenever staffing levels allow'],0,'Time-bound.']],
+r:'A strong aim is specific, measurable and time-bound, and it targets the problem the data identified.',
+trap:'"As much as possible" and "be careful" are not measurable.'},
+{id:'c3_4',cs:'C3',mod:5,t:'mc',step:'GS',topic:'T7',concept:'Designing a small test of change',
+q:'Which is the most appropriate first test of change?',
+o:[['Implement a hospital-wide insulin timing policy, with audits, beginning on the first of next month',0,'Large and untested — contrary to PDSA.'],['Have dietary page the assigned nurse when trays leave the kitchen for one hallway for one week',1,'Correct. Small, rapid, targeted at a cause, and measurable.'],['Require every 5 East nurse to complete an insulin timing module and pass a competency quiz this month',0,'Education does not address the notification gap causing the delays.'],['Begin progressive discipline for nurses with two or more late doses',0,'Punitive response to a system problem.']],
+r:'PDSA starts with a small-scale test on one hallway or shift with a prediction and data collection, then studies results before spreading.',
+trap:'"Hospital-wide" or "policy" in a first PDSA test is a red flag.'},
+{id:'c3_5',cs:'C3',mod:5,t:'matrix',step:'TA',topic:'T7',concept:'PDSA phases',
+q:'For each activity, indicate the PDSA phase.',
+cols:['Plan','Do','Study','Act'],
+rows:[['Predict that median tray-to-insulin time will fall below 30 minutes',0,'Writing the prediction is part of Plan.'],['Decide which hallway, who records times and how data are collected',0,'Logistics and data plan are Plan.'],['Dietary pages nurses on one hallway for one week',1,'Running the small test is Do.'],['Compare the median time with the prediction and review missed pages',2,'Comparing results with the prediction is Study.'],['Switch from phone calls to automatic pages and test on a second hallway',3,'Adopt/adapt/abandon and start the next cycle is Act.']],
+r:'Plan = change, prediction, who/when, data. Do = run the test and collect data. Study = compare with the prediction and learn. Act = adopt, adapt or abandon, then start another cycle.',
+trap:'Deciding HOW to collect data is Plan, not Do.'},
+{id:'c3_6',cs:'C3',mod:5,t:'mc',step:'EO',topic:'T7',concept:'Interpreting PDSA results and next steps',
+q:'After one week, the median tray-to-insulin time on the test hallway fell from 58 to 22 minutes, but two evening doses were late when dietary staff forgot to page. What should the team do next?',
+o:[['Spread the current process to every unit because the median improved',0,'Spreading before fixing the known failure point skips another learning cycle.'],['Abandon the change because the results were not perfect',0,'The change clearly helped; PDSA expects iteration.'],['Adapt the process, such as an automatic page, and run another test cycle',1,'Correct. Act = adopt, adapt or abandon; here adapt and retest.'],['Report the dietary staff members who forgot to page to their supervisor',0,'Blames individuals for a reliance-on-memory design weakness.']],
+r:'PDSA is iterative. Positive results with a known weakness call for adapting the change (reducing reliance on memory) and testing again before spreading.',
+trap:'"Forgot" again points to a design that relies on memory — fix the design.'});
+
+/* ---------------- CASE 4 ---------------- */
+addCase('C4',4,'The Wrong Knee',[
+['Event Summary','A patient scheduled for LEFT knee arthroscopy has the procedure performed on the RIGHT knee and requires a second operation.'],
+['Review Findings','• The OR scheduling system lets staff book a procedure without entering laterality.\n• The consent, generated from the schedule, reads only "knee arthroscopy."\n• The site mark was made with a pen that washed off during chlorhexidine prep.\n• The patient speaks Mandarin; her 16-year-old grandson interpreted for consent.\n• The surgeon was 2 hours behind and the time-out was abbreviated.\n• The circulating nurse was floated from another OR suite and was unfamiliar with its checklist. She later says, "I noticed there was no mark, but it wasn\'t my place to stop him — he was already behind."']]);
+
+Q.push(
+{id:'c4_1',cs:'C4',mod:5,t:'mc',step:'AC',topic:'T1',concept:'Never event and sentinel event',
+q:'How should the quality department classify this event?',
+o:[['Adverse event; formal investigation is optional because the harm was temporary',0,'Wrong-site surgery requires immediate investigation regardless of recovery.'],['Medical negligence attributable to the surgeon who performed the procedure',0,'Multiple system failures aligned; single-person attribution blocks learning.'],['Never event that also meets sentinel-event criteria requiring an RCA',1,'Correct. Clearly identifiable, preventable and serious; requires immediate investigation.'],['Near miss, because the correct knee was eventually repaired',0,'The error reached and harmed the patient.']],
+r:'Wrong-site surgery is a classic never event and a sentinel event: an unexpected occurrence involving serious harm that requires immediate investigation and root cause analysis.',
+trap:'Later repair does not undo the harm. If it reached the patient, it is not a near miss.'},
+{id:'c4_2',cs:'C4',mod:5,t:'matrix',step:'AC',topic:'T5',concept:'Active vs latent failures',
+q:'For each finding, indicate whether it is an active failure or a latent condition.',
+cols:['Active failure','Latent condition'],
+rows:[['Scheduling system permits booking without laterality',1,'A design flaw upstream of the bedside.'],['Site-marking pen is not resistant to chlorhexidine prep',1,'An equipment/material weakness.'],['Surgeon begins the incision after an abbreviated time-out',0,'An unsafe act at the sharp end.'],['Floated nurse was not oriented to the suite\'s checklist',1,'A staffing/training condition.'],['Circulating nurse proceeds without confirming the site against the consent',0,'An unsafe act at the point of care.']],
+r:'Active failures are unsafe acts at the sharp end; latent conditions are upstream weaknesses in design, equipment, staffing and training. Swiss Cheese: harm occurred when both lined up.',
+trap:'The farther a failure is from the bedside, the more latent it is.'},
+{id:'c4_3',cs:'C4',mod:6,t:'mc',step:'PH',topic:'T13',concept:'Authority gradient',
+q:'Which communication barrier most directly explains the circulating nurse\'s silence?',
+o:[['Filtration of information during a busy case',0,'She noticed the missing mark — the information was not screened out.'],['Authority gradient between the nurse and the surgeon',1,'Correct. She recognized the hazard but did not feel able to challenge a higher-status clinician.'],['Role ambiguity because she was floated from another suite',0,'Unfamiliarity contributed, but verifying the site is clearly within her role.'],['Use of jargon on the surgical consent',0,'The consent problem was missing laterality, not jargon.']],
+r:'An authority gradient discourages lower-status team members from speaking up. Her words — "it wasn\'t my place to stop him" — signal hierarchy, not missing knowledge.',
+trap:'If the person KNEW and stayed silent, think hierarchy/psychological safety, not filtration.'},
+{id:'c4_4',cs:'C4',mod:5,t:'sata',step:'GS',topic:'T6',concept:'Countermeasures for failed barriers',
+q:'Which countermeasures would strengthen the barriers that failed? Select all that apply.',
+o:[['Make laterality a required field that blocks scheduling and consent until completed',1,'A forcing function that closes the upstream gap.'],['Send a memo reminding surgeons to slow down when they are behind schedule',0,'A weak, vigilance-based fix.'],['Use a site marker validated to remain visible after skin prep',1,'Fixes the equipment weakness.'],['Require a qualified medical interpreter for informed consent',1,'Closes the language barrier in consent verification.'],['Suspend the circulating nurse pending retraining',0,'Punitive and individual; it fixes no barrier.'],['Standardize the time-out so incision cannot begin until every member confirms the site',1,'Standardizes the process and counters hierarchy.']],
+r:'Each Swiss Cheese layer that failed needs its own system-level countermeasure. Forcing functions and standardization are stronger than reminders or discipline.',
+trap:'Match each failed layer to a design fix. Memos and suspensions don\'t plug holes.'},
+{id:'c4_5',cs:'C4',mod:6,t:'mc',step:'TA',topic:'T10',concept:'CUS to stop the line',
+q:'Months later, during a time-out, a nurse notices that the consent lists the left knee but the surgeon is prepping the right. Which statement by the nurse is most appropriate?',
+o:[['"Doctor, before we go any further today, are you completely sure that we have the correct knee prepped?"',0,'Too tentative; it invites a quick "yes" and does not stop the action.'],['"I\'m concerned the consent says left. I\'m uncomfortable. This is a safety issue — we need to stop."',1,'Correct. CUS escalates clearly and signals stop-the-line.'],['"I will document the discrepancy in my notes and make sure we bring it up at the debrief afterward."',0,'Delays action until after harm.'],['"Let\'s finish prepping the right side, and I\'ll recheck the consent and the schedule before the incision."',0,'Allows the unsafe action to continue.']],
+r:'CUS ("I am Concerned, I am Uncomfortable, this is a Safety issue") is a stop-the-line tool for imminent danger. Hedged questions and after-the-fact debriefs do not protect the patient.',
+trap:'Politeness is not the priority when harm is imminent — clarity is.'},
+{id:'c4_6',cs:'C4',mod:5,t:'mc',step:'TA',topic:'T4',concept:'Transparency and disclosure',
+q:'Which approach to informing the patient about the error is most consistent with course principles?',
+o:[['Wait until the RCA is finished so the explanation is complete',0,'Disclosure should be timely; waiting withholds information the patient needs.'],['Provide a timely, factual and compassionate disclosure coordinated per policy',1,'Correct. Transparency requires timely, factual, compassionate, coordinated disclosure.'],['Have the circulating nurse apologize privately on behalf of the team',0,'Disclosure should be coordinated per policy, not informal and individual.'],['Disclose the error only if the patient or family asks what happened',0,'Transparency is proactive, not conditional.']],
+r:'Transparency means communicating openly with patients and families about adverse events. Disclosure should be timely, factual, compassionate and coordinated according to organizational policy.',
+trap:'"Wait until we have all the facts" sounds responsible but violates timely disclosure.'});
+
+/* ---------------- CASE 5 ---------------- */
+addCase('C5',5,'"It\'s Just Pain"',[
+['Vital Signs',[['Time','HR','BP','RR','Temp','SpO2'],['0800','84','128/76','16','37.0 °C','97% RA'],['1500','102','110/66','20','37.9 °C','96% RA'],['1900','118','92/58','24','38.6 °C','94% RA']]],
+['Nurses\' Notes','67-year-old, post-op day 1 after bowel resection. 1900: Newly confused — asks the nurse what year it is twice. Urine output 15 mL/hr for the past 2 hours. Abdominal pain 6/10 on PCA. Incision well approximated. Bowel sounds hypoactive.'],
+['Provider Call Log','1910: Surgical resident: "It\'s pain. Give his PRN and recheck in the morning." 1925: Nurse restates concern. Resident: "I already told you," and ends the call. 1935: BP 86/54.']]);
+
+Q.push(
+{id:'c5_1',cs:'C5',mod:5,t:'sata',step:'RC',topic:'T9',concept:'Recognizing deterioration (failure to rescue)',
+q:'Which findings at 1900 require immediate follow-up? Select all that apply.',
+o:[['Heart rate increase from 84 to 118',1,'A progressive trend over the shift.'],['Hypoactive bowel sounds',0,'Expected on post-op day 1 after bowel surgery.'],['Blood pressure 92/58 from a baseline of 128/76',1,'Falling blood pressure suggests hypoperfusion.'],['New confusion',1,'Altered mental status is an early sign of sepsis and hypoperfusion.'],['Incision well approximated',0,'A reassuring finding.'],['Urine output 15 mL/hr for 2 hours',1,'Oliguria signals decreased renal perfusion.'],['Pain 6/10 with a PCA in place',0,'Needs reassessment but does not explain the cluster.']],
+r:'Trending vital signs over the shift reveal progressive deterioration: tachycardia, hypotension, fever, new confusion and oliguria. Recognizing and escalating these cues prevents failure to rescue.',
+trap:'Each 1500 value looked "only a little off." The trend is the cue.'},
+{id:'c5_2',cs:'C5',mod:5,t:'mc',step:'PH',topic:'T9',concept:'Prioritizing the most likely and dangerous hypothesis',
+q:'Which hypothesis should the nurse prioritize?',
+o:[['Inadequately controlled postoperative pain',0,'Pain does not explain fever, confusion, hypotension and oliguria together.'],['Hypovolemia related to NPO status and surgical losses',0,'Could explain tachycardia and hypotension, but not fever.'],['Postoperative delirium related to opioid use',0,'Does not account for fever, hypotension or oliguria.'],['Sepsis with signs of worsening hypoperfusion',1,'Correct. Fever, tachycardia, hypotension, confusion and oliguria together point to sepsis.']],
+r:'The cluster of fever, tachycardia, tachypnea, hypotension, new confusion and oliguria best fits sepsis with hypoperfusion — the most dangerous and most likely explanation, requiring urgent escalation.',
+trap:'Choose the hypothesis that explains ALL the cues, not just some of them.'},
+{id:'c5_3',cs:'C5',mod:6,t:'cloze',step:'GS',topic:'T10',concept:'SBAR Assessment supported by data',
+q:'Complete the Assessment portion of the nurse\'s SBAR by choosing from the lists of options.',
+text:'"I am concerned he may have {0}, based on {1}."',
+blanks:[[['sepsis','uncontrolled incisional pain','opioid oversedation'],0,'The interpretation that fits all findings.'],[['new fever, hypotension, tachycardia, confusion and low urine output','his pain score of 6/10 and hypoactive bowel sounds on the PCA','his age, recent bowel surgery and current PCA opioid use'],0,'The objective data that support the concern.']],
+r:'SBAR Assessment states the nurse\'s interpretation and supports it with objective data. Anchoring on pain ignores the cue cluster.',
+trap:'A convenient explanation (pain) is the trap the resident fell into.'},
+{id:'c5_4',cs:'C5',mod:6,t:'mc',step:'TA',topic:'T10',concept:'Two-Challenge Rule → chain of command',
+q:'At 1935, after the resident has dismissed the concern twice, which action should the nurse take?',
+o:[['Give the PRN analgesic as directed and reassess in 30 minutes',0,'Following an order that ignores worsening hypotension places the patient at risk.'],['Call the resident a third time and state the concern using CUS',0,'Two challenges have failed and danger persists — it is time for stronger action.'],['Activate the rapid response team and notify the charge nurse',1,'Correct. Escalate through the chain of command when danger persists.'],['Document the resident\'s refusal and increase vital signs to every hour',0,'Documentation and monitoring do not address the deterioration.']],
+r:'Two-Challenge Rule: state the concern, then assertively restate it. If it remains unresolved and danger persists, take stronger action — rapid response and chain of command.',
+trap:'A third call to the same person sounds persistent, but the rule says escalate after two.'},
+{id:'c5_5',cs:'C5',mod:6,t:'matrix',step:'GS',topic:'T12',concept:'Matching the communication tool to the moment',
+q:'For each situation, indicate the most appropriate tool.',
+cols:['Two-Challenge Rule','CUS','DESC','Debrief'],
+rows:[['Restating the safety concern after it was ignored the first time',0,'The second assertive statement of a concern.'],['"I am concerned, I am uncomfortable — this is a safety issue."',1,'The CUS escalation phrases.'],['A private conversation with the resident the next day about the dismissive call',2,'Structured, constructive conflict resolution.'],['The team reviews what went well and what to change after the ICU transfer',3,'Learning after the event.']],
+r:'CUS and the Two-Challenge Rule are safety escalation tools used now; DESC resolves interpersonal conflict later; a debrief reviews team performance after the event.',
+trap:'DESC is never the answer while the patient is still in danger.'},
+{id:'c5_6',cs:'C5',mod:5,t:'sata',step:'EO',topic:'T3',concept:'Follow-up that supports a culture of safety',
+q:'Mr. Tran is transferred to the ICU with septic shock. Which follow-up actions support learning and a culture of safety? Select all that apply.',
+o:[['Submit a safety report about the delayed escalation',1,'Allows system analysis of escalation barriers.'],['Participate in a debrief on communication and escalation',1,'Turns the event into team learning.'],['Warn other nurses about the resident in the unit group chat',0,'Unprofessional and escalates conflict; may breach privacy.'],['Use DESC in a private conversation with the resident',1,'Constructive conflict resolution.'],['Avoid paging that resident on future shifts',0,'Avoidance is not a fix and could delay care.'],['Chart that the resident refused to evaluate the patient',0,'The chart records objective facts and notifications, not blame.']],
+r:'Reporting, debriefing and constructive conflict resolution strengthen psychological safety and system learning. Gossip, avoidance and blaming documentation undermine them.',
+trap:'The chart records times and content of notifications — not judgments about colleagues.'});
+
+/* ===== NGN CASE STUDIES 6–10 ===== */
+
+/* ---------------- CASE 6 ---------------- */
+addCase('C6',6,'Discharge Day for Mrs. Pham',[
+['Nurses\' Notes','71-year-old admitted with a heart failure exacerbation; ready for discharge today. Primary language Vietnamese; limited English proficiency. Lives alone; does not drive. Adult son speaks English, works days, and offers to "translate everything" during discharge teaching. Lungs clear; weight down 2.5 kg since admission.'],
+['Discharge Orders','• NEW: metoprolol succinate 25 mg PO daily\n• CHANGED: furosemide 40 mg PO daily (was 20 mg as needed)\n• Daily weights; call for gain of more than 1 kg in a day or 2 kg in a week\n• 2 g sodium diet\n• Cardiology follow-up within 7 days']]);
+
+Q.push(
+{id:'c6_1',cs:'C6',mod:6,t:'sata',step:'RC',topic:'T14',concept:'Recognizing transition-of-care risks',
+q:'Which findings increase Mrs. Pham\'s risk for an unsafe care transition? Select all that apply.',
+o:[['Limited English proficiency',1,'Language barrier threatens understanding of complex teaching.'],['Weight down 2.5 kg since admission',0,'Expected result of diuresis; not a transition risk.'],['One new and one changed medication',1,'Medication changes are a leading source of post-discharge error.'],['Lives alone and does not drive',1,'Barriers to follow-up and support at home.'],['Lungs clear on auscultation',0,'Reassuring clinical finding.'],['Son offers to interpret the discharge teaching',1,'Family interpretation risks omissions and inaccuracy for complex teaching.'],['Cardiology follow-up ordered within 7 days',0,'Appropriate plan; the risk is getting there, not the order itself.']],
+r:'Language barriers, multiple medication changes, living alone without transportation and reliance on family interpretation all increase the risk of misunderstanding, nonadherence and readmission.',
+trap:'A family member\'s willingness to help can itself be a risk cue when accuracy matters.'},
+{id:'c6_2',cs:'C6',mod:6,t:'mc',step:'AC',topic:'T14',concept:'Why family should not replace a qualified interpreter',
+q:'The son insists, "I can translate — it\'s faster." Which response by the nurse best reflects the rationale for using a qualified interpreter?',
+o:[['"Family members are not legally allowed to interpret in a hospital."',0,'Overstated absolute; the issue is accuracy and safety, not a universal legal ban.'],['"You work during the day, so she needs to learn the medication changes herself, without you."',0,'True but not the reason a qualified interpreter is needed.'],['"Trained interpreters convey complex information completely and accurately."',1,'Correct. Accuracy, completeness and privacy are the reasons.'],['"Patients always prefer a professional over a relative to interpret sensitive health information."',0,'Overgeneralization; preferences vary.']],
+r:'Family interpreters may omit, simplify or alter clinical information and can compromise privacy. Qualified interpreters support accurate, complete communication for complex teaching.',
+trap:'Watch for absolute words ("always," "never," "not allowed") in distractors.'},
+{id:'c6_3',cs:'C6',mod:6,t:'mc',step:'TA',topic:'T14',concept:'Working with an interpreter',
+q:'Which action by the nurse during interpreted discharge teaching is most appropriate?',
+o:[['Facing the interpreter and saying, "Tell her to weigh herself every morning"',0,'Speak directly to the patient, not about her in the third person.'],['Asking the interpreter to summarize the key teaching points for Mrs. Pham in her own words',0,'Summaries risk omissions; interpret statements completely.'],['Speaking directly to Mrs. Pham in short segments and pausing for interpretation',1,'Correct. Speak to the patient in first person, in short chunks.'],['Speaking slowly and loudly so Mrs. Pham can follow some English',0,'Volume does not overcome a language barrier and can be disrespectful.']],
+r:'With an interpreter, speak directly to the patient, use plain language in short segments, pause for interpretation, and confirm understanding with teach-back.',
+trap:'The interpreter is a conduit; the conversation is with the patient.'},
+{id:'c6_4',cs:'C6',mod:6,t:'mc',step:'EO',topic:'T11',concept:'Teach-back reveals a misunderstanding',
+q:'Through the interpreter, Mrs. Pham explains, "I take the water pill when my ankles get puffy." Which action should the nurse take next?',
+o:[['Repeat the same explanation more slowly through the interpreter',0,'Repeating an approach that did not work is unlikely to succeed.'],['Ask her son to remind her to take the water pill each morning',0,'Bypasses the patient and does not confirm her understanding.'],['Re-teach the daily schedule using a pill calendar, then repeat teach-back',1,'Correct. Re-teach a different way and confirm again.'],['Document that teaching was completed with partial understanding',0,'Unsafe; she misunderstands a key medication change.']],
+r:'Teach-back evaluates the teaching. When it reveals a misunderstanding, re-teach using a different approach and repeat teach-back until understanding is confirmed.',
+trap:'A failed teach-back means the teaching failed — not the patient.'},
+{id:'c6_5',cs:'C6',mod:6,t:'cloze',step:'GS',topic:'T15',concept:'Shared decision-making (SHARE)',
+q:'Mrs. Pham says, "I don\'t have a scale, and weighing every day seems pointless." Complete the sentence by choosing from the lists of options.',
+text:'The nurse should first {0}, and then {1}.',
+blanks:[[['ask what matters most to her in managing her heart failure at home','explain why daily weights are required for heart failure','teach her how daily weights help prevent readmission'],0,'SHARE begins by seeking participation and assessing values.'],[['work with case management to obtain a scale and agree on a plan together','ask the provider to change her to weekly weights in clinic','have her son weigh her once a week on the weekend'],0,'Reach a decision together and solve the barrier collaboratively.']],
+r:'Shared decision-making seeks participation, explores options, assesses values and preferences, reaches a decision together and evaluates it. Resource barriers are solved collaboratively rather than labeled as refusal.',
+trap:'SDM decides WITH the patient — never FOR her, and never just labels her "noncompliant."'},
+{id:'c6_6',cs:'C6',mod:6,t:'sata',step:'GS',topic:'T14',concept:'Safe discharge plan for limited English proficiency',
+q:'Which interventions should the nurse include in Mrs. Pham\'s discharge plan? Select all that apply.',
+o:[['Plain-language written instructions in Vietnamese',1,'Accessible reinforcement of verbal teaching.'],['Teach-back through the interpreter for each medication change',1,'Confirms understanding of each change.'],['English-only handout for her son to review in the evening',0,'Not accessible to the patient; shifts responsibility to the son.'],['Case-management referral for transportation to cardiology follow-up',1,'Addresses a key transition barrier.'],['Telephone interpreter for the post-discharge follow-up call',1,'Maintains accurate communication after discharge.'],['A detailed 10-page heart failure booklet to read at home',0,'Too long for limited health literacy; does not confirm understanding.']],
+r:'Safe transitions combine qualified interpretation, plain-language materials in the patient\'s language, teach-back, and coordination of follow-up and transportation.',
+trap:'"More information" (a long booklet) is not better teaching.'});
+
+/* ---------------- CASE 7 ---------------- */
+addCase('C7',7,'The Pump Shortage',[
+['Nurses\' Notes','ICU night shift; every infusion pump is in use. A new-graduate nurse on orientation hangs potassium chloride 20 mEq/100 mL on gravity tubing for a patient with a potassium of 3.1 mEq/L. An experienced nurse passing the room notices, clamps the tubing before the infusion starts, and helps her obtain a pump from central supply. The patient receives no potassium by gravity.'],
+['Follow-up','The new graduate says, "Please don\'t report this — nothing happened, and I\'m still on orientation." Unit policy requires all IV potassium to be given by infusion pump. Pump shortages have been mentioned informally at staff meetings twice this quarter.']]);
+
+Q.push(
+{id:'c7_1',cs:'C7',mod:5,t:'mc',step:'RC',topic:'T1',concept:'Near miss',
+q:'How should the nurse classify this event?',
+o:[['Medical error that reached the patient without harm',0,'The potassium never infused — it did not reach the patient.'],['Adverse event, because a high-alert drug was involved',0,'No injury from care occurred.'],['Near miss that should be reported per policy',1,'Correct. Intercepted before reaching the patient; still reportable.'],['Not reportable, because no medication was given',0,'Near misses are valuable safety data and should be reported.']],
+r:'A near miss is an event that could have caused harm but did not reach the patient. Near misses expose weak barriers and must be reported.',
+trap:'"Nothing happened" is exactly why near misses are valuable — the system learns without anyone being hurt.'},
+{id:'c7_2',cs:'C7',mod:6,t:'mc',step:'AC',topic:'T12',concept:'Cross-monitoring',
+q:'Later, the new graduate asks the experienced nurse why she stepped in instead of "letting me learn from it." Which response by the experienced nurse best reflects TeamSTEPPS principles?',
+o:[['"On a good team we watch each other\'s actions, so errors get caught before they reach the patient."',1,'Correct. Cross-monitoring catches mistakes before they cause harm; it is not about blame.'],['"Nurses on orientation should never hang high-alert medications unless a preceptor is present."',0,'Shifts to a rule about her status instead of the team strategy.'],['"I stepped in so that this wouldn\'t become a near miss that has to be reported to the manager."',0,'Catching an error does not remove the need to report it.'],['"I would have let you continue if the potassium had been ordered at a lower concentration."',0,'IV potassium on gravity tubing is unsafe at any concentration.']],
+r:'Cross-monitoring ("watching each other\'s back") catches mistakes and oversights before they reach the patient. Helping obtain the pump afterward is task assistance.',
+trap:'Learning from an error never requires letting it reach the patient.'},
+{id:'c7_3',cs:'C7',mod:5,t:'mc',step:'TA',topic:'T2',concept:'Reporting a near miss within Just Culture',
+q:'Which response by the experienced nurse to the new graduate\'s request is most appropriate?',
+o:[['"Since the potassium never reached the patient, there\'s nothing here that needs to be reported."',0,'Near misses must be reported per policy.'],['"I\'ll add a note to the patient\'s chart that the error was caught in time."',0,'Incident details and reports do not belong in the medical record.'],['"Reporting this helps fix the pump shortage — it\'s about the system, not punishing you."',1,'Correct. Report the near miss and reinforce Just Culture.'],['"I\'ll tell the manager what happened and let her decide whether you need to be written up for this."',0,'Frames reporting as punishment and discourages future reporting.']],
+r:'Near misses should be reported through the safety system. Just Culture makes reporting safe by focusing on system learning rather than automatic punishment.',
+trap:'Reassurance belongs with the report, not instead of it.'},
+{id:'c7_4',cs:'C7',mod:5,t:'matrix',step:'PH',topic:'T3',concept:'Classifying behavior under Just Culture',
+q:'For each scenario, indicate the Just Culture classification.',
+cols:['Human error','At-risk behavior','Reckless behavior'],
+rows:[['A nurse selects the wrong concentration from an adjacent look-alike bin',0,'An unintentional slip.'],['A nurse routinely hangs IV potassium by gravity when pumps are scarce because "everyone does it"',1,'A normalized shortcut whose risk is underestimated.'],['After a colleague warns her it is prohibited and dangerous, a nurse hangs IV potassium by gravity because she "doesn\'t have time"',2,'Conscious disregard of a known, substantial risk.'],['A nurse forgets to unclamp a secondary line during a busy admission',0,'An unintentional lapse.']],
+r:'Classify the behavior, not the outcome: unintentional slips/lapses are human error (console); normalized risky choices are at-risk (coach); knowingly disregarding substantial risk is reckless (discipline may be appropriate).',
+trap:'The difference between at-risk and reckless is whether the person recognized the risk and chose it anyway.'},
+{id:'c7_5',cs:'C7',mod:5,t:'sata',step:'GS',topic:'T6',concept:'System countermeasures',
+q:'Which countermeasures address the system conditions behind this near miss? Select all that apply.',
+o:[['Establish infusion-pump par levels with real-time tracking',1,'Addresses the latent pump shortage.'],['Create an escalation pathway for nurses when no pump is available',1,'Gives staff a safe alternative to workarounds.'],['Have pharmacy dispense IV potassium with a "pump required" label and barcode check',1,'Builds a barrier into the medication system.'],['Email staff reminding them that potassium must be on a pump',0,'A weak reminder that relies on memory.'],['Remove the new graduate from IV medication administration',0,'Punitive and leaves the shortage unaddressed.'],['Stop ordering IV potassium in the ICU',0,'Unsafe and clinically inappropriate.']],
+r:'Strong countermeasures target the latent conditions (equipment availability, escalation options, labeling and verification) rather than relying on reminders or removing individuals.',
+trap:'Removing the person who made the slip leaves the hole in the cheese.'},
+{id:'c7_6',cs:'C7',mod:5,t:'mc',step:'EO',topic:'T4',concept:'HRO: preoccupation with failure',
+q:'The near miss is reported. Which response by the nurse manager best reflects high-reliability practice?',
+o:[['"The system worked because the error was caught, so no further action is needed on this one."',0,'Treats a near miss as proof that the defenses work.'],['"I\'ll remind all staff at the next meeting that IV potassium must always run on a pump."',0,'A reminder does not fix the pump shortage that set up the error.'],['"This shows the pump supply is a weak barrier — let\'s fix the shortage before someone is harmed."',1,'Correct. Preoccupation with failure treats near misses as early warnings.'],['"The new graduate should repeat the IV-medication module before she finishes orientation."',0,'Individual remediation ignores the latent condition.']],
+r:'Preoccupation with failure means treating near misses and small failures as warnings about weak defenses rather than as proof the system works.',
+trap:'"Nothing happened" is the start of the analysis, not the end.'});
+
+/* ---------------- CASE 8 ---------------- */
+addCase('C8',8,'Transfers at Shift Change',[
+['Situation','ED nurses send admitted patients to 4 West between 1845 and 1930, during bedside shift report. 4 West nurses have begun refusing all transfers during that window. Two transfers last week arrived with incomplete medication information.'],
+['Overheard','ED charge nurse: "Your unit always complains, so nobody takes your concerns seriously." · 4 West nurse to the ED: "Fine, send them whenever," then later to coworkers: "We\'ll just leave them in the hallway until we\'re ready."']]);
+
+Q.push(
+{id:'c8_1',cs:'C8',mod:6,t:'mc',step:'TA',topic:'T13',concept:'Responding to an ad hominem attack',
+q:'Which response by the 4 West charge nurse to the ED charge nurse\'s statement is most appropriate?',
+o:[['"Your department always rushes patients out, so it\'s no surprise information gets lost."',0,'Answers an attack with another attack.'],['"You\'re right that we complain a lot. We\'ll take transfers whenever you need to send them."',0,'Passive; abandons a valid safety concern.'],['"Our concern is timing: two transfers arrived during report with incomplete medication lists."',1,'Correct. Sets aside the personal attack and returns to the issue with data.'],['"I\'m taking this to the CNO, since you clearly aren\'t willing to talk with us about it."',0,'Escalates prematurely without trying to resolve it directly.']],
+r:'Ad hominem attacks the person or group raising an issue instead of addressing the issue itself. The effective response does not take the bait; it returns to specific, objective facts.',
+trap:'Respond to the issue, not the insult.'},
+{id:'c8_2',cs:'C8',mod:6,t:'mc',step:'TA',topic:'T13',concept:'Addressing passive-aggressive communication',
+q:'The 4 West charge nurse hears the nurse\'s later comment to coworkers. Which action by the charge nurse is most appropriate?',
+o:[['Ignore the comment, since the nurse was only venting to coworkers and not speaking to the ED',0,'The comment signals a plan that could leave patients unsafe.'],['Tell the ED charge nurse that 4 West will accept every transfer immediately to avoid conflict',0,'Gives up on the valid handoff-timing concern.'],['Report the nurse to the manager for discipline, since leaving patients in a hallway is reckless',0,'The nurse has not acted yet; coaching comes before discipline.'],['Talk privately with the nurse about the comment and its safety risk, and invite her to help plan a fix',1,'Correct. Addresses passive-aggressive behavior directly and redirects it toward a solution.']],
+r:'Passive-aggressive communication pairs outward agreement with indirect resistance or sarcasm, which undermines trust and can endanger patients. Address it directly and privately, then engage the person in a constructive solution.',
+trap:'Surface agreement plus a hidden plan to obstruct needs a direct, private conversation.'},
+{id:'c8_3',cs:'C8',mod:6,t:'mc',step:'GS',topic:'T13',concept:'Collaborative negotiation',
+q:'The ED and 4 West managers meet to resolve the conflict. Which approach is most likely to produce a safe and lasting solution?',
+o:[['Ask the chief nursing officer to set a firm transfer policy so the conflict between the units ends quickly',0,'Forcing a decision builds no shared ownership.'],['Agree that the ED may send patients anytime, because prolonged ED boarding is unsafe for admitted patients',0,'Accommodating one side ignores handoff safety.'],['Bring both units together to identify shared goals and agree on a transfer window with I-PASS',1,'Correct. Interest-based, collaborative negotiation.'],['Postpone discussion until the tension between the units settles down',0,'Avoidance leaves the risk in place.']],
+r:'Collaboration addresses the issue rather than the people, focuses on shared goals (flow and safe handoffs) and produces a mutually acceptable plan. Forcing, accommodating and avoiding do not resolve the underlying problem.',
+trap:'"Ends quickly" is attractive but forcing rarely produces durable, safe solutions.'},
+{id:'c8_4',cs:'C8',mod:6,t:'cloze',step:'TA',topic:'T13',concept:'DESC script',
+q:'The 4 West charge nurse uses DESC with the ED charge nurse. Complete the script by choosing from the lists of options.',
+text:'Describe: "{0}" … Suggest: "{1}"',
+blanks:[[['Three transfers last week arrived at 1900, during bedside report.','The ED keeps sending patients at the worst possible time.','We feel transfers at shift change are unsafe for patients.'],0,'Describe uses specific, objective data — not generalizations or blame.'],[['Could we hold stable transfers until 1930 and give I-PASS report by phone at 1845?','Please stop sending any patients during our shift change.','Could your charge nurse remind ED staff to give better report?'],0,'Suggest offers a specific alternative and seeks agreement.']],
+r:'DESC: Describe the specific situation with data, Express concerns, Suggest alternatives and seek agreement, and state Consequences/reach Consensus.',
+trap:'"Never" and "always" turn a Describe statement into an accusation.'},
+{id:'c8_5',cs:'C8',mod:6,t:'matrix',step:'TA',topic:'T12',concept:'Brief, huddle, debrief, check-back',
+q:'For each situation, indicate the TeamSTEPPS tool being used.',
+cols:['Brief','Huddle','Debrief','Check-back'],
+rows:[['ED and 4 West charge nurses meet at 1830 to plan expected transfers',0,'Planning before the work begins.'],['At 2000 a surge of admissions requires reassigning nurses mid-shift',1,'Adjusting the plan when conditions change.'],['After a difficult transfer, both teams review what went well and what to change',2,'Learning after the event.'],['ED nurse: "Hang the second bag at 2100." 4 West nurse: "Second bag at 2100." ED nurse: "Correct."',3,'Closed-loop confirmation of a message.']],
+r:'Brief = before; huddle = during, when conditions change; debrief = after. Check-back closes the loop on a specific message between team members.',
+trap:'Timing decides brief vs huddle vs debrief.'},
+{id:'c8_6',cs:'C8',mod:6,t:'mc',step:'EO',topic:'T15',concept:'Evaluating collaboration outcomes',
+q:'Two months after the units agree on a transfer window and I-PASS, which finding best indicates that the collaboration has improved safety?',
+o:[['Staff in both units report on a survey that the transfer conflict is discussed much less often at meetings',0,'Less discussion could mean avoidance, not resolution.'],['Transfers with complete I-PASS handoffs rose to 95% and transfer-related near misses fell',1,'Correct. Process and outcome data tied to the shared goal.'],['The ED charge nurse apologized publicly to the 4 West staff for her comments at a joint staff meeting',0,'Positive, but not evidence of safer transfers.'],['4 West now accepts every transfer as soon as the ED calls',0,'Accommodation without a safe handoff process.']],
+r:'Collaboration is judged by improved patient outcomes and reliable processes — here, complete handoffs and fewer transfer-related near misses.',
+trap:'Peace is not the outcome measure; patient safety is.'});
+
+/* ---------------- CASE 9 ---------------- */
+addCase('C9',9,'The CLABSI Cluster',[
+['Unit Data',[['Measure','ICU','National benchmark'],['CLABSI per 1,000 central-line days (last quarter)','3.1','0.8'],['Central-line days','1,290','—']]],
+['Audit Findings','• Hub scrubbed before access: 62% of observations\n• Daily line-necessity review documented: 40% of line-days\n• Dressing changes on time: 85%\n• Chlorhexidine-impregnated caps stocked in a supply room on another floor\n• 14 of 38 RNs have completed central-line maintenance competency'],
+['Staff Comments','"We keep lines in just in case we need access later." · "The caps are never here when we need them."']]);
+
+Q.push(
+{id:'c9_1',cs:'C9',mod:5,t:'matrix',step:'AC',topic:'T8',concept:'Donabedian structure, process, outcome',
+q:'For each measure, indicate the Donabedian category.',
+cols:['Structure','Process','Outcome'],
+rows:[['CLABSI per 1,000 central-line days',2,'A result of care.'],['Percentage of accesses with hub scrubbed first',1,'Care actually delivered.'],['Number of RNs with central-line competency',0,'Clinician competence is a resource of the setting.'],['Availability of chlorhexidine caps on the unit',0,'Supplies are structure.'],['Daily necessity review documented',1,'Care actually delivered.']],
+r:'Structure = resources (staff competence, supplies); Process = care delivered (hub scrub, necessity review); Outcome = results (infection rate).',
+trap:'"Percentage of patients who received X" is process even though it is a number.'},
+{id:'c9_2',cs:'C9',mod:5,t:'mc',step:'RC',topic:'T8',concept:'Benchmarking',
+q:'Which interpretation of the unit data is most accurate?',
+o:[['The ICU rate exceeds the national benchmark, signaling a need for improvement',1,'Correct. Benchmarking compares performance with peers or standards.'],['The rate cannot be judged without knowing each patient\'s diagnosis',0,'Rates per 1,000 line-days already standardize for exposure.'],['The rate is acceptable, because ICU patients are sicker and have more central-line days than average',0,'Rationalizing poor performance ignores a preventable, nurse-sensitive outcome.'],['The rate shows that individual nurses on the unit are consistently breaking sterile technique',0,'Data show a gap, not who caused it; jumping to individual blame is premature.']],
+r:'Benchmarking compares performance with prior internal results or peer standards. A rate nearly four times the benchmark indicates a quality gap requiring analysis.',
+trap:'Don\'t explain away a bad benchmark — and don\'t jump to blame either.'},
+{id:'c9_3',cs:'C9',mod:5,t:'mc',step:'PH',topic:'T5',concept:'Latent condition with the widest reach',
+q:'Which finding is a latent condition most likely contributing across many nurses and shifts?',
+o:[['A nurse skipped the hub scrub during a code',0,'An active failure in a single event.'],['Chlorhexidine caps are stocked on another floor',1,'Correct. A supply condition that affects every access on every shift.'],['A patient repeatedly pulls at the dressing',0,'A patient factor in one case.'],['A femoral line was placed emergently in the ED during a code',0,'A single clinical circumstance, not a unit-wide condition.']],
+r:'Latent conditions are hidden system weaknesses that make active failures more likely everywhere. A supply that is never at the bedside sets up every nurse to skip a step.',
+trap:'Look for the condition that would affect the most people, most of the time.'},
+{id:'c9_4',cs:'C9',mod:5,t:'sata',step:'GS',topic:'T9',concept:'CLABSI prevention bundle',
+q:'Which nursing actions reduce the risk of CLABSI? Select all that apply.',
+o:[['Scrub the hub with antiseptic before each access',1,'Reduces intraluminal contamination.'],['Replace central lines routinely every 7 days',0,'Not recommended; adds insertion risk.'],['Perform hand hygiene before handling the line',1,'Core bundle element.'],['Review and document line necessity daily',1,'Early removal is key to prevention.'],['Keep the line after therapy ends in case access is needed',0,'Every extra line-day increases infection risk.'],['Use chlorhexidine skin antisepsis for dressing changes per protocol',1,'Evidence-based antisepsis.']],
+r:'CLABSI prevention relies on evidence-based bundles: hand hygiene, hub disinfection, aseptic technique, chlorhexidine antisepsis, and daily necessity review with timely removal.',
+trap:'"Just in case" lines and routine replacement sound protective but increase risk.'},
+{id:'c9_5',cs:'C9',mod:6,t:'mc',step:'TA',topic:'T12',concept:'Cross-monitoring and speaking up',
+q:'The nurse observes a colleague preparing to flush a central line without scrubbing the hub. Which action should the nurse take?',
+o:[['Wait until the flush is complete and then remind the colleague privately',0,'Too late; the contamination risk has already occurred.'],['Report the colleague to the manager after the shift',0,'Does not prevent harm now and skips direct communication.'],['Say, "Wait — let\'s scrub the hub first," before the line is accessed',1,'Correct. Speak up in the moment to prevent the error.'],['Document the observation on the bundle audit form',0,'Audit data matter, but the patient needs protection now.']],
+r:'Cross-monitoring means watching teammates\' actions and catching errors before they reach the patient. Psychological safety allows any team member to speak up in the moment.',
+trap:'Feedback after the fact is useful — but not when you can still prevent the error.'},
+{id:'c9_6',cs:'C9',mod:5,t:'mc',step:'EO',topic:'T7',concept:'Interpreting a run chart',
+q:'After the bundle is reinforced, monthly CLABSI rates are 3.1, 2.9, 1.0, 0.9 and 0.8. Which conclusion is most appropriate?',
+o:[['The problem is solved, so the team can stop measuring',0,'Ongoing monitoring is needed to sustain gains.'],['A sustained shift suggests real improvement; continue monitoring',1,'Correct. Several consecutive points at the new level indicate meaningful change.'],['One month at 1.0 proves the bundle caused the change',0,'A single point does not establish a trend.'],['The data are inconclusive until the rate reaches zero',0,'Improvement is judged against baseline and benchmark, not perfection.']],
+r:'Run charts distinguish normal variation from meaningful change. A sustained shift across several months suggests real improvement, and continued measurement confirms it holds.',
+trap:'One good month is variation; a sustained shift is a signal.'});
+
+/* ---------------- CASE 10 ---------------- */
+addCase('C10',10,'The Discharge Medication List',[
+['Event Summary','An 80-year-old is discharged to a skilled nursing facility (SNF) after hip surgery. Apixaban was started in the hospital. Home warfarin was supposed to be discontinued, but the discharge medication list still includes warfarin because the admission medication list was copied forward in the EHR. The SNF administers both. On day 3 the patient develops a GI bleed.'],
+['Review Findings','• The discharge nurse had three simultaneous discharges.\n• The discharge process has no step comparing the final list with the pre-admission list.\n• Policy does not require pharmacist reconciliation for SNF discharges.\n• Handoff to the SNF consisted of a faxed medication list and a 2-minute call: "She\'s stable, all meds are on the list."']]);
+
+Q.push(
+{id:'c10_1',cs:'C10',mod:5,t:'mc',step:'RC',topic:'T1',concept:'Preventable adverse event from a medication error',
+q:'How should this event be classified?',
+o:[['Unpreventable adverse event from known anticoagulant risks',0,'Duplicate anticoagulation was preventable.'],['Near miss, because the bleeding was identified and treated',0,'The error reached the patient and caused harm.'],['Preventable adverse event resulting from a medication error',1,'Correct. A reconciliation error reached the patient and caused harm.'],['Medical negligence by the SNF nurse who gave the medications',0,'The SNF followed the list it received; this was a system failure.']],
+r:'A medication error (duplicate anticoagulation from failed reconciliation) reached the patient and caused harm — a preventable adverse event that must be reported and analyzed.',
+trap:'Known side effects make an event "unpreventable" only when the care itself was correct.'},
+{id:'c10_2',cs:'C10',mod:5,t:'matrix',step:'AC',topic:'T6',concept:'Fishbone categories',
+q:'For each contributing factor, indicate the fishbone category it best fits.',
+cols:['People','Methods / Process','Machines / Technology','Policies'],
+rows:[['The EHR copied the admission medication list forward',2,'A technology/interface factor.'],['The discharge nurse had three simultaneous discharges',0,'Workload is a people factor.'],['No step compares the final list with the pre-admission list',1,'A missing step in the process.'],['Pharmacist reconciliation is not required for SNF discharges',3,'A policy gap.']],
+r:'Fishbone categories organize contributing causes: People (workload, training, fatigue), Methods (workflow steps), Machines (EHR, devices), Materials, Policies, Environment, Measurement.',
+trap:'Workload sounds like environment, but the course lists it under People.'},
+{id:'c10_3',cs:'C10',mod:6,t:'mc',step:'PH',topic:'T11',concept:'Handoff failure at a care transition',
+q:'Which communication failure most directly allowed the error to reach the patient?',
+o:[['The SNF did not call the hospital pharmacist to verify the list after the patient arrived',0,'The receiving facility relied on the information it was given.'],['The handoff did not identify discontinued and new medications',1,'Correct. A handoff must include recent changes and an action list.'],['The patient\'s family was not present at discharge',0,'Family involvement helps but was not the direct failure.'],['The discharge summary was faxed instead of emailed',0,'The transmission method was not the problem; the content was.']],
+r:'Handoffs transfer information, authority and responsibility. Omitting medication changes ("all meds are on the list") at a transition is a high-risk communication failure.',
+trap:'"Stable, everything\'s on the list" is the same vague handoff as in Case 1.'},
+{id:'c10_4',cs:'C10',mod:5,t:'mc',step:'GS',topic:'T6',concept:'Strongest countermeasure',
+q:'Which countermeasure is strongest for preventing recurrence?',
+o:[['Send all discharge nurses an email reminder to double-check every anticoagulant on the list',0,'A weak, memory-dependent fix.'],['Add an EHR hard stop requiring every home medication to be continued or stopped',1,'Correct. A forcing function built into the process.'],['Provide the discharge nurse with one-on-one education on reconciling anticoagulants',0,'Education alone relies on vigilance and addresses one person.'],['Post a sign about anticoagulant safety at the nurses\' station',0,'Signs are easily habituated to.']],
+r:'Forcing functions and standardization are stronger than education, reminders or signs because they do not depend on memory or vigilance.',
+trap:'If an option makes the error impossible to complete, it is the strongest.'},
+{id:'c10_5',cs:'C10',mod:6,t:'cloze',step:'TA',topic:'T11',concept:'Closed-loop handoff to another facility',
+q:'For the next SNF transfer, complete the sentence by choosing from the lists of options.',
+text:'The nurse should give report using {0} and then ask the receiving nurse to {1}.',
+blanks:[[['I-PASS, including an action list of medication changes','a faxed medication list followed by a short call','a verbal summary of the hospital course and vital signs'],0,'A standardized tool with explicit medication changes.'],[['summarize the medication changes back for confirmation','confirm receipt of the faxed medication list','call the unit later if any questions come up'],0,'Synthesis by receiver closes the loop.']],
+r:'Standardized handoffs reduce omissions; synthesis by the receiver (restating key changes) confirms that critical information was received correctly.',
+trap:'A signature proves receipt of paper, not understanding.'},
+{id:'c10_6',cs:'C10',mod:6,t:'mc',step:'EO',topic:'T11',concept:'Evaluating closed-loop communication',
+q:'Which statement by the receiving SNF nurse indicates that the handoff was effective?',
+o:[['"Got it — I\'ll look over the list when she arrives."',0,'Acknowledges receipt but does not confirm content.'],['"So warfarin is discontinued and apixaban 2.5 mg twice daily is new — correct?"',1,'Correct. The receiver restates the specific changes for confirmation.'],['"Thanks for calling. Is she still stable for transport?"',0,'Asks about status but not the medication changes.'],['"We\'ll call the pharmacy tomorrow to verify everything."',0,'Defers verification and leaves the loop open.']],
+r:'The receiver\'s synthesis of specific changes confirms that critical information was transferred accurately — closing the communication loop.',
+trap:'Look for the receiver repeating the specifics, not just acknowledging.'});
+
+/* ===== STANDALONE ITEMS — MODULE 5 (39) ===== */
+Q.push(
+{id:'s5_01',mod:5,t:'mc',step:'AC',topic:'T1',concept:'Omission and preventable adverse event',
+q:'A post-op patient\'s 0900 enoxaparin is held because the patient is in radiology. When the patient returns at 1030, no one gives the dose and no further doses are given that day. On post-op day 3 the patient develops a DVT. Which classification is most accurate?',
+o:[['Error of commission that resulted in an adverse event',0,'Commission is doing the wrong thing; here an indicated action was not done.'],['Unpreventable adverse event because the patient was off the unit',0,'The dose could have been given after the patient returned.'],['Error of omission that contributed to a preventable adverse event',1,'Correct. Failure to give an indicated drug is omission; the resulting harm was preventable.'],['Near miss, because DVT is a known postoperative complication of hip and abdominal surgery',0,'The gap in care reached the patient and harm followed.']],
+r:'An error of omission is failure to perform an indicated action. Because harm followed and the dose could have been given, this is a preventable adverse event.',
+trap:'"Off the unit" explains the delay, not the failure to follow up.'},
+{id:'s5_02',mod:5,t:'mc',step:'EO',topic:'T1',concept:'Medical negligence: applying the standard of care',
+q:'A patient on bed rest develops a stage 3 sacral pressure injury. Review shows no skin assessments or repositioning were documented for three consecutive shifts, although policy requires both. One of the nurses says, "She was so sick — there was nothing we could have done." Which response by the charge nurse is most accurate?',
+o:[['"Pressure injuries are common in very ill patients, so this will most likely be classified as an unavoidable adverse event."',0,'Required preventive care was not delivered, so the injury cannot be assumed unavoidable.'],['"Because required assessments and turns were not done, care likely fell below the standard and the event needs review."',1,'Correct. Failure to meet the standard of a reasonable, prudent nurse, with resulting harm, is negligence.'],['"Since several nurses were involved over three shifts, this is a system failure and individual accountability does not apply."',0,'System factors may contribute, but nurses remain accountable for meeting the standard of care.'],['"Because the injury was found and is now being treated, it can be reported as a near miss rather than an adverse event."',0,'Harm reached the patient, so it is not a near miss.']],
+r:'Negligence is care that fails to meet the standard expected of a reasonable, prudent clinician with similar training. Pressure injuries are nurse-sensitive and largely preventable, so missing required assessments and repositioning points to a standard-of-care failure.',
+trap:'"The patient was very sick" does not excuse care that was required and not given.'},
+{id:'s5_03',mod:5,t:'sata',step:'RC',topic:'T1',concept:'Sentinel event criteria',
+q:'Which events meet criteria for a sentinel event requiring immediate investigation? Select all that apply.',
+o:[['Unexpected death after a tenfold heparin overdose',1,'Unexpected death related to care.'],['Retained surgical sponge requiring a second operation',1,'Severe harm from care.'],['Antibiotic given 45 minutes late with no harm',0,'An error to report, not a sentinel event.'],['Suicide of a patient on a medical-surgical unit',1,'Death in a staffed setting is a sentinel event.'],['Mislabeled specimen caught in the lab before testing',0,'A near miss.'],['Permanent loss of function after a fall with fracture',1,'Severe, permanent harm.']],
+r:'Sentinel events involve unexpected death, severe physical or psychological harm, or serious risk thereof, and require immediate investigation.',
+trap:'Every sentinel event is reported, but not every reported event is sentinel.'},
+{id:'s5_04',mod:5,t:'mc',step:'AC',topic:'T1',concept:'Error vs adverse event',
+q:'A patient with no documented allergies develops hives and wheezing after the first dose of a correctly prescribed and administered antibiotic. After the patient is stabilized, a new nurse says, "I need to report this as a medication error." Which response by the charge nurse is accurate?',
+o:[['"Yes — any harm that follows a drug we gave counts as a medication error, even when it was given exactly as ordered."',0,'An error requires a wrong or omitted action; none occurred here.'],['"Report and document the reaction, but this is an adverse event without an error, because no allergy was known."',1,'Correct. Harm from medical management can occur without any error.'],['"No report is needed, because the reaction was unexpected and no one on the team did anything incorrectly."',0,'Adverse events are still reported and documented, even when no error occurred.'],['"Classify it as a near miss, because the wheezing responded to treatment before lasting harm occurred."',0,'Harm reached the patient, so it is not a near miss.']],
+r:'An adverse event is injury caused by medical management rather than the underlying condition; it can occur without any error, as with a first-time allergic reaction. It is still reported and documented.',
+trap:'Adverse ≠ error. Harm can happen even when everyone did everything right — and it still gets reported.'},
+{id:'s5_05',mod:5,t:'matrix',step:'AC',topic:'T1',concept:'Classifying safety events',
+q:'For each event, indicate the best classification.',
+cols:['Near miss','Medical error without harm','Adverse event'],
+rows:[['Pharmacist intercepts a tenfold insulin order before it is dispensed',0,'Caught before reaching the patient.'],['Patient receives a double dose of an antihypertensive; vital signs remain stable',1,'Reached the patient, no harm.'],['Patient becomes hypotensive and falls after a double dose of an antihypertensive',2,'Harm from care.'],['Nurse scans the wrong wristband; the scanner alerts before administration',0,'Barrier caught the error before it reached the patient.']],
+r:'Did it reach the patient? If not: near miss. If yes without harm: medical error. If harm from care: adverse event.',
+trap:'"Stable vital signs" does not change an error that reached the patient into a near miss.'},
+{id:'s5_06',mod:5,t:'mc',step:'GS',topic:'T8',concept:'STEEEP: Equitable (applied)',
+q:'Clinic data show that Black patients with chest pain wait an average of 25 minutes longer for an ECG than white patients with the same triage acuity. Which action by the quality nurse best addresses the quality problem?',
+o:[['Add a second ECG technician during peak hours so that every chest-pain patient receives an ECG faster',0,'May improve average timeliness but does not identify or close the gap between groups.'],['Break down door-to-ECG times by race and examine where in triage and workflow the gap develops',1,'Correct. The core problem is equity; the team must locate where care diverges by group.'],['Remind triage nurses that every chest-pain patient must receive an ECG within the target time',0,'Education and reminders are weak and do not address why the gap exists.'],['Report each delayed ECG as a separate incident and counsel the triage nurses involved in each case',0,'Treats a group-level pattern as individual events.']],
+r:'Equitable care does not vary by gender, ethnicity, geography, socioeconomic status or other nonclinical characteristics. When care differs by group for the same clinical need, the team must stratify the data and find where the difference arises.',
+trap:'A faster process for everyone can leave the gap between groups untouched.'},
+{id:'s5_07',mod:5,t:'mc',step:'GS',topic:'T8',concept:'STEEEP: Effective (overuse)',
+q:'A unit orders a routine daily chest x-ray for every ventilated patient, although current evidence shows this practice does not improve outcomes. Which proposal from the unit practice council best improves the quality of care?',
+o:[['Batch all daily chest x-rays at 0400 so radiology can complete them with fewer trips to the unit',0,'Makes an unnecessary practice more efficient instead of stopping it.'],['Continue daily films, since extra imaging adds a margin of safety for critically ill ventilated patients',0,'Overuse is not safer; it adds radiation, cost and handling without benefit.'],['Order chest x-rays only when clinically indicated, per an evidence-based protocol, and monitor outcomes',1,'Correct. Effective care is evidence-based and avoids overuse as well as underuse.'],['Survey staff and keep whichever imaging schedule most nurses and respiratory therapists prefer',0,'Preference is not evidence.']],
+r:'Effective care is evidence-based and avoids both underuse and overuse. Efficient care avoids waste such as duplicated tests caused by information not being shared. Making an unsupported practice faster does not make it effective.',
+trap:'Doing an unnecessary test more efficiently is still overuse.'},
+{id:'s5_08',mod:5,t:'mc',step:'TA',topic:'T8',concept:'STEEEP: Patient-centered (applied)',
+q:'A patient with end-stage kidney disease who has decision-making capacity tells the team she wants conservative management and does not want dialysis. The next morning the nurse sees that dialysis catheter placement has been scheduled without any discussion with her. Which action should the nurse take?',
+o:[['Prepare her for the procedure as scheduled, because dialysis is the standard treatment for her condition',0,'Proceeding disregards her stated, informed preference.'],['Ask the provider to formally reassess her capacity, since declining dialysis suggests she may not understand',0,'Disagreeing with a recommendation is not evidence of incapacity.'],['Ask her family to speak with her tonight in the hope of persuading her to agree to the catheter',0,'Pressuring her through family does not honor her values.'],['Notify the provider that she declined dialysis, hold the procedure, and arrange a discussion with her',1,'Correct. Patient-centered care honors her preferences and makes her a partner in decisions.']],
+r:'Patient-centered care is responsive to patient preferences, needs and values and makes the patient a partner in decisions. The nurse advocates by stopping a plan that ignores her stated choice.',
+trap:'A capable adult declining treatment is exercising autonomy, not showing incapacity.'},
+{id:'s5_09',mod:5,t:'sata',step:'AC',topic:'T8',concept:'Donabedian outcome measures',
+q:'A quality council reviews its dashboard. Which items are outcome measures? Select all that apply.',
+o:[['30-day heart failure readmission rate',1,'A result of care.'],['RN hours per patient day',0,'Staffing is structure.'],['Hospital-acquired pressure injury rate',1,'A result of care.'],['Percentage of patients receiving discharge teaching',0,'Care delivered — process.'],['Patient-experience (HCAHPS) scores',1,'Patient experience is an outcome.'],['Hand hygiene compliance',0,'Care delivered — process.']],
+r:'Structure = resources; process = care delivered; outcome = results such as readmissions, complications, mortality, experience and cost.',
+trap:'Patient experience counts as an outcome.'},
+{id:'s5_10',mod:5,t:'mc',step:'GS',topic:'T8',concept:'Nursing-sensitive indicators',
+q:'A chief nursing officer wants to compare the quality of nursing care across medical-surgical units. Which data set is most appropriate?',
+o:[['Average length of stay by attending physician, surgical case volume and operating room turnover time',0,'Reflects medical services, not nursing care.'],['Falls with injury, pressure injury rates, CAUTI rates and RN hours per patient day',1,'Correct. Measures substantially affected by nursing care.'],['Pharmacy turnaround time and laboratory specimen rejection rates',0,'Reflect other departments.'],['Physician consult response times, imaging wait times and average emergency department length of stay',0,'Not nursing-sensitive.']],
+r:'Nursing-sensitive indicators are processes and outcomes substantially affected by nursing care: falls, pressure injuries, selected HAIs, and staffing/work-environment measures.',
+trap:'Ask whether better nursing care would directly change the number.'},
+{id:'s5_11',mod:5,t:'mc',step:'AC',topic:'T8',concept:'Value-based purchasing and HACs',
+q:'A hospital\'s Medicare reimbursement is reduced after it reports high rates of stage 4 hospital-acquired pressure injuries. Which explanation is most accurate?',
+o:[['The Joint Commission fines hospitals directly for each stage 3 or 4 pressure injury it finds',0,'TJC accredits; it does not set Medicare payment.'],['ISMP adjusts reimbursement based on reported events',0,'ISMP is a medication-safety organization.'],['CMS links part of reimbursement to performance on preventable conditions',1,'Correct. Value-based purchasing and HAC payment consequences.'],['National Patient Safety Goals require hospitals to refund payments for preventable complications',0,'NPSGs identify focus areas; they do not require refunds.']],
+r:'Value-based purchasing links some reimbursement to quality, outcomes, experience, safety and efficiency. HACs and never events can trigger payment consequences.',
+trap:'TJC = accreditation; CMS = payment; ISMP = medication safety.'},
+{id:'s5_12',mod:5,t:'mc',step:'RC',topic:'T8',concept:'National Patient Safety Goals',
+q:'A new nurse asks which organizational focus the National Patient Safety Goals address. Which response by the nurse educator is accurate?',
+o:[['"They set the minimum nurse-to-patient staffing ratios that every accredited hospital must follow."',0,'NPSGs do not set staffing ratios.'],['"They target recurring high-risk areas, such as patient identification."',1,'Correct. NPSGs focus attention on recurring high-risk areas.'],['"They determine how much Medicare pays for each admission."',0,'Payment rules come from CMS.'],['"They replace the need for each hospital to maintain its own internal incident-reporting system."',0,'Reporting systems remain essential.']],
+r:'NPSGs focus organizations on recurring high-risk areas: patient identification, communication of critical results, medication and alarm safety, infection prevention, suicide risk, and surgical verification/time-out.',
+trap:'NPSGs are about focus areas, not payment or staffing.'},
+{id:'s5_13',mod:5,t:'mc',step:'TA',topic:'T2',concept:'Who completes the incident report',
+q:'During rounds, a UAP finds that a patient who was NPO for surgery received and ate a breakfast tray. Surgery is postponed. According to course guidelines, who should complete the incident report?',
+o:[['The nurse manager, after interviewing the staff involved',0,'Managers review reports; they do not originate all of them.'],['The surgeon, because the procedure was delayed',0,'The surgeon did not identify the event.'],['Risk management, after a verbal report from the charge nurse',0,'Risk management analyzes reports.'],['The UAP who identified the event, with nurse support per policy',1,'Correct. The person who witnessed or identified the event completes the report.']],
+r:'The incident report is completed by the person who witnessed or identified the incident, as soon as possible after the patient is safe.',
+trap:'Reports come from firsthand knowledge, not rank.'},
+{id:'s5_14',mod:5,t:'sata',step:'GS',topic:'T2',concept:'Incident report contents',
+q:'A nurse is completing an incident report after giving a patient another patient\'s metoprolol. Which information should be included? Select all that apply.',
+o:[['Date, time and location of the event',1,'Required factual element.'],['The nurse\'s opinion that understaffing caused the mix-up',0,'Opinion and speculative cause.'],['Names of witnesses and who was notified',1,'Required element.'],['Patient\'s condition and the actions taken',1,'Required element.'],['A recommendation that the pharmacist be disciplined',0,'Blame framed as fact.'],['An objective timeline of what happened',1,'Required element.']],
+r:'Incident reports contain objective facts — date/time/location, people involved, witnesses, notifications, condition, actions and a concise timeline — and exclude opinions, blame and speculation.',
+trap:'Contributing factors are explored in the RCA, not asserted in the report.'},
+{id:'s5_15',mod:5,t:'mc',step:'EO',topic:'T2',concept:'Medical record rule',
+q:'A charge nurse reviews documentation after a medication error. Which entry in the medical record requires follow-up?',
+o:[['"1420: BP 92/54, HR 58. Provider notified at 1425; orders received."',0,'Objective and appropriate.'],['"Patient states, \'I feel dizzy when I stand.\' Assisted back to bed."',0,'A quote and intervention — appropriate.'],['"Incident report filed regarding the wrong-dose administration."',1,'Correct. The chart should never reference the incident report.'],['"Repeat vital signs at 1500: BP 108/66, HR 70. Dizziness resolved."',0,'Patient response — appropriate.']],
+r:'The chart documents assessment, notifications, interventions and patient response. It never states that an incident report was completed.',
+trap:'"Requires follow-up" means find the WRONG entry.'},
+{id:'s5_16',mod:5,t:'mc',step:'PH',topic:'T3',concept:'Just Culture: human error in a system pattern',
+q:'In one month, three different nurses programmed a new infusion pump at ten times the intended rate; each reports that the decimal display is confusing. Which response by the manager is most consistent with Just Culture?',
+o:[['Require the most recent nurse to complete pump retraining',0,'An individual fix ignores a pattern across three nurses.'],['Classify the most recent error as reckless because the error was tenfold',0,'Outcome severity does not determine the behavior category.'],['Console the nurses and work with biomedical engineering to fix the display',1,'Correct. Human error → console and redesign the system.'],['Issue written warnings to all three nurses to emphasize accountability',0,'Punishing slips discourages reporting and leaves the hazard.']],
+r:'Unintentional slips set up by a design flaw are human error. Just Culture consoles the individual and redesigns the system.',
+trap:'Classify the behavior, not how bad the outcome was.'},
+{id:'s5_17',mod:5,t:'mc',step:'AC',topic:'T3',concept:'Reckless behavior',
+q:'Which nurse behavior is best classified as reckless under Just Culture?',
+o:[['Pre-pouring medications for several patients at the start of the shift, a long-standing and common practice among nurses on the unit',0,'A normalized shortcut — at-risk behavior.'],['Transposing two digits while entering a patient\'s weight into the EHR during an admission with frequent interruptions',0,'An unintentional slip — human error.'],['Forgetting to restart a maintenance IV after a patient returns from CT while covering a colleague\'s patients during lunch',0,'A lapse — human error.'],['Starting an insulin drip without the required double check after a peer refuses, saying, "I know, but I don\'t have time"',1,'Correct. Conscious disregard of a recognized, substantial risk.']],
+r:'Reckless behavior is conscious disregard of a substantial and unjustifiable risk. Corrective or disciplinary action may be appropriate.',
+trap:'Reckless = knows the risk AND chooses it.'},
+{id:'s5_18',mod:5,t:'mc',step:'GS',topic:'T3',concept:'Building psychological safety',
+q:'A new graduate stays silent when a physician omits full sterile barrier precautions during a central line insertion, because a colleague was ridiculed for speaking up last month. Which action by nursing leadership would most improve psychological safety?',
+o:[['Encourage new graduates to build their confidence to speak up through a formal mentoring program',0,'Places the burden on individuals rather than the environment.'],['Require that only charge nurses challenge physicians during bedside procedures, to reduce conflict',0,'Reinforces the authority gradient.'],['Install an anonymous box for staff to submit safety concerns',0,'Cannot stop harm in real time and does not change the culture.'],['Adopt a "stop the line" policy anyone can use and visibly support staff who use it',1,'Correct. Leaders create the conditions that make speaking up safe.']],
+r:'Psychological safety — speaking up without humiliation or retaliation — is built through leadership, policy and visible support, not by asking individuals to be braver.',
+trap:'Culture problems need leadership answers.'},
+{id:'s5_19',mod:5,t:'mc',step:'TA',topic:'T4',concept:'HRO: sensitivity to operations',
+q:'At 1500 a charge nurse has 20 minutes before a staffing meeting. Two patients on the unit have rising early-warning scores, and their nurse has been in an isolation room for 40 minutes. Which action by the charge nurse best reflects sensitivity to operations?',
+o:[['Review last month\'s near-miss reports so the staffing meeting can address weak barriers on the unit',0,'Looking back at near misses is preoccupation with failure, and it ignores what is happening now.'],['Send a nurse to assess the two patients and help their nurse with the current workload',1,'Correct. Real-time awareness of frontline conditions, acted on before harm occurs.'],['Ask the nurse to update the scores in the EHR when she leaves the isolation room',0,'Delays response to deterioration that is happening now.'],['Bring both early-warning scores to the staffing meeting as evidence that more nurses are needed',0,'Uses the data later instead of responding to it now.']],
+r:'Sensitivity to operations is continuous awareness of what is happening at the bedside, so that anomalies are noticed and acted on before they become harm.',
+trap:'The best answer acts on real-time conditions now, not at a meeting later.'},
+{id:'s5_20',mod:5,t:'mc',step:'GS',topic:'T4',concept:'HRO: reluctance to simplify',
+q:'After several wrong-patient lab draws, a manager says, "Night shift is just careless. I\'ll write them up." Which response by the safety committee chair best reflects high-reliability thinking?',
+o:[['"I agree. Accountability for labeling at the bedside rests with each nurse and phlebotomist on that shift."',0,'Accepts a simple, blame-based explanation.'],['"Let\'s retrain night shift first, since most of the reported wrong-patient draws happened on that shift."',0,'Still assumes the cause is the people on one shift.'],['"Let\'s map the labeling process on every shift to find the conditions that allow wrong-patient draws."',1,'Correct. Rejecting an easy explanation and examining the whole process is reluctance to simplify.'],['"Let\'s wait until one of these draws causes harm before we commit resources to a full analysis."',0,'HROs treat near misses and no-harm events as warnings.']],
+r:'Reluctance to simplify means refusing easy single-cause or blame explanations for complex problems and looking at the conditions that produce the error.',
+trap:'"They\'re careless" is a simplification; mapping the process is not.'},
+{id:'s5_21',mod:5,t:'mc',step:'TA',topic:'T4',concept:'HRO: commitment to resilience',
+q:'The EHR goes down unexpectedly during the 0900 medication pass, and IT estimates it will be down for 4 hours. Which action by the charge nurse best demonstrates commitment to resilience?',
+o:[['Hold all scheduled medications until the EHR is restored, to avoid errors from paper documentation',0,'A 4-hour hold of all medications causes its own harm.'],['Have each nurse give medications from memory of the morning MAR to keep the pass on schedule',0,'Unsafe; no verification against current orders.'],['Ask IT for updates every 30 minutes and resume documentation in full once the system is restored',0,'Waits for recovery instead of operating safely in the meantime.'],['Switch to downtime MARs, verify active orders with pharmacy, and continue the medication pass safely',1,'Correct. Contain the disruption, recover and keep operating safely.']],
+r:'Commitment to resilience is the ability to contain errors and disruptions, recover quickly, continue operating safely and learn afterward.',
+trap:'Resilience means continuing safely through the disruption, not stopping or improvising.'},
+{id:'s5_22',mod:5,t:'mc',step:'TA',topic:'T4',concept:'HRO: deference to expertise',
+q:'During a rapid response, a patient\'s ventilator alarms repeatedly. The respiratory therapist says she recognizes the cause. Which action by the physician leading the response best reflects high-reliability principles?',
+o:[['Continue directing troubleshooting personally, because the team leader is accountable for the response',0,'Rank should not override the most relevant expertise.'],['Call the attending intensivist to evaluate the ventilator before anyone makes changes to the settings',0,'Delays correction while expertise is already at the bedside.'],['Ask the respiratory therapist to lead ventilator troubleshooting while the rest of the team supports her',1,'Correct. The person with the most relevant knowledge leads, regardless of rank.'],['Silence the alarms so the team can concentrate on the assessment without repeated distraction',0,'Silencing alarms without fixing the cause hides a hazard.']],
+r:'Deference to expertise means the person with the most relevant knowledge leads the response regardless of rank.',
+trap:'The leader can stay accountable while handing the lead on one problem to the expert.'},
+{id:'s5_23',mod:5,t:'mc',step:'GS',topic:'T6',concept:'First step in RCA',
+q:'A hospital convenes an RCA team after a serious medication event. Which action should the team take first?',
+o:[['Identify which staff member made the error',0,'Blaming early blocks deeper analysis.'],['Implement a new independent double-check policy',0,'Jumping to a fix skips analysis.'],['Define the problem precisely',1,'Correct. What happened, where, when, to whom and under what conditions.'],['Recommend countermeasures to leadership',0,'Countermeasures follow validated causes.']],
+r:'RCA begins by defining the problem precisely, then collecting data, identifying causal factors, validating root causes, recommending countermeasures, and implementing and monitoring them.',
+trap:'Understand WHAT happened before asking WHY.'},
+{id:'s5_24',mod:5,t:'mc',step:'EO',topic:'T6',concept:'RCA mistake: skipping analysis',
+q:'After a cluster of CAUTIs, a manager immediately switches to a new catheter brand. Two months later rates are unchanged. What most likely went wrong?',
+o:[['RCA methods do not apply to infection-related problems',0,'RCA applies to any undesired outcome.'],['Two months is too short a period to see any meaningful change in the unit\'s infection rates',0,'The data show no improvement; the issue is the untested assumption.'],['The nurses who inserted and maintained the catheters were not held individually accountable',0,'Punitive and still not based on validated causes.'],['A countermeasure was chosen before the problem and root causes were validated',1,'Correct. Skipping analysis risks fixing the wrong thing.']],
+r:'RCA order: define → collect data → causal factors → validated root causes → countermeasures → implement and monitor. Jumping to a solution often misses the real cause.',
+trap:'Validate before you fix.'},
+{id:'s5_25',mod:5,t:'mc',step:'AC',topic:'T6',concept:'"Forgot" is not a root cause',
+q:'An RCA team concludes, "The nurse forgot to check the allergy band." Which next step is most appropriate?',
+o:[['Ask why the allergy information was easy to miss and what system factors contributed',1,'Correct. Keep asking why until reaching system causes.'],['Accept the conclusion and close the RCA',0,'Stopping at a person is a common RCA mistake.'],['Require the nurse to review and sign the allergy-verification policy before returning to work',0,'Relies on memory — a weak fix.'],['Suspend the nurse pending further review of her medication administration practices',0,'Punitive response to a likely human error.']],
+r:'"Forgot," "careless" or "didn\'t pay attention" are not adequate root causes. Ask what conditions made the error possible.',
+trap:'Any answer naming one person as the root cause is suspect.'},
+{id:'s5_26',mod:5,t:'cloze',step:'AC',topic:'T6',concept:'5 Whys chain from the PowerPoint',
+q:'Complete the 5 Whys chain from the PowerPoint fall example by choosing from the lists of options.',
+text:'The patient fell → got up unassisted → no one answered the call light → the nurse had delegated call-light response to the UAP → {0} → root cause: {1}.',
+blanks:[[['the UAP was overloaded with too many patients','the patient did not remember to use the call light','the bed alarm had not been turned on that shift'],0,'The next "why" in the slide chain.'],[['a unit culture that accepted unsafe workload','the UAP\'s need for more call-light training','inadequate patient teaching about fall risk'],0,'The deepest system cause in the slide example.']],
+r:'The 5 Whys drills from the visible event to the deeper system cause; the slide chain ends at a negative unit culture that accepted unsafe workload.',
+trap:'The chain should end at a system or culture cause, not a person.'},
+{id:'s5_27',mod:5,t:'mc',step:'GS',topic:'T6',concept:'Strongest countermeasure',
+q:'After three events in which enteral feeding tubing was connected to IV lines, which countermeasure is strongest?',
+o:[['Require a second nurse to independently verify and document every tubing connection',0,'Helpful but still relies on vigilance.'],['Label all enteral tubing and feeding pumps with bright orange warning stickers',0,'Labels are easily overlooked.'],['Adopt enteral connectors that physically cannot connect to IV ports',1,'Correct. A forcing function makes the error impossible.'],['Post warning signs in every medication room',0,'Staff habituate to signs.']],
+r:'Forcing functions and design changes are stronger than double checks, labels, signs or education because they do not depend on human vigilance.',
+trap:'If an option makes the error physically impossible, it wins.'},
+{id:'s5_28',mod:5,t:'mc',step:'EO',topic:'T7',concept:'PDSA: Study before Act',
+q:'A QI team predicted that a new medication-pass checklist would cut missed doses by half. One nurse tested it on day shift for one week; missed doses fell from 6 to 4, and she reports that two checklist steps did not fit the workflow. What should the team do next?',
+o:[['Adopt the checklist unit-wide now, because missed doses decreased during the first test',0,'Skips Study; one small test that missed its prediction does not justify spread.'],['Abandon the checklist, because it did not achieve the predicted 50% reduction in missed doses',0,'An Act decision made without studying why; the change may only need adapting.'],['Compare the results with the prediction and review the two problem steps before deciding',1,'Correct. Study compares results with the prediction and examines what was learned.'],['Repeat the identical test on all three shifts at once to gather a larger sample before review',0,'Expanding an unrevised test skips learning from the first cycle.']],
+r:'PDSA: Plan (change, prediction, data), Do (run a small test), Study (compare results with the prediction and learn), Act (adopt, adapt or abandon). Study comes before any decision.',
+trap:'Results that differ from the prediction are information to study, not an automatic pass or fail.'},
+{id:'s5_29',mod:5,t:'mc',step:'GS',topic:'T7',concept:'Pareto chart (applied)',
+q:'A falls committee has data on nine contributing factors for 60 falls this year, but funding for only two interventions. Which approach best guides the committee\'s decision?',
+o:[['Plot total monthly falls on a run chart to see whether the unit trend is rising or falling',0,'Shows change over time but does not show which factors contribute most.'],['Spread the funding across all nine factors so that no contributing factor is overlooked',0,'Diluting resources ignores the "vital few."'],['Fund the two interventions that staff rate as the easiest to put in place on the unit',0,'Ease does not tell the team where most falls come from.'],['Rank the nine factors by frequency in a Pareto chart and target the few that account for most falls',1,'Correct. A Pareto chart identifies the vital few factors to focus limited resources on.']],
+r:'A Pareto chart ranks problem categories from most to least frequent so a team can focus on the "vital few" that account for most of the problem.',
+trap:'Limited resources plus many causes calls for ranking the causes first.'},
+{id:'s5_30',mod:5,t:'mc',step:'TA',topic:'T7',concept:'Clinical pathway variance',
+q:'A patient on the total knee replacement clinical pathway is expected to walk in the hallway on post-op day 1. When the nurse sits him up, his BP drops from 128/74 to 94/56 and he reports dizziness. Which action should the nurse take?',
+o:[['Walk him in the hallway as scheduled, because the pathway requires day-1 ambulation for all patients',0,'A pathway allows justified variance; walking an orthostatic patient risks a fall.'],['Return him to bed, notify the provider, and document the variance and its reason on the pathway',1,'Correct. Pathways standardize care but allow justified variance, which must be documented.'],['Take him off the pathway, because its expected sequence of care no longer applies to this patient',0,'One variance does not remove the patient from the pathway.'],['Skip walking today and move him to the day-2 pathway goals tomorrow without notifying the provider',0,'Orthostatic hypotension needs evaluation, and the variance must be documented.']],
+r:'A clinical (critical) pathway standardizes the expected sequence and timing of care for a defined condition while allowing justified variance; variances are documented and addressed, not ignored or forced.',
+trap:'"Standardized" does not mean "mandatory regardless of the patient\'s condition."'},
+{id:'s5_31',mod:5,t:'sata',step:'GS',topic:'T7',concept:'Characteristics of a strong QI approach',
+q:'A staff nurse notices that discharges are delayed until late afternoon because medication reconciliation is not completed until the day of discharge. Which actions reflect an effective nursing contribution to quality improvement? Select all that apply.',
+o:[['Collect baseline data on discharge times and reconciliation timing',1,'Establishes a baseline.'],['Bring the data to the unit practice council',1,'Engages shared governance.'],['Propose a small test of change on one hallway',1,'Small, rapid PDSA test.'],['Begin doing reconciliation her own new way for all patients',0,'Unilateral and untested.'],['File an incident report for every delayed discharge',0,'Misuses incident reporting.'],['Wait for the manager to identify a solution',0,'Passive; no contribution.']],
+r:'Nurses drive QI by measuring baseline performance, engaging the team through shared governance, and testing small changes with PDSA.',
+trap:'Good QI starts with data and a small test — not complaints or unilateral change.'},
+{id:'s5_32',mod:5,t:'mc',step:'TA',topic:'T9',concept:'Technology: no workarounds',
+q:'The BCMA scanner reads "Patient not found" when the nurse scans a patient she has cared for over three days. Which action should the nurse take?',
+o:[['Override the alert, because the patient\'s identity is certain',0,'Familiarity is not verification.'],['Scan the spare wristband label kept in the MAR binder',0,'A workaround that verifies a label, not the patient.'],['Give the dose on time and ask the next shift to replace the wristband',0,'Bypasses verification and passes on the hazard.'],['Hold the dose, verify identity per policy, fix the wristband and report the problem',1,'Correct. Repair the barrier, follow policy, report the hazard.']],
+r:'Technology reduces error but creates new failure modes and never replaces judgment. Follow the approved process and report technology problems rather than inventing workarounds.',
+trap:'Workarounds are at-risk behavior, even when the nurse "knows" the patient.'},
+{id:'s5_33',mod:5,t:'mc',step:'TA',topic:'T9',concept:'Alarm fatigue',
+q:'A nurse notices that smart-pump alerts fire so often that staff override them without reading. Which action is most appropriate?',
+o:[['Override the alerts as experienced peers do, so the medication pass stays on time for all patients',0,'Normalizing a workaround is at-risk behavior.'],['Follow the approved process for each alert and report the alert-fatigue hazard',1,'Correct. Use the system safely and escalate the hazard.'],['Ask biomedical engineering to disable the low-priority alerts on all of the unit\'s infusion pumps',0,'Removing a safety feature creates a latent failure.'],['Infuse medications by gravity until the alerts are fixed',0,'An unsafe workaround.']],
+r:'Alert fatigue is a technology-created risk. Nurses use alerts as designed and report the hazard so the system can be improved.',
+trap:'Disabling the alert solves the annoyance and creates a bigger hole.'},
+{id:'s5_34',mod:5,t:'mc',step:'RC',topic:'T9',concept:'Failure to rescue',
+q:'Which situation best illustrates failure to rescue?',
+o:[['A patient develops a PE despite correct prophylaxis; the RRT arrives within minutes',0,'Complications can occur despite good care; rescue was timely.'],['A patient falls without injury while ambulating with a walker',0,'A fall event, not failure to rescue.'],['Over 6 hours, rising RR, falling SpO2 and new confusion are charted but never escalated',1,'Correct. Documented deterioration was not acted on.'],['A patient declines early ambulation after abdominal surgery and receives teaching about the risks',0,'Autonomy with appropriate teaching.']],
+r:'Failure to rescue is failing to recognize or respond to deterioration in time. Trending data and prompt escalation prevent it.',
+trap:'Documenting deterioration is not the same as acting on it.'},
+{id:'s5_35',mod:5,t:'sata',step:'GS',topic:'T9',concept:'Patient and family engagement',
+q:'Which nursing actions engage patients and families as partners in safety? Select all that apply.',
+o:[['Invite patients to ask caregivers, "Did you clean your hands?"',1,'Empowers patients to speak up.'],['Tell patients there is no need to question medications because nurses double-check them',0,'Discourages patients from acting as safety partners.'],['Encourage patients to keep an updated home medication list',1,'Supports reconciliation.'],['Offer to include the patient in bedside shift report',1,'Patients can catch errors and add information.'],['Ask family members to silence and reset IV pump alarms',0,'Inappropriate delegation of a clinical task.'],['Encourage families to report changes they notice in the patient',1,'Families often notice early deterioration.']],
+r:'Patients and families are safety partners in identification, medication accuracy, infection prevention, handoffs and early recognition of change.',
+trap:'Engagement invites patients to speak up — never tells them not to question care.'},
+{id:'s5_36',mod:5,t:'mc',step:'PH',topic:'T5',concept:'Pattern across staff → system analysis',
+q:'A manager says, "We had four medication errors this month — four different nurses, all during the 0900 med pass. I\'ll counsel each nurse." Which response by the quality nurse is best?',
+o:[['"The pattern suggests a 0900 process problem; let\'s look at interruptions, workload and delivery timing."',1,'Correct. Different people, same process → look at the process.'],['"That makes sense — each nurse is professionally accountable for her own medication errors and should be counseled."',0,'Individual counseling ignores the pattern.'],['"We should take those four nurses off medication duty for now until each completes a remediation plan."',0,'Punitive, and the hazard remains.'],['"Since none of the four errors caused patient harm, no further action is needed beyond documenting them."',0,'No-harm errors are valuable safety data.']],
+r:'When different people make similar errors in the same process, latent conditions are likely. Systems thinking asks which defenses failed and why.',
+trap:'Different people + same time/process = system problem.'},
+{id:'s5_37',mod:5,t:'mc',step:'RC',topic:'T1',concept:'Why patient safety became a national priority',
+q:'A nursing student asks why patient safety became a national priority. Which response by the instructor is most accurate?',
+o:[['"The Joint Commission was created in 1999 specifically to reduce the number of malpractice claims."',0,'Inaccurate history.'],['"QSEN required all hospitals to report every error to CMS."',0,'QSEN defines competencies; it is not a reporting mandate.'],['"National Patient Safety Goals data showed that individual nurses caused most of the preventable errors."',0,'Contradicts the systems view of safety.'],['"The IOM report To Err Is Human estimated more than 98,000 preventable deaths each year."',1,'Correct. The landmark report that accelerated national attention.']],
+r:'The IOM report To Err Is Human (1999) accelerated national attention to preventable harm, highlighting more than 98,000 preventable deaths per year.',
+trap:'Know the landmark report and its headline number.'},
+{id:'s5_38',mod:5,t:'mc',step:'EO',topic:'T5',concept:'QSEN definition of safety (applied)',
+q:'After a near miss, a new nurse tells her preceptor, "For me, being safe means I just can\'t ever make a mistake." Which response by the preceptor best reflects the QSEN definition of safety?',
+o:[['"That\'s right — careful, error-free performance by each nurse is what keeps our patients safe."',0,'Keeps only the individual half and ignores systems.'],['"Safety depends on the system and on your own practice — both protect patients and staff."',1,'Correct. QSEN: minimize harm to patients and providers through system effectiveness and individual performance.'],['"Mistakes are the system\'s fault, so your own practice isn\'t really what determines safety."',0,'Keeps only the system half and removes individual accountability.'],['"Safety is mostly about protecting the hospital from liability after an adverse event happens."',0,'That describes one goal of risk management, not the QSEN definition.']],
+r:'QSEN defines safety as minimizing risk of harm to patients and providers through both system effectiveness and individual performance.',
+trap:'Options that keep only one half (systems OR individuals) are incomplete.'},
+{id:'s5_39',mod:5,t:'matrix',step:'GS',topic:'T9',concept:'Matching preventable risks to nursing actions',
+q:'For each preventable risk, indicate the nursing action most directly aimed at preventing it.',
+cols:['Toileting rounds and orthostatic precautions','Daily device-necessity review','Repositioning and moisture management','Trend vital signs and escalate early'],
+rows:[['Falls',0,'Address toileting needs and postural hypotension.'],['CAUTI',1,'Remove catheters as soon as they are no longer indicated.'],['Pressure injury',2,'Offload pressure and manage moisture.'],['Failure to rescue',3,'Recognize and respond to deterioration early.']],
+r:'Each preventable inpatient risk has targeted bedside prevention: falls (toileting, orthostatic management), HAIs (device necessity), pressure injury (offloading, moisture, nutrition) and failure to rescue (trending and escalation).',
+trap:'Match the action to the mechanism of harm.'});
+
+/* ===== STANDALONE ITEMS — MODULE 6 (21) ===== */
+Q.push(
+{id:'s6_01',mod:6,t:'mc',step:'TA',topic:'T13',concept:'Overcoming an authority gradient',
+q:'A new nurse notices that a morphine order is ten times the usual dose. The attending who wrote it is known for belittling nurses who call with questions. Which action should the nurse take?',
+o:[['Give the usual dose instead of the ordered amount, then clarify the order with the attending in the morning',0,'Changing an order on her own is outside her scope and is still an unclarified order.'],['Give the dose as ordered, because the attending is responsible for any error in the prescription',0,'Nurses are accountable for the medications they give.'],['Hold the dose and call the attending to clarify, using the chain of command if it is not resolved',1,'Correct. Patient safety outweighs the authority gradient; escalate if needed.'],['Ask a senior nurse to call the attending later, because he responds better to experienced staff',0,'Delays clarification and reinforces the hierarchy.']],
+r:'An authority gradient discourages lower-status members from speaking up. The nurse must still hold a questionable high-alert medication and clarify it, escalating through the chain of command when needed.',
+trap:'Fear of a person never justifies giving, or changing, an order you believe is unsafe.'},
+{id:'s6_02',mod:6,t:'mc',step:'GS',topic:'T13',concept:'Preventing filtration',
+q:'A charge nurse, juggling two phone calls during report, later realizes she never heard that a patient\'s potassium was critically low. Which change would best prevent this from happening again?',
+o:[['Have off-going nurses email critical values to the charge nurse after report is finished',0,'Delays critical information and adds another channel to miss.'],['Remind the charge nurse during her evaluation to concentrate more closely during report',0,'Relies on individual vigilance without changing the conditions.'],['Ask the charge nurse to write shorter notes so that she can listen more closely in report',0,'Does not remove the competing phone calls.'],['Give report in a quiet area free of phone calls, with read-back of all critical values',1,'Correct. Removing distraction and using check-back prevent filtration.']],
+r:'Filtration is unconscious screening-out of information, made more likely by noise, multitasking, stress and fatigue. Reducing distractions and using check-back help prevent it.',
+trap:'Filtration is fixed by changing the conditions, not by asking someone to try harder.'},
+{id:'s6_03',mod:6,t:'mc',step:'TA',topic:'T13',concept:'Therapeutic response to incongruent cues',
+q:'A post-op patient says, "I\'m fine," while grimacing and guarding the incision. Which response by the nurse is best?',
+o:[['"Are you sure you don\'t want something for pain?"',0,'A closed, leading question.'],['"You say you\'re fine, but you\'re holding your incision. Tell me how you\'re feeling."',1,'Correct. Names the incongruence and invites more information.'],['"Great — let me know if anything changes."',0,'Accepts words and ignores nonverbal cues.'],['"Most people have some pain the first day after surgery."',0,'Generalizing minimizes the patient\'s experience.']],
+r:'When verbal and nonverbal messages conflict, assess the incongruence with an open-ended prompt.',
+trap:'The nonverbal message often carries more weight — explore it.'},
+{id:'s6_04',mod:6,t:'mc',step:'TA',topic:'T13',concept:'Avoiding false reassurance',
+q:'A patient scheduled for surgery says, "I\'m terrified I won\'t wake up from the anesthesia." Which response by the nurse is most therapeutic?',
+o:[['"Your anesthesiologist is excellent and very experienced, so there\'s really no need to worry."',0,'False reassurance.'],['"It sounds like the anesthesia worries you. What concerns you most?"',1,'Correct. Validates and explores.'],['"Let\'s go over your discharge plans so you have something to look forward to."',0,'Blocking — changes the subject.'],['"Serious complications from modern general anesthesia are extremely rare in healthy adults."',0,'Minimizes the concern instead of exploring it.']],
+r:'Therapeutic responses validate emotion and use open-ended questions; false reassurance and blocking shut down communication.',
+trap:'Facts offered too early ("extremely rare") can still be dismissive.'},
+{id:'s6_05',mod:6,t:'mc',step:'EO',topic:'T13',concept:'Negative stem: assertive communication',
+q:'A nurse educator reviews communication styles with new graduates. Which statement by a new graduate indicates a need for further teaching?',
+o:[['"Assertive communication protects my rights while respecting others."',0,'Accurate.'],['"Passive communication can let safety concerns go unspoken."',0,'Accurate.'],['"Being aggressive is acceptable when I am sure I am right."',1,'Correct. Aggressive communication impairs teamwork even when the concern is valid.'],['"Passive-aggressive behavior undermines trust on a team."',0,'Accurate.']],
+r:'Assertive communication is the professional standard. Aggressive communication creates fear and defensiveness regardless of whether the speaker is correct.',
+trap:'"Needs further teaching" means find the INCORRECT statement.'},
+{id:'s6_06',mod:6,t:'mc',step:'TA',topic:'T13',concept:'Responding to a red herring',
+q:'When a nurse raises a concern about unsafe staffing at a staff meeting, the manager responds, "Let\'s talk about the new parking garage instead — it\'s been a big problem." Which response by the nurse is most effective?',
+o:[['"That\'s a fair concern too, so let\'s discuss the garage now and come back to staffing next time."',0,'Accepts the diversion and drops the safety issue.'],['"Parking matters, but I\'d like to finish the staffing issue first, because it affects patient safety."',1,'Correct. Acknowledges, then respectfully redirects to the real issue.'],['"You\'re just changing the subject because you don\'t want to deal with staffing on this unit."',0,'Accusatory; attacks motive instead of redirecting.'],['Say nothing more in the meeting and raise the staffing concern again at next month\'s meeting',0,'Passive; an unsafe condition goes unaddressed for a month.']],
+r:'A red herring introduces an irrelevant topic to divert attention from the real problem. An assertive response acknowledges it briefly and returns to the issue that matters.',
+trap:'Assertive redirection is neither giving in nor accusing.'},
+{id:'s6_07',mod:6,t:'mc',step:'AC',topic:'T10',concept:'SBAR Assessment',
+q:'A patient who is post-op day 2 from a total hip replacement, with a history of COPD and heart failure, has SpO2 that fell from 95% to 88%, new crackles in both bases and a 2-kg weight gain since surgery. Which statement is the best Assessment in the nurse\'s SBAR call to the provider?',
+o:[['"He\'s post-op day 2 from a hip replacement and has a history of both COPD and heart failure."',0,'This is Background.'],['"I\'m calling about Mr. Hall in 412 because his oxygen saturation has dropped to 88 percent."',0,'This is Situation.'],['"I\'d like you to evaluate him now and consider a chest x-ray and a dose of IV furosemide."',0,'This is Recommendation.'],['"With the crackles and weight gain, I think he is going into fluid overload and is getting worse."',1,'Correct. Assessment is the nurse\'s interpretation, supported by findings.']],
+r:'SBAR: Situation (who and the immediate concern), Background (pertinent history), Assessment (the nurse\'s interpretation of the findings), Recommendation (the specific action requested).',
+trap:'Assessment interprets the data; it is not a restatement of history or a request.'},
+{id:'s6_08',mod:6,t:'mc',step:'TA',topic:'T11',concept:'Closed-loop communication in a code',
+q:'During a code, the team leader says, "Maria, give 1 mg epinephrine IV push." Which response by Maria best demonstrates closed-loop communication?',
+o:[['"Got it, giving it now." She draws up the medication and gives it as the leader requested.',0,'Acknowledges but does not verify specifics.'],['She nods and gives the medication.',0,'Nonverbal acknowledgment leaves the loop open.'],['"Okay — someone draw it up for me."',0,'Hands off the task without clear assignment.'],['"Epinephrine 1 mg IV push." Then, after giving it: "Epinephrine is in."',1,'Correct. Repeats back, then confirms completion.']],
+r:'Check-back: the receiver repeats the message and the sender verifies it; announcing completion closes the loop.',
+trap:'Acknowledging is not checking back — the specifics must be repeated.'},
+{id:'s6_09',mod:6,t:'mc',step:'AC',topic:'T11',concept:'I-PASS component',
+q:'Which statement during an I-PASS handoff represents "situation awareness and contingency planning"?',
+o:[['"If his systolic drops below 90, give the ordered bolus and call the resident."',1,'Correct. Anticipates what might happen and what to do.'],['"He\'s a watcher tonight."',0,'Illness severity.'],['"Admitted 2 days ago with pancreatitis; pain controlled on a PCA."',0,'Patient summary.'],['"So I\'ll recheck his lipase at 0400 — correct?"',0,'Synthesis by receiver.']],
+r:'I-PASS = Illness severity, Patient summary, Action list, Situation awareness and contingency planning, Synthesis by receiver.',
+trap:'"If/then" = contingency; receiver restating = synthesis.'},
+{id:'s6_10',mod:6,t:'sata',step:'GS',topic:'T11',concept:'Bedside handoff best practices',
+q:'Which practices improve the safety of bedside shift handoff? Select all that apply.',
+o:[['Use a standardized tool such as I-PASS',1,'Reduces omissions.'],['Give report in the hallway outside the busy nurses\' station to save time',0,'Noise and interruptions promote filtration and privacy risks.'],['Allow the receiving nurse to ask questions and summarize key actions',1,'Synthesis closes the loop.'],['Verify infusions, drains and lines together at the bedside',1,'Catches discrepancies.'],['Exclude the patient so report goes faster',0,'Patients are safety partners.'],['Include pending labs, tests and consults',1,'Pending items are commonly lost.']],
+r:'Safe handoffs transfer information, authority and responsibility using a standardized structure, interactive questioning, bedside verification and inclusion of pending items and the patient.',
+trap:'Faster is not safer when it adds distraction or removes verification.'},
+{id:'s6_11',mod:6,t:'sata',step:'RC',topic:'T12',concept:'STEP situation monitoring',
+q:'A charge nurse uses STEP to monitor the unit. Which observations fit STEP? Select all that apply.',
+o:[['A patient\'s trending blood pressure and new medications',1,'Status of patient.'],['A nurse who seems fatigued and behind on tasks',1,'Team members.'],['A broken patient lift and a full ED holding area',1,'Environment.'],['The charge nurse\'s own hunger and lack of sleep',0,'Self-readiness is I\'M SAFE, not STEP.'],['Whether today\'s discharge goals are on track',1,'Progress toward goal.']],
+r:'STEP = Status of patient, Team members, Environment, Progress toward goal. Checking one\'s own readiness is I\'M SAFE.',
+trap:'STEP scans the situation; I\'M SAFE scans yourself.'},
+{id:'s6_12',mod:6,t:'mc',step:'TA',topic:'T12',concept:'I\'M SAFE: acting on the self-check',
+q:'At the start of her shift, a nurse has flu-like symptoms, slept 3 hours and has not eaten since yesterday. She is assigned two high-acuity patients, and the unit is short one nurse. Which action should the nurse take?',
+o:[['Accept the assignment but ask a teammate to double-check all of her high-alert medications',0,'A double check does not make an impaired nurse safe for a high-acuity load.'],['Accept the assignment, because leaving the unit short would put more patients at risk',0,'Working while impaired is a patient-safety risk too.'],['Tell the charge nurse she is not fit to safely take a high-acuity assignment today',1,'Correct. I\'M SAFE identifies illness, fatigue and not eating; she must speak up.'],['Accept the assignment and plan to eat and rest during her scheduled lunch break',0,'Her impairment affects care from the first hour.']],
+r:'I\'M SAFE (Illness, Medication, Stress, Alcohol/drugs, Fatigue, Eating/elimination) is a self-check of readiness. When the check fails, the nurse reports it so that the assignment can be adjusted.',
+trap:'Short staffing does not make an impaired nurse safe.'},
+{id:'s6_13',mod:6,t:'mc',step:'TA',topic:'T12',concept:'STAR applied',
+q:'A nurse is about to hang IV potassium chloride 20 mEq/100 mL when a family member interrupts with a question. Which nurse action best demonstrates the STAR technique?',
+o:[['Answers the question, then starts the infusion at the ordered rate and documents it right away',0,'No pause to re-verify after an interruption, and no review afterward.'],['Answers, pauses to recheck the dose and rate, starts the pump, then checks the site and rhythm',1,'Correct. Stop, Think, Act, Review.'],['Starts the infusion first so she does not forget it, then answers the family member\'s question',0,'Rushing a high-alert action to avoid forgetting skips Stop and Think.'],['Asks a colleague to hang the infusion while she answers, then documents it as given by herself',0,'An unsafe handoff and inaccurate documentation.']],
+r:'STAR (Stop, Think, Act, Review) is a pause before one\'s own high-risk action, with verification afterward — especially valuable after an interruption.',
+trap:'Look for the pause before AND the check after.'},
+{id:'s6_14',mod:6,t:'mc',step:'EO',topic:'T13',concept:'Formative feedback',
+q:'Which feedback statement from a preceptor best reflects formative feedback?',
+o:[['"You\'re careless with handoffs and need to focus much harder if you want to finish orientation on time."',0,'Targets a personal trait.'],['"Your report was really not good today."',0,'Vague and not improvement-directed.'],['"Everyone on the unit knows you tend to forget things, so please write everything down from now on."',0,'Personal and humiliating.'],['"In today\'s handoff the new oxygen need was left out; include it next time so the receiver can respond."',1,'Correct. Specific, behavior-focused, improvement-directed and patient-focused.']],
+r:'Good feedback is appreciative, timely, respectful, specific, improvement-directed, considerate and patient-focused — targeting behavior, not traits.',
+trap:'Specific behavior + why it matters for the patient = formative.'},
+{id:'s6_15',mod:6,t:'cloze',step:'TA',topic:'T10',concept:'Advocacy and assertion',
+q:'A patient\'s potassium is 6.4 mEq/L with peaked T waves, and an oral potassium supplement is still scheduled. Complete the nurse\'s statement to the provider by choosing from the lists of options.',
+text:'"Dr. Lee, this is Ana on 4 West. {0} I\'d like to {1} Can we agree on that?"',
+blanks:[[['I\'m concerned about Mrs. Ruiz — her potassium is 6.4 with peaked T waves.','Just letting you know her potassium came back a little high.','Her labs are back, and her potassium is a bit elevated today.'],0,'States the concern and the problem with data.'],[['hold her potassium supplement and get orders to treat the hyperkalemia now.','recheck her potassium in 4 hours before deciding anything.','give the supplement as ordered and recheck in the morning.'],0,'Offers a specific solution.']],
+r:'Advocacy and assertion: make an opening, state the concern, state the problem, offer a solution and reach agreement. Firm and respectful — not minimizing, not aggressive.',
+trap:'Assertive ≠ aggressive. Look for "I\'m concerned" plus a proposed solution.'},
+{id:'s6_16',mod:6,t:'mc',step:'TA',topic:'T10',concept:'Two-Challenge Rule',
+q:'A nurse tells a provider that a post-op patient may be bleeding internally. The provider continues charting without responding. Under the Two-Challenge Rule, which action should the nurse take next?',
+o:[['Activate the chain of command immediately by calling the nursing supervisor',0,'The rule first calls for a second, assertive challenge.'],['Wait for the next scheduled rounds to raise the concern again with the full team',0,'Unsafe delay.'],['Assertively restate the concern and ensure it is acknowledged',1,'Correct. The second challenge.'],['Document the provider\'s lack of response in the patient\'s medical record',0,'Inappropriate and does not protect the patient.']],
+r:'Two-Challenge Rule: state the concern; if ignored, assertively restate it and ensure acknowledgment. If still unresolved with danger persisting, escalate through the chain of command.',
+trap:'Escalating after only one attempt skips a step in the rule.'},
+{id:'s6_17',mod:6,t:'mc',step:'TA',topic:'T13',concept:'Applying DESC to team conflict',
+q:'Two nurses repeatedly argue over who restocks the shared supply cart, and the tension is affecting teamwork. No patient is in immediate danger. Which statement by one nurse to the other is most effective?',
+o:[['"I\'m stopping the line — the cart is a safety issue, and we need the manager to come in right now."',0,'A safety-escalation tool used for a non-urgent conflict.'],['"When the cart is empty at shift start, I fall behind. Could we set a restock schedule we both follow?"',1,'Correct. Describe, Express, Suggest and seek Consensus (DESC).'],['"Fine, I\'ll just restock it myself every time — it really isn\'t worth arguing about anymore."',0,'Passive accommodation leaves the conflict unresolved.'],['"You never restock the cart, and honestly everyone on the unit has noticed how lazy that is."',0,'Aggressive; attacks the person.']],
+r:'DESC (Describe, Express, Suggest, Consequences/Consensus) resolves interpersonal or team conflict constructively. CUS and the Two-Challenge Rule are safety escalation tools.',
+trap:'No imminent danger → conflict-resolution approach, not escalation.'},
+{id:'s6_18',mod:6,t:'mc',step:'TA',topic:'T14',concept:'Culturally responsive decision-making',
+q:'A patient from a culture in which elders often lead family health decisions repeatedly turns to her eldest son when asked about a treatment choice. Which action should the nurse take?',
+o:[['Direct all future teaching to the son',0,'Excludes the patient from her own care.'],['Ask how she prefers decisions to be made and whom to involve, while confirming her consent',1,'Correct. Assess rather than assume; protect autonomy.'],['Remind her that, as a competent adult, she is legally required to make her own treatment decisions',0,'Disregards her preference to involve family.'],['Document that the patient lacks decision-making capacity and notify the provider for an evaluation',0,'A cultural preference is not incapacity.']],
+r:'Culturally responsive communication asks about preferences (decision roles, family involvement) rather than assuming, while still ensuring the patient\'s own consent.',
+trap:'Never equate a cultural practice with incapacity.'},
+{id:'s6_19',mod:6,t:'sata',step:'GS',topic:'T14',concept:'Disability adaptations',
+q:'A patient who is Deaf and uses American Sign Language is admitted for surgery. Which actions are appropriate? Select all that apply.',
+o:[['Arrange a qualified ASL interpreter for consent and teaching',1,'Required for accurate communication.'],['Speak loudly and slowly so the patient can lip-read',0,'Lip-reading is unreliable; volume is not an adaptation.'],['Face the patient and speak directly to them',1,'Respectful and supports visual cues.'],['Assume a family member should make the decisions',0,'Disability does not imply incapacity.'],['Confirm understanding with teach-back through the interpreter',1,'Verifies comprehension.'],['Allow extra time for communication',1,'An appropriate adaptation.']],
+r:'Patients with disabilities require communication adaptations — not assumptions about intelligence or decision-making ability.',
+trap:'Adaptation, not assumption.'},
+{id:'s6_20',mod:6,t:'mc',step:'EO',topic:'T14',concept:'Objective documentation and privacy',
+q:'A charge nurse reviews a new nurse\'s practice. Which action by the new nurse requires follow-up?',
+o:[['Charting "Patient pacing, fists clenched; stated, \'Nobody tells me anything.\'"',0,'Objective and appropriate.'],['Opening a friend\'s chart to check on her after surgery',1,'Correct. Unauthorized access is a privacy breach even if nothing is shared.'],['Discussing a patient\'s plan with the pharmacist in a private workroom',0,'Appropriate, need-to-know communication.'],['Verifying copied-forward assessment data before signing',0,'Appropriate EHR practice.']],
+r:'Access only records needed for your role; curiosity access is an ethical and legal breach. Documentation should be objective, and copied-forward data must be verified.',
+trap:'"Requires follow-up" = find the unsafe action.'},
+{id:'s6_21',mod:6,t:'mc',step:'EO',topic:'T15',concept:'Interorganizational collaboration and population health',
+q:'A public health nurse partners with local churches, a federally qualified health center and the county transit authority to raise colorectal cancer screening rates in a rural county. Which statement best explains how this improves population health?',
+o:[['It shifts accountability for the county\'s screening rates from the health center to the transit authority',0,'Collaboration shares responsibility rather than shifting it.'],['It replaces the need for individual patient education about colorectal cancer screening at clinic visits',0,'Population efforts complement individual care.'],['It mainly lowers costs for the local hospital system',0,'Not the primary mechanism or goal.'],['It pools resources across organizations to address barriers no single organization could solve alone',1,'Correct. Interorganizational collaboration reaches access and trust barriers.']],
+r:'Interorganizational collaboration (coalitions, community partnerships) shares responsibility and resources to address population-level barriers such as transportation and trust.',
+trap:'Collaboration SHARES responsibility — it never transfers it.'});
+</script>
+<script>
+(function(){
+'use strict';
+/* ---------- normalize data ---------- */
+Q.forEach(q=>{if(q.o)q.o=q.o.map((x,i)=>[x[0],+x[1],x[2]||(q.why||[])[i]||'']);});
+const QM={};Q.forEach(q=>QM[q.id]=q);
+/* matrix rows: fixed, non-patterned order so the key never reads 0-1-2-3 down the grid */
+(function(){function mb(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  function hs(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+  const sorted=k=>k.every((v,i)=>i===0||v>=k[i-1])||k.every((v,i)=>i===0||v<=k[i-1]);
+  Q.forEach(q=>{if(q.t!=='matrix')return;const r=mb(hs(q.id+'|rows'));const orig=q.rows.slice();
+    for(let tries=0;tries<200;tries++){const rows=orig.slice();for(let i=rows.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[rows[i],rows[j]]=[rows[j],rows[i]];}
+      const k=rows.map(x=>x[1]);const run=k.some((v,i)=>i>=2&&((v===k[i-1]&&v===k[i-2])||(v===k[i-1]+1&&k[i-1]===k[i-2]+1)||(v===k[i-1]-1&&k[i-1]===k[i-2]-1)));
+      if(!sorted(k)&&!run){q.rows=rows;break;}}});})();
+const KEY='hauntedExam120_v2';
+const $=s=>document.querySelector(s);
+const app=$('#app');
+const LET=i=>String.fromCharCode(65+i);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const TYPE={mc:'Multiple choice',sata:'SATA',matrix:'Matrix (NGN)',cloze:'Drop-down cloze (NGN)'};
+const multi=q=>q.t==='matrix'||q.t==='cloze';
+const nParts=q=>q.t==='matrix'?q.rows.length:q.t==='cloze'?q.blanks.length:0;
+
+/* ---------- default order: 6 standalone items, then a full case, repeated ---------- */
+const DEFAULT_ORDER=(()=>{const s5=Q.filter(q=>!q.cs&&q.mod===5).map(q=>q.id),s6=Q.filter(q=>!q.cs&&q.mod===6).map(q=>q.id);
+  const stand=[];let i5=0,i6=0;const tot=s5.length+s6.length;
+  for(let k=0;k<tot;k++){const want6=Math.round((k+1)*s6.length/tot)>i6;if(want6&&i6<s6.length)stand.push(s6[i6++]);else if(i5<s5.length)stand.push(s5[i5++]);else stand.push(s6[i6++]);}
+  const caseKeys=Object.keys(CASES).sort((a,b)=>CASES[a].n-CASES[b].n);const out=[];
+  caseKeys.forEach((ck,ci)=>{out.push(...stand.slice(ci*6,ci*6+6));out.push(...Q.filter(q=>q.cs===ck).map(q=>q.id));});
+  out.push(...stand.slice(caseKeys.length*6));return out;})();
+
+/* stars */
+(function(){let h='';for(let i=0;i<60;i++)h+=`<i style="left:${Math.random()*100}%;top:${Math.random()*100}%;opacity:${(.2+Math.random()*.6).toFixed(2)}"></i>`;$('#stars').innerHTML=h;})();
+
+/* rng */
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+function shuffle(a,r){r=r||Math.random;for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ---------- balanced answer positions ---------- */
+function positionPlan(ids,rnd){const n=ids.length,plan=[];for(let i=0;i<n;i++)plan.push(i%4);shuffle(plan,rnd);
+  for(let pass=0;pass<50;pass++){let ok=true;for(let i=2;i<n;i++){if(plan[i]===plan[i-1]&&plan[i]===plan[i-2]){ok=false;const j=Math.floor(rnd()*n);if(plan[j]!==plan[i]){[plan[i],plan[j]]=[plan[j],plan[i]];}}}if(ok)break;}
+  const m={};ids.forEach((id,i)=>m[id]=plan[i]);return m;}
+function optionOrders(randA){const rnd=randA?Math.random:mulberry(20261009);const opt={};
+  const mcIds=DEFAULT_ORDER.filter(id=>QM[id].t==='mc');const plan=positionPlan(mcIds,rnd);
+  const cIds=[];DEFAULT_ORDER.forEach(id=>{const q=QM[id];if(q.t==='cloze')q.blanks.forEach((b,bi)=>cIds.push(id+'#'+bi));});
+  const cplan=(()=>{const n=cIds.length,p=[];for(let i=0;i<n;i++)p.push(i%3);shuffle(p,rnd);for(let i=1;i<n;i++){if(p[i]===p[i-1]){const j=(i+1)%n;if(p[j]!==p[i])[p[i],p[j]]=[p[j],p[i]];}}const m={};cIds.forEach((k,i)=>m[k]=p[i]);return m;})();
+  DEFAULT_ORDER.forEach(id=>{const q=QM[id];const r=randA?Math.random:mulberry(hash(id));
+    if(q.t==='mc'){const ci=q.o.findIndex(o=>o[1]);const rest=shuffle(q.o.map((_,i)=>i).filter(i=>i!==ci),r);rest.splice(plan[id],0,ci);opt[id]=rest;}
+    else if(q.t==='sata'){opt[id]=shuffle(q.o.map((_,i)=>i),r);}
+    else if(q.t==='cloze'){opt[id]=q.blanks.map((b,bi)=>{const ci=b[1];const rest=shuffle(b[0].map((_,i)=>i).filter(i=>i!==ci),r);rest.splice(Math.min(cplan[id+'#'+bi],rest.length),0,ci);return rest;});}
+    else opt[id]=null;});
+  return opt;}
+
+/* ---------- state ---------- */
+let S=null;
+function blank(){return{phase:'start',mode:'study',randQ:false,randA:false,main:null,retry:null,finished:false,flags:{},view:'q'};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.phase)return s;}catch(e){}return null;}
+S=load()||blank();
+function build(mode,randQ,randA){
+  const blocks=[];DEFAULT_ORDER.forEach(id=>{const q=QM[id];const last=blocks[blocks.length-1];if(q.cs&&last&&QM[last[0]].cs===q.cs)last.push(id);else blocks.push([id]);});
+  if(randQ)shuffle(blocks);
+  const ids=[].concat(...blocks);
+  S={phase:'exam',mode,randQ,randA,main:{ids,cur:0,ans:{}},retry:null,finished:false,flags:{},opt:optionOrders(randA),view:'q'};save();}
+const ctx=()=>S.retry||S.main;
+const inRetry=()=>!!S.retry;
+
+/* ---------- grading ---------- */
+function grade(q,sel){sel=sel||[];
+  if(q.t==='mc'){const ok=sel.length===1&&q.o[sel[0]][1]===1;return{pts:ok?1:0,exact:ok,hits:ok?1:0,fs:ok?0:sel.length,n:1};}
+  if(q.t==='sata'){const n=q.o.filter(o=>o[1]).length;const hits=sel.filter(i=>q.o[i][1]).length;const fs=sel.length-hits;return{pts:Math.max(0,(hits-fs)/n),exact:hits===n&&fs===0,hits,fs,n};}
+  const key=q.t==='matrix'?q.rows.map(r=>r[1]):q.blanks.map(b=>b[1]);const n=key.length;const hits=key.filter((k,i)=>sel[i]===k).length;
+  return{pts:hits/n,exact:hits===n,hits,fs:n-hits,n};}
+function isAnswered(a,q){if(!a||!a.sel)return false;if(q&&multi(q))return a.sel.length===nParts(q)&&a.sel.every(v=>v!==null&&v!==undefined&&v>=0);return a.sel.length>0;}
+function draftReady(a,q){return multi(q)?(a.draft.length===nParts(q)&&a.draft.every(v=>v!==null&&v!==undefined&&v>=0)):a.draft.length>0;}
+function revealed(id){const c=ctx();const a=c.ans[id];if(inRetry())return!!(a&&a.sub);return(S.mode==='study'&&a&&a.sub)||S.finished;}
+function tally(c,forceAll){let answered=0,correct=0,incorrect=0,pts=0,gradedN=0;
+  c.ids.forEach(id=>{const q=QM[id];const a=c.ans[id];const ans=isAnswered(a,q);const counted=inRetry()&&c===S.retry?(a&&a.sub):(S.mode==='study'?(a&&a.sub):ans);
+    if(counted)answered++;
+    const visible=forceAll||(c===S.retry?(a&&a.sub):(S.mode==='study'?(a&&a.sub):S.finished));
+    if(visible&&(counted||forceAll)){const g=grade(q,a?a.sel:[]);gradedN++;pts+=g.pts;if(g.exact)correct++;else incorrect++;}});
+  return{answered,correct,incorrect,pts,gradedN,total:c.ids.length};}
+
+/* ---------- top bar ---------- */
+function renderTop(){const show=S.phase==='exam';$('#top').classList.toggle('hidden',!show);if(!show)return;
+  const c=ctx();const t=tally(c);
+  $('#modePill').textContent=inRetry()?'Retry missed':(S.finished?'Review':(S.mode==='study'?'Study mode':'Exam mode'));
+  const pct=Math.round(t.answered/t.total*100);$('#pbarI').style.width=pct+'%';$('#pbar').setAttribute('aria-valuenow',pct);
+  const hideScore=!inRetry()&&S.mode==='exam'&&!S.finished;const score=t.gradedN?Math.round(t.pts/t.gradedN*100)+'%':'—';
+  $('#stats').innerHTML=`<span>Question <b>${c.cur+1}</b> of <b>${t.total}</b></span><span><b>${pct}%</b> completed (${t.answered}/${t.total})</span>`+
+    (hideScore?`<span>Score: <b>hidden until you submit</b></span>`:`<span>Score: <b>${score}</b></span><span class="okc">Correct: <b>${t.correct}</b></span><span class="noc">Incorrect: <b>${t.incorrect}</b></span>`)+
+    `<span>🚩 Flagged: <b>${Object.keys(S.flags).filter(k=>S.flags[k]&&c.ids.includes(k)).length}</b></span>`;
+  $('#finishBtn').textContent=inRetry()?'End retry':(S.finished?'Score report':(S.mode==='exam'?'Submit exam':'Finish & see report'));}
+
+/* ---------- start screen ---------- */
+const GHOST=`<div class="examicon" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3H9z"/><path d="M7 4.5H5.5A1.5 1.5 0 0 0 4 6v14a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 20V6a1.5 1.5 0 0 0-1.5-1.5H17"/><path d="M8.5 13l2.5 2.5 4.5-5"/></svg></div>`;
+const WEB=`<svg class="web" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#5a2f8c" stroke-width="1"><path d="M100 0L0 100M100 0L0 45M100 0L55 100M100 0L0 12M100 0L88 100"/><path d="M78 0Q81 12 100 22M54 0Q59 27 100 46M30 0Q38 42 100 70M4 0Q14 58 100 96"/></svg>`;
+function renderStart(){const saved=S.main&&!S.finished?S.main:null;const N=Q.length;
+  const cnt=t=>Q.filter(q=>q.t===t).length;const m5=Q.filter(q=>q.mod===5).length;
+  app.innerHTML=`<section class="hero">${GHOST}<h1>Modules 5–6 Practice Exam</h1><p>Professional Nursing Capstone · Module 5 (Healthcare Quality &amp; Safety) + Module 6 (Communication &amp; Collaboration)</p><p class="note" style="color:#bfaee0">${N}-question NGN / NCLEX-style exam · PowerPoint-priority content</p></section>
+  <section class="panel">${WEB}<h2>Exam overview</h2>
+  <div class="facts"><div class="fact"><b>${N}</b><span>questions</span></div><div class="fact"><b>${m5}</b><span>Module 5</span></div><div class="fact"><b>${N-m5}</b><span>Module 6</span></div><div class="fact"><b>${Object.keys(CASES).length}</b><span>NGN case studies</span></div><div class="fact"><b>${cnt('mc')}</b><span>multiple choice</span></div><div class="fact"><b>${cnt('sata')}</b><span>SATA</span></div><div class="fact"><b>${cnt('matrix')}</b><span>matrix</span></div><div class="fact"><b>${cnt('cloze')}</b><span>drop-down cloze</span></div></div>
+  <p class="note">Each of the 10 case studies walks through the Clinical Judgment Measurement Model — Recognize Cues → Analyze Cues → Prioritize Hypotheses → Generate Solutions → Take Action → Evaluate Outcomes — using chart tabs (Nurses' Notes, Vital Signs, Orders) like the NGN exam. Expect priority, "first action," and "requires follow-up" wording; distractors are deliberately plausible, and answer positions are balanced.</p>
+  <h3>Choose your path</h3>
+  <div class="modes" role="radiogroup" aria-label="Exam mode">
+   <label class="mode ${S.mode!=='exam'?'sel':''}"><input type="radio" name="mode" value="study" ${S.mode!=='exam'?'checked':''}><b>📖 Study Mode</b><p>Submit each question to see the answer, full rationale, why each option is right or wrong, the NGN step, and a Professor Trap.</p></label>
+   <label class="mode ${S.mode==='exam'?'sel':''}"><input type="radio" name="mode" value="exam" ${S.mode==='exam'?'checked':''}><b>⏳ Exam Mode</b><p>Save and change answers anytime. No answers, score, or rationales appear until you submit all ${N}.</p></label>
+  </div>
+  <label class="chk"><input type="checkbox" id="rq" ${S.randQ?'checked':''}><span>Randomize question order<small>Case-study questions stay together and in order.</small></span></label>
+  <label class="chk"><input type="checkbox" id="ra" ${S.randA?'checked':''}><span>Randomize answer-choice order<small>Off = a fixed order with correct answers spread evenly across A, B, C and D.</small></span></label>
+  <h3>Scoring</h3><p class="note"><b>SATA:</b> (correct selections − incorrect selections) ÷ number of correct options, minimum 0. <b>Matrix &amp; drop-down:</b> 1 point per correct row/blank ÷ total rows/blanks. An item counts as "correct" only when every part is right.</p>
+  <div class="row end" style="margin-top:14px">${saved?`<button class="btn sec" id="resumeBtn">Resume exam (${saved.ids.filter(id=>isAnswered(saved.ans[id],QM[id])).length}/${saved.ids.length} answered)</button>`:''}<button class="btn" id="beginBtn">${saved?'Start a new exam':'Begin exam →'}</button></div>
+  </section>`;
+  app.querySelectorAll('input[name=mode]').forEach(r=>r.onchange=()=>{app.querySelectorAll('.mode').forEach(m=>m.classList.toggle('sel',m.querySelector('input').checked));});
+  $('#beginBtn').onclick=()=>{const go=()=>{const mode=app.querySelector('input[name=mode]:checked').value;build(mode,$('#rq').checked,$('#ra').checked);render();};
+    if(saved)confirmBox('Start a new exam?','Your in-progress answers will be cleared.','Start new',go);else go();};
+  if(saved)$('#resumeBtn').onclick=()=>{S.phase='exam';save();render();};}
+
+/* ---------- case chart tabs ---------- */
+function tabContent(c){if(Array.isArray(c))return `<div class="tw"><table class="ehr"><thead><tr>${c[0].map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${c.slice(1).map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return `<p>${esc(c).replace(/\n/g,'<br>')}</p>`;}
+function renderCase(cs,first){return `<details class="case" ${first?'open':''}><summary>Case ${cs.n}: ${esc(cs.title)} <span class="note">— medical record</span></summary>
+  <div class="tabs" role="tablist">${cs.tabs.map((t,i)=>`<button type="button" role="tab" class="tab ${i===0?'on':''}" data-tab="${i}" aria-selected="${i===0}">${esc(t[0])}</button>`).join('')}</div>
+  ${cs.tabs.map((t,i)=>`<div class="tabp ${i===0?'':'hidden'}" data-panel="${i}">${tabContent(t[1])}</div>`).join('')}</details>`;}
+
+/* ---------- question screen ---------- */
+function renderQ(){const c=ctx();const id=c.ids[c.cur];const q=QM[id];
+  const a=c.ans[id]||(c.ans[id]={sel:[],draft:[]});if(!a.draft)a.draft=a.sel.slice();
+  const rev=revealed(id);const cs=q.cs?CASES[q.cs]:null;const csIdx=cs?DEFAULT_ORDER.filter(x=>QM[x].cs===q.cs):[];
+  const draft=rev?a.sel:a.draft;let body='';
+  if(q.t==='mc'||q.t==='sata'){const isS=q.t==='sata';const order=S.opt[id];
+    body=`<div class="opts" role="${isS?'group':'radiogroup'}" aria-labelledby="qn">`+order.map((oi,pos)=>{const o=q.o[oi];const picked=draft.includes(oi);let cls='opt'+(isS?' sata':'')+(picked?' sel':'');let tag='';
+      if(rev){if(o[1]&&picked){cls+=' right';tag='✓ correct';}else if(o[1]){cls+=' right missed';tag=isS?'missed':'correct answer';}else if(picked){cls+=' wrong';tag='✗ your choice';}}
+      return `<button class="${cls}" data-oi="${oi}" ${rev?'disabled':''} role="${isS?'checkbox':'radio'}" aria-checked="${picked}"><span class="k">${isS&&picked?'✓':LET(pos)}</span><span>${esc(o[0])}</span>${tag?`<span class="tagl">${tag}</span>`:''}</button>`;}).join('')+`</div>`;}
+  else if(q.t==='matrix'){body=`<div class="tw"><table class="mx"><thead><tr><th>Finding / item</th>${q.cols.map(cn=>`<th>${esc(cn)}</th>`).join('')}</tr></thead><tbody>${q.rows.map((r,ri)=>`<tr><td>${esc(r[0])}</td>${q.cols.map((cn,ci)=>{const picked=draft[ri]===ci;let cl='mxc';if(rev){if(r[1]===ci)cl+=picked?' right':' missed';else if(picked)cl+=' wrong';}
+      return `<td class="${cl}"><label><input type="radio" name="r${ri}" data-ri="${ri}" data-ci="${ci}" ${picked?'checked':''} ${rev?'disabled':''} aria-label="${esc(r[0])}: ${esc(cn)}"><span class="mxl">${esc(cn)}</span></label></td>`;}).join('')}</tr>`).join('')}</tbody></table></div>`;}
+  else if(q.t==='cloze'){const ord=S.opt[id];let k=0;body=`<div class="cloze">`+esc(q.text).replace(/\{(\d)\}/g,(m,d)=>{const bi=+d;const b=q.blanks[bi];const v=draft[bi];
+      let cl='dd';if(rev)cl+=v===b[1]?' right':' wrong';
+      return `<select class="${cl}" data-bi="${bi}" ${rev?'disabled':''} aria-label="Blank ${bi+1}"><option value="-1">Select…</option>${ord[bi].map(oi=>`<option value="${oi}" ${v===oi?'selected':''}>${esc(b[0][oi])}</option>`).join('')}</select>`;})+`</div>`;}
+  const examSaved=!inRetry()&&S.mode==='exam'&&!S.finished;
+  const same=JSON.stringify(a.draft)===JSON.stringify(a.sel)||(!multi(q)&&JSON.stringify([...a.draft].sort())===JSON.stringify([...a.sel].sort()));
+  let action='';
+  if(!rev){const ready=draftReady(a,q);
+    if(examSaved)action=`<div class="row end" style="margin-top:12px">${isAnswered(a,q)?(same?'<span class="saved">✓ Answer saved</span>':'<span class="unsaved">Unsaved change</span>'):''}<button class="btn" id="subBtn" ${ready?'':'disabled'}>${isAnswered(a,q)?'Update answer':'Save answer'}</button></div>`;
+    else action=`<div class="row end" style="margin-top:12px">${multi(q)&&!ready?`<span class="unsaved">Answer every ${q.t==='matrix'?'row':'blank'} to submit</span>`:''}<button class="btn" id="subBtn" ${ready?'':'disabled'}>Submit answer</button></div>`;}
+  const flagged=!!S.flags[id];
+  const instr={sata:'Select all that apply. More than one answer may be correct.',matrix:'For each row, select one option. Each row is scored separately.',cloze:'Select one option from each drop-down list.'}[q.t];
+  app.innerHTML=`<section class="panel" aria-labelledby="qn">
+   ${inRetry()?`<p class="note" style="margin-top:0">🔁 <b>Retry mode</b>: these are the questions you missed. Feedback appears after each one; your original score is unchanged.</p>`:''}
+   <div class="qhead"><span class="qnum" id="qn">Question ${c.cur+1}</span><span class="chip ${q.t==='mc'?'':'sata'}">${TYPE[q.t]}</span>${cs?`<span class="chip case">Case ${cs.n} · ${csIdx.indexOf(id)+1} of ${csIdx.length}</span>`:''}${flagged?'<span class="chip flag">🚩 Flagged</span>':''}</div>
+   ${cs?renderCase(cs,true):''}
+   <div class="stem">${esc(q.q)}</div>
+   ${instr&&!rev?`<div class="instr">${instr}</div>`:''}
+   ${body}${action}
+   ${rev?feedback(q,a.sel,S.opt[id]):''}
+   <nav class="nav" aria-label="Question navigation">
+     <div class="grp"><button class="btn sec" id="prevBtn" ${c.cur===0?'disabled':''}>← Previous</button><button class="btn sec" id="nextBtn" ${c.cur===c.ids.length-1?'disabled':''}>Next →</button></div>
+     <div class="grp"><button class="btn dark ${flagged?'flag-on':''}" id="flagBtn" aria-pressed="${flagged}">${flagged?'🚩 Unflag':'🚩 Flag for review'}</button><button class="btn dark" id="toFlagBtn">Return to flagged</button></div>
+   </nav>
+   ${c.cur===c.ids.length-1&&!S.finished&&!inRetry()?`<div class="row end" style="margin-top:12px"><button class="btn" id="endBtn">${S.mode==='exam'?'Submit exam for grading':'See my score report'}</button></div>`:''}
+   ${inRetry()&&c.ids.every(i=>c.ans[i]&&c.ans[i].sub)?`<div class="row end" style="margin-top:12px"><button class="btn" id="endBtn">Finish retry → back to report</button></div>`:''}
+  </section>
+  <section class="panel hidden" id="mapPanel"><h2>Question map</h2><div class="grid" id="grid"></div>
+   <div class="legend"><span>⬜ unanswered</span><span>🟪 answered</span><span>🟩 correct</span><span>🟨 partial</span><span>🟥 incorrect</span><span>🚩 flagged</span></div></section>`;
+  app.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{const box=t.closest('.case');box.querySelectorAll('.tab').forEach(x=>{x.classList.toggle('on',x===t);x.setAttribute('aria-selected',x===t);});box.querySelectorAll('.tabp').forEach(p=>p.classList.toggle('hidden',p.dataset.panel!==t.dataset.tab));});
+  if(!rev){
+    if(q.t==='mc'||q.t==='sata')app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const oi=+b.dataset.oi;
+      if(q.t==='sata'){const i=a.draft.indexOf(oi);if(i>=0)a.draft.splice(i,1);else a.draft.push(oi);}else a.draft=[oi];
+      save();renderQ();renderTop();const el=app.querySelector(`.opt[data-oi="${oi}"]`);if(el)el.focus();});
+    if(q.t==='matrix')app.querySelectorAll('.mx input').forEach(inp=>inp.onchange=()=>{const n=nParts(q);while(a.draft.length<n)a.draft.push(-1);a.draft[+inp.dataset.ri]=+inp.dataset.ci;save();refreshAction(a,q);});
+    if(q.t==='cloze')app.querySelectorAll('.cloze select').forEach(s=>s.onchange=()=>{const n=nParts(q);while(a.draft.length<n)a.draft.push(-1);a.draft[+s.dataset.bi]=+s.value;save();refreshAction(a,q);});
+  }
+  const sb=$('#subBtn');if(sb)sb.onclick=()=>{a.sel=a.draft.slice();if(S.mode==='study'||inRetry())a.sub=true;save();renderQ();renderTop();
+    if(a.sub){const g=grade(q,a.sel);toast(g.exact?'✓ Correct':g.pts>0?'◐ Partially correct':'✗ Incorrect — review the rationale');const f=app.querySelector('.fb');if(f)f.scrollIntoView({behavior:'smooth',block:'nearest'});}else toast('Answer saved');};
+  $('#prevBtn').onclick=()=>go(c.cur-1);$('#nextBtn').onclick=()=>go(c.cur+1);
+  $('#flagBtn').onclick=()=>{S.flags[id]=!S.flags[id];if(!S.flags[id])delete S.flags[id];save();renderQ();renderTop();};
+  $('#toFlagBtn').onclick=()=>{const fl=c.ids.map((x,i)=>[x,i]).filter(([x])=>S.flags[x]);if(!fl.length){toast('No flagged questions yet');return;}
+    const nxt=fl.find(([,i])=>i>c.cur)||fl[0];if(nxt[1]===c.cur&&fl.length===1){toast('This is your only flagged question');return;}go(nxt[1]);};
+  const eb=$('#endBtn');if(eb)eb.onclick=finish;
+  renderGrid();}
+function refreshAction(a,q){const sb=$('#subBtn');if(!sb)return;const ready=draftReady(a,q);sb.disabled=!ready;const hint=sb.previousElementSibling;
+  if(hint&&hint.classList.contains('unsaved'))hint.style.display=ready&&!(S.mode==='exam'&&!S.finished&&!inRetry())?'none':'';renderTop();}
+
+function feedback(q,sel,order){const g=grade(q,sel);const cls=g.exact?'ok':(g.pts>0?'part':'no');
+  const answered=multi(q)?sel.length>0:sel.length>0;
+  const head=!answered?'Not answered':g.exact?'✓ Correct':(g.pts>0?'◐ Partially correct':'✗ Incorrect');
+  let detail='',scoreLine='';
+  if(q.t==='mc'||q.t==='sata'){const pos=oi=>LET(order.indexOf(oi));const correct=order.filter(oi=>q.o[oi][1]).map(pos);
+    scoreLine=`<p><b>Correct answer${correct.length>1?'s':''}: ${correct.join(', ')}</b></p>`+(q.t==='sata'&&sel.length?`<p>You selected <b>${g.hits} of ${g.n}</b> correct options and <b>${g.fs}</b> incorrect → <b>${(+g.pts.toFixed(2))} / 1</b> point.</p>`:`<p><b>${g.pts} / 1</b> point.</p>`);
+    detail=`<ul class="why">${order.map(oi=>{const o=q.o[oi];return `<li><span class="L">${pos(oi)}.</span> ${o[1]?'✅':'❌'} ${sel.includes(oi)?'<i>(you chose)</i> ':''}<b>${o[1]?'Correct':'Incorrect'}:</b> ${esc(o[2])}</li>`;}).join('')}</ul>`;}
+  else if(q.t==='matrix'){scoreLine=`<p><b>${g.hits} of ${g.n}</b> rows correct → <b>${(+g.pts.toFixed(2))} / 1</b> point.</p>`;
+    detail=`<ul class="why">${q.rows.map((r,i)=>`<li>${sel[i]===r[1]?'✅':'❌'} <b>${esc(r[0])}</b> → <b>${esc(q.cols[r[1]])}</b>${sel[i]!==r[1]&&sel[i]>=0?` <i>(you chose ${esc(q.cols[sel[i]])})</i>`:''}. ${esc(r[2])}</li>`).join('')}</ul>`;}
+  else{scoreLine=`<p><b>${g.hits} of ${g.n}</b> blanks correct → <b>${(+g.pts.toFixed(2))} / 1</b> point.</p>`;
+    detail=`<ul class="why">${q.blanks.map((b,i)=>`<li>${sel[i]===b[1]?'✅':'❌'} Blank ${i+1}: <b>${esc(b[0][b[1]])}</b>${sel[i]!==b[1]&&sel[i]>=0?` <i>(you chose "${esc(b[0][sel[i]])}")</i>`:''}. ${esc(b[2])}</li>`).join('')}</ul>`;}
+  return `<div class="fb ${cls}" role="status"><h3>${head}</h3>${scoreLine}<p><b>Rationale:</b> ${esc(q.r)}</p>${detail}
+   <div class="meta"><span>🧠 NGN: ${STEPS[q.step]}</span><span>🔑 ${esc(q.concept)}</span><span>📚 Module ${q.mod}</span><span>🗂️ ${esc(TOPICS[q.topic][0])}</span></div>
+   ${q.trap?`<div class="trap"><b>⚠️ Professor Trap / Testing Strategy:</b> ${esc(q.trap)}</div>`:''}</div>`;}
+function renderGrid(){const c=ctx();const gEl=$('#grid');if(!gEl)return;
+  gEl.innerHTML=c.ids.map((id,i)=>{const a=c.ans[id];const q=QM[id];let cl='cell';
+    if(revealed(id)&&(isAnswered(a,q)||S.finished)){const g=grade(q,a?a.sel:[]);cl+=g.exact?' c':(g.pts>0?' p':' x');}else if(isAnswered(a,q))cl+=' ans';
+    if(i===c.cur)cl+=' cur';if(S.flags[id])cl+=' fl';
+    return `<button class="${cl}" data-i="${i}" aria-label="Question ${i+1}${S.flags[id]?', flagged':''}">${i+1}</button>`;}).join('');
+  gEl.querySelectorAll('.cell').forEach(b=>b.onclick=()=>go(+b.dataset.i));
+  const mp=$('#mapPanel');if(mp)mp.classList.toggle('hidden',S.view!=='map');$('#mapBtn').setAttribute('aria-expanded',S.view==='map');}
+function go(i){const c=ctx();if(i<0||i>=c.ids.length)return;c.cur=i;save();renderQ();renderTop();window.scrollTo({top:0,behavior:'smooth'});}
+
+/* ---------- finish ---------- */
+function finish(){if(inRetry()){S.retry=null;S.phase='report';save();render();return;}
+  if(S.finished){S.phase='report';save();render();return;}
+  const c=S.main;const un=c.ids.filter(id=>!(S.mode==='study'?(c.ans[id]&&c.ans[id].sub):isAnswered(c.ans[id],QM[id]))).length;const fl=c.ids.filter(id=>S.flags[id]).length;
+  confirmBox(S.mode==='exam'?'Submit your exam?':'Finish and see your report?',(un?`You have <b>${un}</b> unanswered question${un>1?'s':''} (scored as 0). `:'All questions answered. ')+(fl?`You still have <b>${fl}</b> flagged question${fl>1?'s':''}. `:'')+'You won\'t be able to change answers afterward.',
+    'Submit & grade',()=>{S.finished=true;S.phase='report';save();render();});}
+
+/* ---------- report ---------- */
+function bandFor(p){if(p>=90)return['Exam Ready','Excellent — keep reviewing the Professor Traps.'];if(p>=80)return['Proficient','Strong work. Tighten the weak areas below.'];if(p>=70)return['Developing','Passing range, but several topics need another pass.'];return['Needs Review','Revisit the recommended topics below, then retry your missed questions.'];}
+function group(keyFn){const m={};S.main.ids.forEach(id=>{const q=QM[id];const k=keyFn(q);const a=S.main.ans[id];const g=grade(q,a?a.sel:[]);m[k]=m[k]||{n:0,pts:0,c:0};m[k].n++;m[k].pts+=g.pts;if(g.exact)m[k].c++;});return m;}
+function pctOf(o){return o&&o.n?Math.round(o.pts/o.n*100):0;}
+function color(p){return p>=80?'#1e7a4f':p>=70?'#d79b2a':'#b3283a';}
+function hbar(label,o){if(!o)return'';const p=pctOf(o);return `<div class="hbar"><span>${label} <span class="note">(${o.c}/${o.n} fully correct)</span></span><div class="t"><i style="width:${p}%;background:${color(p)}"></i></div><span class="v">${p}%</span></div>`;}
+function renderReport(){const t=tally(S.main,true);const total=S.main.ids.length;const pct=Math.round(t.pts/total*100);const [title,sub]=bandFor(pct);
+  const byMod=group(q=>q.mod),byType=group(q=>q.t),byStep=group(q=>q.step),byTopic=group(q=>q.topic),byCase=group(q=>q.cs||'none');
+  const topics=Object.keys(byTopic).map(k=>({k,p:pctOf(byTopic[k]),o:byTopic[k]})).sort((a,b)=>b.p-a.p||b.o.n-a.o.n);
+  const strong=topics.slice(0,3),weak=topics.slice(-3).reverse();const recs=topics.filter(x=>x.p<80).sort((a,b)=>a.p-b.p);
+  const missed=S.main.ids.filter(id=>!grade(QM[id],(S.main.ans[id]||{}).sel).exact);
+  app.innerHTML=`<section class="panel">${WEB}
+   <div class="verdict"><div class="big">${pct}%</div><h2>${title}</h2><p style="margin:0;color:#d9c8f5">${sub}</p></div>
+   <div class="tiles">
+    <div class="tile"><small>Total score</small><b>${(Math.round(t.pts*100)/100)} / ${total}</b><span>points (partial credit on SATA, matrix, cloze)</span></div>
+    <div class="tile"><small>Percentage</small><b>${pct}%</b><span>${S.mode==='exam'?'Exam mode':'Study mode'}</span></div>
+    <div class="tile"><small>Fully correct</small><b>${t.correct}</b><span>${t.incorrect} incorrect or partial</span></div>
+    <div class="tile"><small>Module 5</small><b>${pctOf(byMod[5])}%</b><span>${byMod[5].c}/${byMod[5].n} correct</span></div>
+    <div class="tile"><small>Module 6</small><b>${pctOf(byMod[6])}%</b><span>${byMod[6].c}/${byMod[6].n} correct</span></div>
+   </div>
+   <h3>Question type</h3>${['mc','sata','matrix','cloze'].map(k=>hbar(TYPE[k],byType[k])).join('')}
+   <h3>Performance by NGN step</h3>${Object.keys(STEPS).filter(k=>byStep[k]).map(k=>hbar(STEPS[k],byStep[k])).join('')}
+   <h3>Case studies</h3>${Object.keys(CASES).sort((a,b)=>CASES[a].n-CASES[b].n).map(k=>hbar(`Case ${CASES[k].n}: ${esc(CASES[k].title)}`,byCase[k])).join('')}
+   <h3>Strongest areas</h3><ul>${strong.map(x=>`<li><b>${esc(TOPICS[x.k][0])}</b>: ${x.p}%</li>`).join('')}</ul>
+   <h3>Weakest areas</h3><ul>${weak.map(x=>`<li><b>${esc(TOPICS[x.k][0])}</b>: ${x.p}%</li>`).join('')}</ul>
+   <h3>Topics recommended for review</h3>${recs.length?`<ol class="reclist">${recs.map(x=>`<li><b>${esc(TOPICS[x.k][0])} (${x.p}%)</b>: ${esc(TOPICS[x.k][1])}</li>`).join('')}</ol>`:'<p>Every content area scored 80% or higher. Keep your edge by reviewing the Professor Traps.</p>'}
+   <h3>All content areas</h3><div class="tw"><table><thead><tr><th>Content area</th><th>Questions</th><th>Fully correct</th><th>Score</th></tr></thead><tbody>${topics.map(x=>`<tr><td>${esc(TOPICS[x.k][0])}</td><td>${x.o.n}</td><td>${x.o.c}</td><td><b style="color:${color(x.p)}">${x.p}%</b></td></tr>`).join('')}</tbody></table></div>
+   <div class="row end" style="margin-top:18px"><button class="btn sec" id="revBtn">Review all questions &amp; rationales</button>${missed.length?`<button class="btn" id="retryBtn">🔁 Retry ${missed.length} missed question${missed.length>1?'s':''}</button>`:''}<button class="btn dark" id="resetBtn">Reset exam</button></div>
+  </section>`;
+  $('#revBtn').onclick=()=>{S.phase='exam';S.main.cur=0;save();render();};
+  const rb=$('#retryBtn');if(rb)rb.onclick=()=>{S.retry={ids:missed.slice(),cur:0,ans:{}};S.phase='exam';save();render();};
+  $('#resetBtn').onclick=resetAll;if(pct>=90)boo();}
+function boo(){if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;const e=['★','●','◆','✓'];for(let i=0;i<22;i++){const s=document.createElement('span');s.textContent=e[i%4];s.style.color=['#0e7490','#1f3a5f','#b45309','#22d3ee'][i%4];s.style.cssText=`position:fixed;top:-40px;left:${Math.random()*100}vw;font-size:1.6rem;z-index:70;pointer-events:none;transition:transform ${2.5+Math.random()*2}s linear,opacity 4s`;document.body.appendChild(s);requestAnimationFrame(()=>requestAnimationFrame(()=>{s.style.transform=`translateY(110vh) rotate(${Math.random()*360}deg)`;}));setTimeout(()=>s.remove(),5000);}}
+
+/* ---------- utilities ---------- */
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2200);}
+function confirmBox(title,body,okText,ok){const m=$('#modal');$('#mbox').innerHTML=`<h3 id="mTitle">${title}</h3><p>${body}</p><div class="row end"><button class="btn sec" id="mNo">Cancel</button><button class="btn" id="mYes">${okText}</button></div>`;m.classList.add('open');$('#mYes').focus();
+  $('#mNo').onclick=()=>m.classList.remove('open');$('#mYes').onclick=()=>{m.classList.remove('open');ok();};}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')e.currentTarget.classList.remove('open');});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#modal').classList.remove('open');});
+function resetAll(){confirmBox('Reset the exam?','This completely clears all answers, flags, and scores.','Reset everything',()=>{try{localStorage.removeItem(KEY);}catch(e){}S=blank();render();toast('Exam reset');});}
+$('#finishBtn').onclick=finish;
+$('#mapBtn').onclick=()=>{S.view=S.view==='map'?'q':'map';save();renderGrid();if(S.view==='map')$('#mapPanel').scrollIntoView({behavior:'smooth'});};
+function render(){if(S.phase==='exam'&&S.main){renderQ();}else if(S.phase==='report'&&S.main&&S.finished){renderReport();}else{S.phase='start';renderStart();}renderTop();window.scrollTo(0,0);}
+render();
+window.__exam={get S(){return S;},QM,grade,DEFAULT_ORDER};
+})();
+
+</script>
+</body>
+</html>
