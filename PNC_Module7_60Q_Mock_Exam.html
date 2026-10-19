@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PNC Module 7 Examination</title>
+<meta name="description" content="Professional Nursing Capstone Module 7: 60-question practice examination on healthcare law, ethics, and Georgia mandatory reporting.">
+<style>
+:root{
+ --bg:#f4f5f8;--panel:#ffffff;--panel2:#f8f8fb;--line:#dfe1e8;--line2:#c9ccd6;
+ --text:#1d2130;--muted:#5d6475;--brand:#3f2a7a;--brand2:#5a3fa8;--brandsoft:#efeafb;--accent:#b45309;
+ --good:#17643d;--goodbg:#e8f5ee;--bad:#a12a20;--badbg:#fcebe9;--warnbg:#fff5e0;--warn:#7a4b00;
+ --shadow:0 1px 2px rgba(20,24,40,.06),0 4px 14px rgba(20,24,40,.06);--r:10px;color-scheme:light;
+}
+:root[data-theme="dark"]{
+ --bg:#12141b;--panel:#1a1d27;--panel2:#20232f;--line:#2e3242;--line2:#3c4155;
+ --text:#e9eaf0;--muted:#a3a8b8;--brand:#b7a3f2;--brand2:#9b83e6;--brandsoft:#2a2540;--accent:#f0a24a;
+ --good:#6fd39a;--goodbg:#15301f;--bad:#ff8f84;--badbg:#3a1d1c;--warnbg:#3a2f15;--warn:#f3c56b;
+ --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.3);color-scheme:dark;
+}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;overflow-x:hidden}
+h1,h2,h3{line-height:1.25;margin:.2em 0 .55em;font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(1.45rem,3.2vw,1.9rem)}h2{font-size:1.15rem}h3{font-size:1rem}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--brand2);outline-offset:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+header.top{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+header .wrap{display:flex;align-items:center;gap:12px;min-height:58px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.logo{width:34px;height:34px;border-radius:8px;background:var(--brand);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.85rem;flex:none}
+:root[data-theme="dark"] .logo{color:#12141b}
+.ttl{flex:1 1 200px;min-width:0}.ttl b{display:block;font-size:.98rem}.ttl small{color:var(--muted);font-size:.78rem}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--panel2);font-size:.78rem;font-weight:600;color:var(--muted);white-space:nowrap}
+.pill.strong{color:var(--text)}.pill.good{color:var(--good)}.pill.bad{color:var(--bad)}.pill.brand{color:var(--brand);background:var(--brandsoft);border-color:transparent}
+.iconbtn{min-width:36px;height:36px;padding:0 10px;font-size:.8rem;font-weight:600;border-radius:8px;border:1px solid var(--line);background:var(--panel);cursor:pointer}
+main{padding:22px 0 60px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.panel.flat{box-shadow:none;background:var(--panel2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 16px;border-radius:8px;border:1px solid transparent;background:var(--brand);color:#fff;font-weight:600;cursor:pointer;font-size:.93rem}
+:root[data-theme="dark"] .btn{color:#12141b}
+.btn:hover{filter:brightness(1.08)}.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.btn.sec{background:var(--panel);color:var(--text);border-color:var(--line2)}
+.btn.quiet{background:transparent;color:var(--brand);border-color:transparent;padding:8px 10px}
+.btn.sm{min-height:34px;padding:5px 12px;font-size:.85rem}
+.btn.on{background:var(--warnbg);color:var(--warn);border-color:var(--warn)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.spread{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}.small{font-size:.88rem}.tiny{font-size:.76rem}
+.lead{font-size:1.02rem;color:var(--muted);max-width:68ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:14px 0}
+.fact{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--panel2)}.fact b{display:block;font-size:1.25rem}.fact span{font-size:.78rem;color:var(--muted)}
+.choice{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line2);border-radius:8px;cursor:pointer;margin:8px 0;background:var(--panel)}
+.choice:has(input:checked){border-color:var(--brand2);background:var(--brandsoft)}
+.choice input{margin-top:4px;accent-color:var(--brand2);width:17px;height:17px;flex:none}
+/* exam layout */
+.layout{display:grid;grid-template-columns:1fr 250px;gap:16px;align-items:start}
+@media(max-width:860px){.layout{grid-template-columns:1fr}.side{order:2}}
+.side .panel{padding:14px;position:sticky;top:76px}
+@media(max-width:860px){.side .panel{position:static}}
+.bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden;margin:8px 0 2px}.bar i{display:block;height:100%;background:var(--brand2);transition:width .3s}
+.qhead{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:center;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:14px}
+.qnum{font-weight:700;font-size:1rem}
+.casebox{border-left:4px solid var(--brand2);background:var(--panel2);border-radius:0 8px 8px 0;padding:10px 14px;margin:0 0 14px;font-size:.95rem}
+.casebox b{display:block;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--brand);margin-bottom:2px}
+.stem{font-size:1.04rem;margin:0 0 12px}
+.instr{font-size:.85rem;font-weight:600;color:var(--warn);background:var(--warnbg);display:inline-block;padding:3px 10px;border-radius:6px;margin:0 0 10px}
+.opts{display:flex;flex-direction:column;gap:8px;border:0;padding:0;margin:0 0 14px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:11px 13px;border:1px solid var(--line2);border-radius:8px;background:var(--panel);cursor:pointer}
+.opt:hover{border-color:var(--brand2)}
+.opt input{margin-top:4px;width:17px;height:17px;accent-color:var(--brand2);flex:none}
+.opt .L{font-weight:700;min-width:1.2em;color:var(--muted)}
+.opt.sel{border-color:var(--brand2);background:var(--brandsoft)}
+.opt.ok{border-color:var(--good);background:var(--goodbg)}.opt.no{border-color:var(--bad);background:var(--badbg)}.opt.miss{border:1px dashed var(--good)}
+.opt .why{display:block;font-size:.85rem;margin-top:4px;color:var(--muted)}
+.opt .yours{font-size:.72rem;font-weight:700;color:var(--muted);margin-left:6px;text-transform:uppercase;letter-spacing:.04em}
+.fb{border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--panel2);margin-top:4px}
+.fb .v{font-weight:700;display:block;margin-bottom:6px}.fb.ok .v{color:var(--good)}.fb.no .v{color:var(--bad)}
+.fb .k{display:block;margin-top:8px}
+.tip{border-left:3px solid var(--accent);padding:6px 10px;margin-top:10px;background:var(--panel)}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.navrow{display:flex;justify-content:space-between;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.ngrid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-top:8px}
+@media(max-width:860px){.ngrid{grid-template-columns:repeat(auto-fill,minmax(38px,1fr))}}
+.ngrid button{height:32px;border-radius:6px;border:1px solid var(--line2);background:var(--panel);cursor:pointer;font-size:.78rem;font-weight:600;position:relative;color:var(--text)}
+.ngrid button.a{background:var(--brandsoft);border-color:var(--brand2)}
+.ngrid button.cur{outline:2px solid var(--text);outline-offset:1px}
+.ngrid button.ok{background:var(--goodbg);border-color:var(--good)}.ngrid button.no{background:var(--badbg);border-color:var(--bad)}
+.ngrid button.f::after{content:"";position:absolute;top:2px;right:2px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.legend{display:grid;gap:3px;font-size:.72rem;color:var(--muted);margin-top:8px}
+.sw{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line2)}
+/* report */
+.score{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center}
+@media(max-width:560px){.score{grid-template-columns:1fr}}
+.ring{width:132px;height:132px}
+.band{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:700;font-size:.85rem}
+table.rep{width:100%;border-collapse:collapse;font-size:.9rem}
+table.rep th,table.rep td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+table.rep th{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+table.rep td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.mbar{height:8px;border-radius:999px;background:var(--line);overflow:hidden;min-width:80px}.mbar i{display:block;height:100%}
+details.miss{border:1px solid var(--line);border-radius:8px;margin:8px 0;background:var(--panel)}
+details.miss summary{cursor:pointer;padding:11px 14px;font-weight:600;font-size:.93rem}
+details.miss .in{padding:0 14px 14px}
+.modalbg{position:fixed;inset:0;background:rgba(10,12,20,.55);display:grid;place-items:center;padding:16px;z-index:50}
+.modal{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;max-width:440px;width:100%;box-shadow:var(--shadow)}
+footer{color:var(--muted);font-size:.76rem;text-align:center;padding:10px 0 30px}
+@media print{header,.side,.navrow,.btn{display:none!important}body{background:#fff}.panel{box-shadow:none;border:0}.layout{display:block}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+ <div class="logo" aria-hidden="true">M7</div>
+ <div class="ttl"><b>Professional Nursing Capstone · Module 7</b><small>Legal, Ethical &amp; Professional Practice: Practice Examination</small></div>
+ <span class="pill brand" id="hmode" hidden></span><span class="pill strong" id="htime" hidden></span>
+ <button class="iconbtn" id="themeBtn" aria-label="Switch to dark mode">◐</button>
+</div></header>
+<main class="wrap" id="app"></main>
+<footer>Items written from the Module 7 study guide notes and the Health Care Law Study Guide &amp; Worksheet (NURS 4103) with its Answer Sheet. Progress is saved in this browser.</footer>
+<noscript><p style="padding:20px">This examination requires JavaScript.</p></noscript>
+<script>
+/* PNC Module 7 — 60-question practice examination (48 MCQ + 12 SATA)
+   Sources: Module 7 study guide notes (textbook packet, GA Rule 410-12, ANA 2025 provisions),
+   Health Care Law Study Guide & Worksheet (NURS 4103) and Answer Sheet. All items new (not reused from the 50-Q exam). */
+const OBJ={1:`Sources of law & implications for practice`,2:`Regulatory standards in practice`,3:`Standards of care (license & state)`,4:`Recognize & report violations`,5:`Human values in ethical decisions`,6:`Ethical theories & principles (incl. ANA Code)`,7:`Ethics, morality & mortality`,8:`Ethical decision-making framework`,9:`Applying ethics in clinical practice`};
+const CASES={
+ A:{title:`Case A · Emergency Department`,text:`A 61-year-old uninsured man arrives at the ED at 2300 reporting chest pressure and shortness of breath. He tells the triage nurse he cannot afford care and asks to "just get some pills."`},
+ B:{title:`Case B · Post-Operative Unit`,text:`A 70-year-old patient is one day post hip arthroplasty with a hydromorphone PCA. Unit policy requires sedation and respiratory checks every hour for the first 24 hours. At 0200 the RN, busy with a new admission, skips the 0200 and 0300 checks. At 0340 the patient is found with RR 6 and SpO₂ 78% and requires naloxone and a rapid response; he later has an anoxic brain injury.`},
+ C:{title:`Case C · Orthopedic Unit, Georgia`,text:`A charge nurse on a Georgia orthopedic unit is reviewing the automated dispensing cabinet report after several patients complained that their IV opioid "did nothing." One staff nurse's activity stands out.`},
+ D:{title:`Case D · Palliative Care`,text:`Ms. Ruiz, 74, has advanced COPD. She is alert and decisional, has a durable power of attorney for healthcare naming her son, and has repeatedly told staff she does not want intubation.`}
+};
+const Q=[
+/* ---------- CASE A ---------- */
+{id:1,case:'A',type:'mcq',obj:1,topic:'EMTALA',step:'Recognize Cues',level:'Application',
+ stem:`Registration asks the triage nurse to have the patient complete a financial screening and payment plan before he is seen. Which response by the nurse is most appropriate?`,
+ options:[`"He can complete the payment plan while we start his medical screening exam."`,`"Let's finish the financial screening quickly so he can be roomed sooner."`,`"He can sign a financial waiver now, and we'll verify his insurance right after triage."`,`"Since he asked only for pills, we can give him a clinic referral instead."`],answer:0,
+ why:[`Correct. Screening proceeds regardless of ability to pay, and finances can't delay it.`,`Even a "quick" financial step before screening puts payment ahead of the screening exam.`,`A waiver doesn't change the obligation, and verification still comes before screening in this plan.`,`Chest pressure and dyspnea require a medical screening exam. A referral isn't a substitute.`],
+ rationale:`EMTALA requires hospitals to provide a medical screening exam to all who request emergency care and to stabilize emergency conditions, regardless of financial or insurance status.`,tip:`Any answer that puts payment, paperwork, or insurance BEFORE screening is wrong, even when it sounds quick or courteous.`},
+{id:2,case:'A',type:'mcq',obj:1,topic:'EMTALA',step:'Analyze Cues',level:'Advanced',
+ stem:`After evaluation, the patient is diagnosed with an acute MI. The hospital has no cardiac catheterization lab. Which transfer plan is most consistent with EMTALA?`,
+ options:[`Transfer him now to the county hospital, which accepts uninsured patients and has a cath lab`,`Stabilize him first, then transfer for cardiac care this hospital can't provide`,`Discharge him with instructions to report to the cardiac center in the morning`,`Transfer him before treatment so the receiving hospital can begin care sooner`],answer:1,
+ why:[`A transfer driven by insurance status, not medical need, is inappropriate.`,`Correct. Transfer only when necessary and appropriate, after stabilization.`,`Discharging an emergency condition isn't stabilization.`,`Transferring before stabilizing defeats the purpose of the law.`],
+ rationale:`The worksheet summary: EMTALA requires screening, stabilization of emergency conditions, and transfer "only when necessary and appropriate." Medical need justifies this transfer. Insurance status never does.`,tip:`EMTALA doesn't ban transfer. It bans transfer for the WRONG reason or of an UNSTABLE patient.`},
+{id:3,case:'A',type:'mcq',obj:3,topic:'Refusal & AMA',step:'Take Actions',level:'Application',
+ stem:`Before transfer, the patient, who is alert and oriented, says, "I'm going home. I can't pay for an ambulance or another hospital." The nurse has explained the risks, and he states he understands them. What should the nurse do next?`,
+ options:[`Ask security to stay near the exit until the provider can reassess his decision`,`Notify the provider, document his reasoning, and obtain a signed AMA form`,`Tell him the hospital is required to transfer him, so leaving is not an option`,`Remove his IV, review discharge instructions, and let him leave without notifying the provider`],answer:1,
+ why:[`Positioning security to stop a competent adult creates false imprisonment risk.`,`Correct. These are the worksheet's AMA responsibilities.`,`A competent adult may refuse, and telling him otherwise is coercive and inaccurate.`,`The provider has to be notified. The nurse doesn't complete an AMA departure alone.`],
+ rationale:`Worksheet: when a patient leaves AMA, the nurse ensures the patient understands the risks, documents the decision and reasoning, obtains a signed AMA form, and notifies the provider.`,tip:`Once the risks have been explained, what's left is notify, document, and get the AMA form signed. Restraining or misinforming him is never the next step.`},
+/* ---------- CASE B ---------- */
+{id:4,case:'B',type:'mcq',obj:3,topic:'Negligence & Malpractice',step:'Analyze Cues',level:'Application',
+ stem:`In the resulting lawsuit, which fact most directly establishes BREACH of duty?`,
+ options:[`The RN was assigned to the patient for the night shift`,`The RN omitted two hourly sedation checks required by policy`,`The patient developed respiratory depression on the PCA`,`The patient sustained an anoxic brain injury after the event`],answer:1,
+ why:[`This establishes duty.`,`Correct. Omitting required monitoring falls below the standard of care.`,`This is part of the causal chain, not the breach itself.`,`This is the injury/harm element.`],
+ rationale:`Breach is the nurse's action or omission that falls below the standard a reasonably prudent nurse would meet. Facility policy can help establish that standard.`,tip:`Sort each fact into Duty (relationship), Breach (what the nurse did or didn't do), Causation (link), or Injury (harm).`},
+{id:5,case:'B',type:'mcq',obj:3,topic:'Negligence & Malpractice',step:'Analyze Cues',level:'Advanced',
+ stem:`The defense argues the brain injury resulted from an undiagnosed cardiac arrhythmia, not from oversedation. Which element is the defense contesting?`,
+ options:[`Duty`,`Breach`,`Causation`,`Damages`],answer:2,
+ why:[`The nurse-patient relationship isn't disputed.`,`The defense isn't arguing the checks were done.`,`Correct. They're arguing the breach didn't cause the injury.`,`They aren't disputing that a serious injury occurred.`],
+ rationale:`Causation requires a direct/proximate link between the breach and the injury. Offering an alternative cause attacks causation.`,tip:`"Something else caused it" = a causation argument, every time.`},
+{id:6,case:'B',type:'sata',obj:2,topic:'Documentation & Incident Reports',step:'Take Actions',level:'Application',
+ stem:`Which entries are appropriate for the patient's medical record after the event? <b>Select all that apply.</b>`,
+ options:[`"0340 Found responsive to sternal rub only; RR 6, SpO₂ 78% on RA."`,`"Naloxone 0.4 mg IV given 0342 per protocol; rapid response called 0342."`,`"Event likely due to excessive PCA dosing by patient overnight."`,`"Hourly checks missed 0200–0300 due to unsafe staffing assignment."`,`"0350 RR 14, SpO₂ 94% on 2 L NC; provider at bedside."`,`"Occurrence report submitted to risk management at 0430."`],answer:[0,1,4],
+ why:[`Correct. Objective, timed findings.`,`Correct. Objective intervention and time.`,`A speculative cause that wasn't observed.`,`Blame and staffing commentary belong in the occurrence report and chain of command, not the chart.`,`Correct. Objective reassessment.`,`Never reference the occurrence/incident report in the medical record.`],
+ rationale:`Documentation provides legal evidence of care, protects against liability, and shows adherence to standards. That requires objective, truthful, timely entries without speculation, blame, or references to incident reports.`,tip:`Staffing concerns are legitimate, but they go through the chain of command and the occurrence report, not the patient's chart.`},
+/* ---------- CASE C ---------- */
+{id:7,case:'C',type:'mcq',obj:4,topic:'Impairment & Drug Diversion',step:'Recognize Cues',level:'Application',
+ stem:`Which pattern in the dispensing report most strongly suggests drug diversion?`,
+ options:[`Noticeably more opioid removals than peers on a shift with more post-operative patients assigned`,`Frequent partial-dose wastes of hydromorphone, often without a cosigning witness`,`Removing PRN opioids only after documenting a pain reassessment score`,`Returning unopened doses to the pharmacy return bin as policy directs`],answer:1,
+ why:[`Higher use can be explained by a heavier post-op assignment. It isn't the strongest cue.`,`Correct. Excessive or unwitnessed waste is a classic diversion method.`,`This is appropriate practice.`,`This is compliant practice.`],
+ rationale:`Worksheet: drug diversion methods include excessive waste, tampering, and falsifying records. Patients reporting no relief despite documented doses adds weight.`,tip:`A higher count alone can have an innocent explanation. Unwitnessed or excessive WASTE is the textbook red flag.`},
+{id:8,case:'C',type:'mcq',obj:4,topic:'Impairment & Drug Diversion',step:'Take Actions',level:'Application',
+ stem:`The nurse in question is currently on shift with four assigned patients. What is the charge nurse's FIRST action?`,
+ options:[`Notify the nurse manager/supervisor now and follow facility protocol`,`File a complaint with the Georgia Board of Nursing before the end of the shift`,`Ask the nurse privately to explain the waste entries before involving anyone else`,`Continue monitoring the dispensing report for one more week to confirm the pattern`],answer:0,
+ why:[`Correct. Immediate reporting through facility channels protects patients now.`,`Board reporting may be required, but the patients on the unit need protection first.`,`A private confrontation delays protection and isn't the course-directed action.`,`Waiting leaves patients exposed to ongoing risk.`],
+ rationale:`Worksheet answer key: if a colleague may be diverting drugs, report to the supervisor or nurse manager immediately and follow facility protocol. Board reporting duties also apply.`,tip:`"FIRST" plus patients currently at risk → internal, immediate, protective action.`},
+{id:9,case:'C',type:'mcq',obj:4,topic:'GA Mandatory Reporting',step:'Analyze Cues',level:'Advanced',
+ stem:`The investigation confirms the nurse was impaired by opioids while on duty last month and has since entered treatment. The manager asks whether a report to the Georgia Board is still needed. Which response is accurate?`,
+ options:[`No. Treatment resolves the reporting duty as long as the nurse stays enrolled.`,`No. Only impairment that is current at the time of discovery is reportable.`,`Yes. Prior inability to practice safely due to drugs is listed conduct.`,`Yes, but only if a patient was harmed during the period of impairment.`],answer:2,
+ why:[`Treatment doesn't remove the listed conduct.`,`The rule covers current OR previous inability.`,`Correct.`,`Harm isn't a requirement for this category.`],
+ rationale:`Georgia Rule 410-12-.01 lists current or previous inability to practice with reasonable skill and safety due to alcohol, drugs, narcotics, or chemicals as reportable conduct.`,tip:`Two wording traps: "previous" counts, and harm isn't required.`},
+/* ---------- CASE D ---------- */
+{id:10,case:'D',type:'mcq',obj:7,topic:'PSDA & Advance Directives',step:'Analyze Cues',level:'Application',
+ stem:`Ms. Ruiz's son arrives and tells the nurse, "I'm her healthcare power of attorney, so I'm making the decisions now. I want her intubated if she gets worse." Ms. Ruiz is alert and repeats that she does not want intubation. Whose decision guides care?`,
+ options:[`The son's, because a legally named healthcare agent speaks for the patient once appointed`,`Ms. Ruiz's, because she is currently able to make her own decisions`,`The provider's, because the patient and agent disagree`,`The ethics committee's, because a dispute has arisen`],answer:1,
+ why:[`A healthcare POA speaks for the patient when she can't decide. She can decide now.`,`Correct. A competent patient's own wishes govern.`,`The provider doesn't override a decisional patient's informed refusal.`,`Ethics committees consult. They don't decide.`],
+ rationale:`Advance directives (including a healthcare POA) apply when the person becomes unable to decide. A competent patient's wishes govern, and family preference doesn't replace them.`,tip:`Being named on a POA doesn't make someone the decision-maker while the patient can still decide.`},
+{id:11,case:'D',type:'mcq',obj:7,topic:'PSDA & Advance Directives',step:'Prioritize Hypotheses',level:'Advanced',
+ stem:`Two days later Ms. Ruiz is unresponsive. Her son says, "I know Mom never wanted a breathing tube, but I'm not ready to lose her, so intubate her." Which standard should guide the son's decision as her agent?`,
+ options:[`Best interest, because she can no longer communicate`,`Substituted judgment, based on her known wishes`,`The son's own values, because he is the legal agent`,`Beneficence, as interpreted by the treating team`],answer:1,
+ why:[`Best interest is used when the patient's wishes are unknown. Hers are known.`,`Correct. He should decide as she would have chosen.`,`The agent stands in the patient's shoes, not his own.`,`A principle, not a surrogate decision standard, and it doesn't override her known wishes.`],
+ rationale:`Substituted judgment asks the surrogate to follow the patient's known wishes. Best interest applies only when wishes are unknown.`,tip:`If the stem says the wishes are KNOWN, it's substituted judgment, even when the surrogate disagrees.`},
+{id:12,case:'D',type:'mcq',obj:8,topic:'Ethical Decision-Making',step:'Generate Solutions',level:'Application',
+ stem:`The son still insists, and the team remains divided after meeting with him. Which next step is most consistent with the course's ethical decision-making framework?`,
+ options:[`Request an ethics consultation to support the team's analysis`,`Ask the ethics committee to issue a binding decision on intubation`,`Defer to the son to avoid escalating the family's distress`,`Intubate if she deteriorates, then readdress goals of care once the family has had time`],answer:0,
+ why:[`Correct. Committees provide consultation when a dilemma can't otherwise be resolved.`,`Committees support reasoning. They don't replace the legal decision-maker.`,`Avoiding conflict isn't a valid ethical justification and disregards her known wishes.`,`Acting against known wishes "for now" isn't a neutral option.`],
+ rationale:`The ethics chapter describes ethics committees as resources for education, policy, and consultation on unresolved dilemmas, without replacing the decision-maker.`,tip:`"Binding decision" next to "ethics committee" is always a wrong combination.`},
+/* ---------- STANDALONE: LAW ---------- */
+{id:13,type:'mcq',obj:1,topic:'Sources of Law',step:'Analyze Cues',level:'Foundational',
+ stem:`Which category of law do the CMS Conditions of Participation represent?`,
+ options:[`Statutory law enacted directly by Congress`,`Administrative regulations with the force of law`,`Common law developed through federal court decisions`,`Voluntary accreditation standards without legal force`],answer:1,
+ why:[`Congress authorizes the agency, but the CoPs themselves are agency rules.`,`Correct.`,`Common law comes from judicial decisions.`,`CoPs are binding requirements for Medicare participation.`],
+ rationale:`Administrative law consists of rules created by agencies under authority granted by statute. CMS Conditions of Participation set minimum requirements for facilities receiving Medicare reimbursement.`,tip:`Federal ≠ statutory. Agency rules are administrative law.`},
+{id:14,type:'mcq',obj:1,topic:'Sources of Law',step:'Analyze Cues',level:'Application',
+ stem:`After a negligent medication error, a nurse faces a lawsuit from the patient's family, an investigation by the Board of Nursing, and termination by her employer. Which of these is a civil law proceeding?`,
+ options:[`The family's lawsuit`,`The Board of Nursing investigation`,`The employer's termination decision`,`All three, because none are criminal`],answer:0,
+ why:[`Correct. A private party seeking damages.`,`An administrative/regulatory action on the license.`,`An employment decision, not a court proceeding.`,`"Not criminal" doesn't make something a civil lawsuit.`],
+ rationale:`Civil law addresses wrongs between private parties, where the plaintiff seeks damages. Board action is regulatory, and termination is an employment action.`,tip:`Three tracks: courts (civil/criminal), the Board (license), and the employer (job).`},
+{id:15,type:'mcq',obj:1,topic:'Sources of Law',step:'Analyze Cues',level:'Advanced',
+ stem:`Which situation is legally compliant but still raises an ethical concern the nurse should address?`,
+ options:[`A stabilized patient is appropriately discharged although he cannot afford his prescriptions`,`An unstable uninsured patient is transferred to a nearby hospital that routinely accepts uninsured patients`,`A nurse reviews a coworker's chart to check on her after surgery`,`A confused patient is placed in wrist restraints without a provider's order`],answer:0,
+ why:[`Correct. The law is met, but justice and advocacy call for addressing access to medications.`,`An EMTALA violation, so not legally compliant.`,`A HIPAA violation, so not legally compliant.`,`False imprisonment per the worksheet, so not legally compliant.`],
+ rationale:`The textbook frames law as the minimum enforceable standard ("must") and ethics as what one "should" do. A legal action can still call for ethical advocacy.`,tip:`When asked for "legal but ethically concerning," eliminate every option that breaks a law first.`},
+{id:16,type:'sata',obj:1,topic:'EMTALA',step:'Analyze Cues',level:'Application',
+ stem:`Which statements about EMTALA are accurate according to the course materials? <b>Select all that apply.</b>`,
+ options:[`Hospitals must provide medical screening exams to all who request emergency care`,`Emergency medical conditions must be stabilized regardless of insurance`,`Transfer is permitted only when necessary and appropriate`,`Every patient screened in the ED must be admitted as an inpatient`,`Violations can bring fines and loss of Medicare funding`,`Screening may wait until insurance eligibility has been verified`],answer:[0,1,2,4],
+ why:[`Correct.`,`Correct.`,`Correct.`,`EMTALA doesn't guarantee admission.`,`Correct. Worksheet: up to $50,000 and loss of Medicare funding.`,`Insurance can't delay screening.`],
+ rationale:`Worksheet summary of EMTALA: screening for all who request care, stabilization of emergency conditions, transfer only when necessary and appropriate, and penalties up to $50,000 in fines plus loss of Medicare funding.`,tip:`"Guaranteed admission" is the most common EMTALA distractor.`},
+{id:17,type:'mcq',obj:1,topic:'EMTALA',step:'Recognize Cues',level:'Foundational',
+ stem:`In the Health Care Law worksheet, an ED nurse fails to screen a patient who later dies. Which EMTALA requirement was violated?`,
+ options:[`A medical screening exam for a person requesting emergency care`,`Informed consent before the triage nurse begins any assessment`,`Admission to an inpatient bed after the ED evaluation is complete`,`Transfer to the nearest specialty center once he was evaluated`],answer:0,
+ why:[`Correct.`,`Not an EMTALA requirement in the course materials.`,`EMTALA doesn't require admission.`,`Transfer happens only when necessary and appropriate, after screening.`],
+ rationale:`Worksheet Match the Case #2: failure to screen = EMTALA violation. The first EMTALA duty is a medical screening exam for all who request care.`,tip:`Screen → stabilize → transfer only if necessary and appropriate.`},
+{id:18,type:'sata',obj:1,topic:'ACA & Nurse Practice Act',step:'Analyze Cues',level:'Foundational',
+ stem:`Which features of the Affordable Care Act are described in the Health Care Law worksheet? <b>Select all that apply.</b>`,
+ options:[`Expanded access to care`,`Value-based purchasing that emphasizes quality over quantity`,`Penalties for high readmission rates or hospital-acquired conditions`,`Mandatory nurse-to-patient ratios on all hospital units`,`Creation of an insurance marketplace`,`A ban on denying coverage for pre-existing conditions`],answer:[0,1,2,4,5],
+ why:[`Correct.`,`Correct.`,`Correct.`,`Not part of the ACA. The worksheet notes California is the only state with all-unit ratios.`,`Correct.`,`Correct.`],
+ rationale:`Worksheet: the ACA (2010) expanded access, emphasized quality over quantity through value-based purchasing, penalizes hospitals for high readmissions or hospital-acquired conditions, created the insurance marketplace, and banned denial for pre-existing conditions.`,tip:`ACA = access + quality-linked payment. Staffing ratios are a separate (state) issue.`},
+/* ---------- STANDALONE: REGULATION / SCOPE ---------- */
+{id:19,type:'sata',obj:2,topic:'ACA & Nurse Practice Act',step:'Analyze Cues',level:'Application',
+ stem:`After a nurse's unsafe practice is substantiated, which actions fall within the authority of the state Board of Nursing? <b>Select all that apply.</b>`,
+ options:[`Placing the nurse's license on probation`,`Imposing a fine`,`Suspending or revoking the license`,`Ordering the nurse to pay damages to the injured patient`,`Prosecuting the nurse for a criminal offense`,`Setting the hospital's Medicare reimbursement rate`],answer:[0,1,2],
+ why:[`Correct.`,`Correct.`,`Correct.`,`Damages come from civil courts.`,`Prosecution belongs to the government under criminal law.`,`Reimbursement is set through CMS, not the BON.`],
+ rationale:`The BON enforces the Nurse Practice Act. Worksheet: disciplinary actions include fines, probation, suspension, and revocation (the textbook adds reprimand, limitation, and nonrenewal).`,tip:`The BON acts on the LICENSE. Courts handle damages and criminal penalties.`},
+{id:20,type:'mcq',obj:2,topic:'Scope, Competence & Orders',step:'Take Actions',level:'Application',
+ stem:`A nurse questions a provider's order for a medication route she believes is unsafe for her patient. The provider repeats the order without changes. What is the nurse's best next action?`,
+ options:[`Administer the medication and document the provider's insistence`,`Ask the pharmacist to approve the route, then administer it`,`Hold the medication and notify the charge nurse or supervisor`,`Transfer the patient's care to a nurse willing to give it`],answer:2,
+ why:[`"Following orders" isn't a defense, and documenting doesn't prevent harm.`,`Pharmacy input can help, but it doesn't replace escalating an unresolved safety concern.`,`Correct. Hold, then escalate through the chain of command.`,`This shifts the unsafe act to someone else without resolving it.`],
+ rationale:`The nurse has an independent duty to question or escalate orders that are inaccurate, unauthorized, invalid, harmful, or contraindicated, and to use the chain of command when unresolved.`,tip:`After a provider repeats a questionable order, the next step is the chain of command.`},
+{id:21,type:'mcq',obj:2,topic:'Scope, Competence & Orders',step:'Generate Solutions',level:'Application',
+ stem:`A nurse is floated to a dialysis unit and asked to initiate treatment on a machine she has never been trained to operate. Which response best reflects her legal accountability?`,
+ options:[`Initiate treatment while an experienced dialysis nurse observes from across the unit`,`Decline the entire float assignment and return to her home unit`,`Give care within her competence and request a trained nurse for dialysis`,`Follow the manufacturer's quick-start guide and document that it was used`],answer:2,
+ why:[`Distant observation doesn't establish competence.`,`Refusing the whole assignment leaves patients without care.`,`Correct.`,`A quick-start guide doesn't establish the knowledge and skill required.`],
+ rationale:`The textbook states that nurses aren't permitted to perform tasks for which they lack the necessary knowledge and skill, and floating doesn't erase the duty to provide safe care.`,tip:`The best answer accepts what the nurse is competent to do and gets help for the specific gap.`},
+{id:22,type:'mcq',obj:2,topic:'Scope, Competence & Orders',step:'Analyze Cues',level:'Application',
+ stem:`A nurse moving from California to Georgia asks whether she should expect the same mandatory nurse-to-patient ratios on every unit. Which response reflects the worksheet?`,
+ options:[`Yes. Federal Conditions of Participation now set fixed nurse-to-patient ratios for every unit nationwide.`,`No. Only California mandates ratios on all units; other states may mandate specific units.`,`Yes. Georgia adopted California's all-unit ratios when the ACA took effect in 2010.`,`No. Staffing has no legal or regulatory oversight outside of California.`],answer:1,
+ why:[`CoPs link Medicare funding to staffing quality. They don't set fixed national ratios.`,`Correct.`,`Not described in the course materials.`,`Overstated. Unit-specific mandates and CoP oversight exist.`],
+ rationale:`Worksheet "Safe Staffing Laws": California is the only state with mandatory ratios for all units, other states may have unit-specific mandates (ICU, L&D), and federal CoPs link Medicare funding to staffing quality.`,tip:`"Only California, all units" is the fact being tested.`},
+{id:23,type:'mcq',obj:9,topic:'Scope, Competence & Orders',step:'Take Actions',level:'Advanced',
+ stem:`At shift start, a nurse believes her assignment is unsafe because of patient acuity. Which action best meets both her legal and ethical obligations?`,
+ options:[`Accept the assignment and keep concerns to herself to avoid conflict`,`Refuse the assignment and leave once the charge nurse is informed`,`Accept, report the specific risks up the chain of command, and document per policy`,`Accept the assignment only after the Board of Nursing reviews and approves the unit's ratio`],answer:2,
+ why:[`Silence doesn't meet her accountability for patient safety.`,`Leaving creates patient-abandonment risk.`,`Correct.`,`The Board doesn't approve individual assignments.`],
+ rationale:`For insufficient staffing, the source direction is to recognize the safety risk, communicate through the chain of command, and document/report per policy. Individual accountability remains.`,tip:`Unsafe staffing → stay, speak up through the right channel, and document.`},
+/* ---------- DOCUMENTATION ---------- */
+{id:24,type:'mcq',obj:2,topic:'Documentation & Incident Reports',step:'Evaluate Outcomes',level:'Application',
+ stem:`Three years after a patient's fall, a nurse is deposed in a lawsuit. How does her original documentation best protect her?`,
+ options:[`It prevents the family from filing suit if the record is complete`,`It transfers liability to the provider for any orders that she accurately documented in the record`,`It serves as legal evidence of the care she gave and the standards she met`,`It replaces her testimony, since the record speaks for itself in court`],answer:2,
+ why:[`Documentation doesn't bar a lawsuit.`,`Documenting an order doesn't shift the nurse's own accountability.`,`Correct.`,`Testimony is still required. The record supports it.`],
+ rationale:`Worksheet answer key: documentation provides legal evidence of care, protects against liability, and demonstrates adherence to standards of care.`,tip:`Documentation is EVIDENCE. It's not immunity and it doesn't transfer liability.`},
+{id:25,type:'mcq',obj:4,topic:'Documentation & Incident Reports',step:'Take Actions',level:'Application',
+ stem:`After completing an incident report about a medication error, the nurse asks what to do with it. Which response is correct?`,
+ options:[`"Place a copy in the patient's chart so the record is transparent."`,`"Keep a copy in your personal files in case of future litigation."`,`"Submit it through the facility's process; it never goes in the chart."`,`"Give a copy to the family as part of the hospital's error-disclosure conversation."`],answer:2,
+ why:[`Incident reports aren't part of the medical record.`,`Don't keep personal copies.`,`Correct.`,`The report is an internal quality/risk document.`],
+ rationale:`The legal chapter: incident reports are routed through the facility's formal process, are never referenced in the medical record, and are never personally copied.`,tip:`"Transparency" and "protection" are tempting framings. The rule stays the same.`},
+/* ---------- MALPRACTICE / LIABILITY ---------- */
+{id:26,type:'mcq',obj:3,topic:'Negligence & Malpractice',step:'Analyze Cues',level:'Application',
+ stem:`Which situation meets all the elements of nursing malpractice?`,
+ options:[`An RN gives a dose two hours late, and the patient has no change in condition`,`An RN fails to report a critical potassium, and the patient develops a fatal dysrhythmia`,`A visitor leaves a coffee spill in the hallway, and another visitor slips, falls, and fractures a wrist`,`An RN threatens to restrain a refusing patient but never touches him`],answer:1,
+ why:[`Breach without injury doesn't complete the claim.`,`Correct. Duty, breach, causation, and injury are all present.`,`Ordinary negligence by a non-professional.`,`Assault, an intentional tort, not malpractice.`],
+ rationale:`Malpractice is professional negligence requiring duty, breach, causation, and injury/harm (the worksheet lists Duty, Breach, Harm, Causation, Injury).`,tip:`Check every element. "Late dose, no harm" is missing injury.`},
+{id:27,type:'mcq',obj:3,topic:'Negligence & Malpractice',step:'Analyze Cues',level:'Advanced',
+ stem:`In which situation is the hospital LEAST likely to be vicariously liable for a nurse's conduct?`,
+ options:[`A staff RN gives the wrong medication during her scheduled shift`,`A float RN omits ordered neurological checks on an assigned patient`,`An off-duty RN gives medication advice to a neighbor at a barbecue`,`A charge RN makes an unsafe assignment during her scheduled shift`],answer:2,
+ why:[`Within the scope of employment.`,`Within the scope of employment.`,`Correct. Outside the scope of employment.`,`Within the scope of employment.`],
+ rationale:`Respondeat superior (vicarious liability) applies to conduct within the scope of employment. The nurse remains personally accountable in every case.`,tip:`Vicarious liability turns on whether the nurse was acting within the scope of employment.`},
+{id:28,type:'mcq',obj:3,topic:'Negligence & Malpractice',step:'Evaluate Outcomes',level:'Application',
+ stem:`A nursing student says, "Nurses can't be sued for malpractice. Only physicians can, because nurses follow orders." Which response is most accurate?`,
+ options:[`Correct, as long as the nurse documented the provider's order`,`Incorrect. Nurses are liable for their own professional negligence.`,`Correct, unless the nurse is working as a travel or agency nurse`,`Incorrect, but only advanced practice registered nurses can be named as defendants in malpractice suits`],answer:1,
+ why:[`Documenting an order doesn't create immunity.`,`Correct. Worksheet T/F #2 is FALSE.`,`Employment type doesn't create immunity.`,`Any licensed nurse can be liable.`],
+ rationale:`Worksheet T/F #2 ("Only doctors are liable under malpractice laws") is FALSE. The legal chapter emphasizes personal accountability and the independent duty to question orders.`,tip:`Every "the nurse is immune because..." option is wrong.`},
+/* ---------- TORTS ---------- */
+{id:29,type:'mcq',obj:3,topic:'Torts',step:'Recognize Cues',level:'Foundational',
+ stem:`A patient refuses an oral medication. The nurse says, "If you don't take it, I'll have to insert a tube and give it that way," then leaves the room without touching him. Which tort is most directly involved?`,
+ options:[`Battery`,`Assault`,`False imprisonment`,`Negligence`],answer:1,
+ why:[`No touching occurred.`,`Correct. A threat of unwanted contact.`,`No detention.`,`The conduct was intentional.`],
+ rationale:`Assault is a threat of harm or unauthorized touching that causes fear of unwanted contact (worksheet: "Assault: Threat of harm").`,tip:`Threat only → assault. Touch → battery.`},
+{id:30,type:'mcq',obj:3,topic:'Torts',step:'Analyze Cues',level:'Application',
+ stem:`Earlier in the shift, a competent patient told the nurse, "Please don't touch me unless you have to." The nurse later gives her a back rub to help her sleep without asking. Which statement is accurate?`,
+ options:[`No tort occurred because the touch was therapeutic and caused no harm`,`Battery may have occurred because the touching was unwanted`,`Assault occurred because the patient felt uncomfortable afterward`,`This is negligence because the nurse misjudged the patient's needs`],answer:1,
+ why:[`Good intent and no injury don't make unwanted touching lawful.`,`Correct.`,`Assault requires a threat before contact.`,`The touching was intentional.`],
+ rationale:`Battery is unwanted (unauthorized) touching. Proof of physical injury isn't required.`,tip:`"Therapeutic" or "kind" touching is still battery if the patient refused it.`},
+{id:31,type:'sata',obj:3,topic:'Torts',step:'Recognize Cues',level:'Application',
+ stem:`Which nursing actions create a risk of false imprisonment? <b>Select all that apply.</b>`,
+ options:[`Applying wrist restraints to a confused patient without a provider's order`,`Telling a competent patient he cannot leave until his bill is settled`,`Hiding a competent patient's shoes to discourage him from leaving AMA`,`Using a bed alarm ordered for a patient at high risk for falls`,`Staying with a patient to explain the risks of leaving AMA`,`Following a valid restraint order with monitoring per policy`],answer:[0,1,2],
+ why:[`Correct. Worksheet Match #4.`,`Correct. Detention without legal authority.`,`Correct. Force isn't required.`,`An ordered safety measure that doesn't detain the patient.`,`Explaining risks is required and doesn't detain.`,`Lawful restraint under a valid order.`],
+ rationale:`False imprisonment is holding a patient against their will without lawful authority. Worksheet Match #4: a confused patient strapped to a bed without a physician order.`,tip:`The question is whether there's lawful authority. An order makes restraint lawful; good intentions don't.`},
+{id:32,type:'mcq',obj:3,topic:'Torts',step:'Analyze Cues',level:'Foundational',
+ stem:`Using the worksheet's "Identify the Tort" activity, a nurse forgets to raise the bed rails and the patient falls. How is this classified?`,
+ options:[`Intentional tort`,`Quasi-intentional tort`,`Unintentional tort (negligence)`,`Criminal tort`],answer:2,
+ why:[`No intent to cause the outcome.`,`Quasi-intentional is used for breach of confidentiality on the answer sheet.`,`Correct. Answer Sheet Activity 4 #1.`,`Not a course category.`],
+ rationale:`Answer Sheet Activity 4: (1) bed rails → unintentional tort (negligence); (2) disclosing HIV status → quasi-intentional (breach of confidentiality); (3) threatening restraint → intentional (assault).`,tip:`Forgetting is unintentional. Threatening is intentional.`},
+{id:33,type:'mcq',obj:3,topic:'Torts',step:'Analyze Cues',level:'Advanced',
+ stem:`A student notices her course sources classify breach of confidentiality differently. Which statement is accurate?`,
+ options:[`The answer sheet calls it intentional; the textbook calls it unintentional`,`Worksheet summary and textbook: intentional; answer sheet: quasi-intentional`,`All course sources consistently classify it as quasi-intentional`,`The worksheet summary calls it unintentional, while the answer sheet calls it intentional`],answer:1,
+ why:[`Reversed, and the textbook doesn't call it unintentional.`,`Correct.`,`The sources aren't consistent.`,`Neither source calls it unintentional.`],
+ rationale:`The worksheet's summary page lists "Invasion of Privacy / Breach of Confidentiality" under intentional torts, as does the textbook. Answer Sheet Activity 4 labels the HIV-disclosure scenario quasi-intentional.`,tip:`When an exam question names a source, answer for that source. Ask your professor which classification she accepts.`},
+/* ---------- CONSENT ---------- */
+{id:34,type:'mcq',obj:3,topic:'Informed Consent',step:'Recognize Cues',level:'Application',
+ stem:`A surgeon explained the procedure, its expected benefits, its risks, and the alternatives. The patient asks the nurse, "What happens if I just don't have it done?" Which required element of disclosure is missing?`,
+ options:[`The risks of not having the procedure`,`The estimated out-of-pocket cost of the procedure`,`The surgeon's personal success rate`,`The expected length of recovery`],answer:0,
+ why:[`Correct.`,`Not among the textbook's required elements.`,`Not among the required elements.`,`Not among the listed required elements.`],
+ rationale:`Provider disclosure includes the nature of the procedure, expected benefits/outcomes, potential risks, alternatives with their risks/benefits, and the risks of not having the procedure.`,tip:`The fifth element, risks of refusal, is the one most often forgotten.`},
+{id:35,type:'mcq',obj:3,topic:'Informed Consent',step:'Take Actions',level:'Application',
+ stem:`In the situation above, the nurse knows the usual answer to the patient's question from working on the unit for years. What should the nurse do?`,
+ options:[`Answer the question, since the nurse's knowledge is accurate`,`Answer briefly, then have the patient sign so the case isn't delayed before the surgeon arrives`,`Notify the surgeon that the patient needs this information before signing`,`Ask the charge nurse to explain the risks of declining surgery`],answer:2,
+ why:[`Accurate knowledge doesn't transfer the provider's disclosure duty.`,`Consent isn't informed until the provider completes the disclosure.`,`Correct.`,`The charge nurse can't fulfill the provider's duty either.`],
+ rationale:`The textbook states the provider's disclosure duty can't be delegated to the RN. The nurse pauses, notifies the provider, and documents the concern.`,tip:`"The nurse knows the answer" is a trap. Disclosure is the provider's duty no matter who knows.`},
+{id:36,type:'sata',obj:3,topic:'Informed Consent',step:'Generate Solutions',level:'Application',
+ stem:`A patient's statements suggest consent is not truly informed. Which actions are appropriate for the nurse? <b>Select all that apply.</b>`,
+ options:[`Stop the nurse-controlled portion of the pre-procedure preparation`,`Notify the provider of the patient's questions`,`Document the patient's concern and the notification`,`Use the chain of command if the issue remains unresolved`,`Explain the alternatives in detail so the schedule isn't delayed`,`Have a family member co-sign the form to confirm understanding`],answer:[0,1,2,3],
+ why:[`Correct.`,`Correct.`,`Correct.`,`Correct.`,`The disclosure duty belongs to the provider.`,`A family signature doesn't make a competent patient's consent informed.`],
+ rationale:`If consent isn't informed: stop the nurse-controlled portion, notify the provider, document the concern, and use the chain of command if unresolved.`,tip:`Stop · Notify · Document · Escalate.`},
+/* ---------- REFUSAL ---------- */
+{id:37,type:'mcq',obj:9,topic:'Refusal & AMA',step:'Take Actions',level:'Application',
+ stem:`A competent patient declines a blood transfusion for personal reasons after a full explanation by the provider. Which nursing action is most appropriate?`,
+ options:[`Ask the chaplain to help the patient reconsider the decision`,`Ask the family to encourage the patient to accept the transfusion`,`Confirm understanding, notify the provider, and document the refusal`,`Delay documenting the refusal for a few hours in case the patient changes her mind`],answer:2,
+ why:[`Enlisting others to change a competent decision undermines autonomy.`,`Family pressure undermines autonomy.`,`Correct.`,`Documentation should be timely and truthful.`],
+ rationale:`For refusal: assess understanding as appropriate, explain risks within the nursing role, notify the provider, document the refusal, and don't coerce. PSDA: patients may accept or refuse treatment.`,tip:`Distractors that recruit others to "help her reconsider" sound kind but undermine autonomy.`},
+/* ---------- PSDA / AD ---------- */
+{id:38,type:'mcq',obj:7,topic:'PSDA & Advance Directives',step:'Analyze Cues',level:'Foundational',
+ stem:`Which documents does the Health Care Law worksheet list as advance directives under the Patient Self-Determination Act?`,
+ options:[`DNR, living will, and power of attorney`,`Living will, AMA form, and informed consent`,`Power of attorney, incident report, and DNR`,`Informed consent, DNR, and HIPAA authorization`],answer:0,
+ why:[`Correct.`,`AMA and consent forms aren't advance directives.`,`An incident report is an internal document.`,`Consent and HIPAA forms aren't advance directives.`],
+ rationale:`Worksheet: under the PSDA (1990), patients have the right to make healthcare decisions, accept or refuse treatment, and complete advance directives (DNR, living will, POA).`,tip:`Advance directives speak for the patient's FUTURE wishes. Consent and AMA forms don't.`},
+{id:39,type:'mcq',obj:7,topic:'PSDA & Advance Directives',step:'Take Actions',level:'Advanced',
+ stem:`A patient with a valid DNR is found pulseless. Her daughter, at the bedside, screams, "Do something! Start CPR!" What is the nurse's most appropriate action?`,
+ options:[`Begin CPR and continue until the provider arrives to talk with the daughter`,`Honor the DNR and call for the provider/supervisor to support the daughter`,`Begin CPR because a family objection suspends the DNR order`,`Ask the daughter to sign a form revoking the DNR on her mother's behalf`],answer:1,
+ why:[`Starting CPR violates a valid order.`,`Correct.`,`Family objection doesn't suspend a valid DNR.`,`Family can't revoke a patient's directive.`],
+ rationale:`A lawfully executed DNR must be respected, and disputes are escalated promptly. Family preference doesn't replace the patient's own wishes.`,tip:`"Until the provider arrives" sounds cautious, but it still violates the order.`},
+{id:40,type:'sata',obj:7,topic:'PSDA & Advance Directives',step:'Analyze Cues',level:'Application',
+ stem:`Which statements about patient self-determination are supported by the course materials? <b>Select all that apply.</b>`,
+ options:[`Patients have the right to accept or refuse treatment`,`A competent patient may revoke an advance directive`,`Federally funded facilities inform patients of their decision-making rights`,`An advance directive must be completed before admission`,`A healthcare agent's preferences replace the patient's known wishes`,`Advance directives guide care if the patient later cannot decide`],answer:[0,1,2,5],
+ why:[`Correct.`,`Correct.`,`Correct.`,`Patients are informed. Completing one isn't required.`,`The agent follows the patient's known wishes.`,`Correct.`],
+ rationale:`The PSDA supports participating in decisions, accepting or refusing treatment, and making advance directives. Patients may revoke them, and agents apply the patient's known wishes.`,tip:`"Must be completed" and "replace the patient's wishes" are the classic PSDA traps.`},
+/* ---------- HIPAA ---------- */
+{id:41,type:'mcq',obj:7,topic:'HIPAA & Social Media',step:'Take Actions',level:'Advanced',
+ stem:`A nurse's sister is a patient on another unit. The sister texts, "Can you look up my potassium in the chart? I give you permission." What is the nurse's best response?`,
+ options:[`Look up the result, since the patient herself gave permission`,`Ask the sister's assigned nurse to read her the result over the phone instead`,`Explain she can't access it in her role; refer her sister to her care team`,`View the result but avoid documenting anything in the record`],answer:2,
+ why:[`Access requires a legitimate work/care role. Personal permission doesn't create one.`,`This routes the same improper access through a colleague.`,`Correct.`,`Viewing without a work need is the violation itself.`],
+ rationale:`HIPAA requires legitimate access, meaning a care or work reason in the nurse's role. Worksheet T/F #5: HIPAA does NOT allow nurses to view any patient's chart.`,tip:`"The patient said it's okay" is the strongest distractor here. Workforce access still requires a job role.`},
+{id:42,type:'sata',obj:7,topic:'HIPAA & Social Media',step:'Take Actions',level:'Application',
+ stem:`Which nursing actions apply the "minimum necessary" principle and protect PHI? <b>Select all that apply.</b>`,
+ options:[`Giving handoff report in a private area rather than the hallway`,`Sending a consultant only the information needed for the referral`,`Sharing the full history with transport staff so they know the patient`,`Discussing a patient with a coworker over a personal text thread`,`Logging off the workstation before leaving the bedside`,`Confirming a patient is admitted to a caller who says she's a relative`],answer:[0,1,4],
+ why:[`Correct.`,`Correct. Minimum necessary.`,`More than transport needs.`,`Personal texting is a listed risk.`,`Correct. Protects PHI from unauthorized view.`,`Disclosure without verified authorization.`],
+ rationale:`Worksheet: protect PHI, avoid discussing patient information in public or online (including texting), and follow minimum-necessary disclosure rules.`,tip:`"So they know the patient" sounds caring, but it's more than they need.`},
+{id:43,type:'mcq',obj:9,topic:'HIPAA & Social Media',step:'Analyze Cues',level:'Application',
+ stem:`A nurse posts in a private Facebook group of 12 coworkers: "Brutal night. Room 7's family was impossible." No names are used. How should this post be evaluated?`,
+ options:[`Compliant, because only staff who already know the patient are members of the group`,`Potentially noncompliant, because the room and timing can identify the patient`,`Compliant, because family members aren't protected by HIPAA`,`Noncompliant only if a group member shares it outside the group`],answer:1,
+ why:[`Private groups aren't private, and an online disclosure has still occurred.`,`Correct.`,`The post concerns a patient's care and can identify the patient.`,`The disclosure already happened when it was posted.`],
+ rationale:`The legal chapter warns that even seemingly unidentifiable patient content online can create HIPAA, privacy, licensure, employment, and tort risk. Worksheet: avoid discussing patient info online.`,tip:`"Private group" and "no names" make two traps in one.`},
+{id:44,type:'sata',obj:7,topic:'HIPAA & Social Media',step:'Evaluate Outcomes',level:'Foundational',
+ stem:`According to the Health Care Law worksheet, which consequences can an individual nurse face for a HIPAA violation? <b>Select all that apply.</b>`,
+ options:[`Fines`,`Loss of employment`,`Loss of licensure`,`Penalties only if the information was sold for profit`,`Licensure action only after a criminal conviction`],answer:[0,1,2],
+ why:[`Correct.`,`Correct.`,`Correct.`,`No profit motive is required.`,`Licensure can be affected without a conviction.`],
+ rationale:`Worksheet: "Violations may result in fines, job loss, or loss of licensure."`,tip:`All three consequences can apply to an individual nurse.`},
+/* ---------- GA REPORTING ---------- */
+{id:45,type:'mcq',obj:4,topic:'GA Mandatory Reporting',step:'Analyze Cues',level:'Application',
+ stem:`A temporary staffing agency ends a nurse's contract after she is found to have violated the Georgia Board's Unprofessional Conduct Rule at a client hospital. Which statement about reporting is accurate?`,
+ options:[`Only the client hospital has a duty, because the conduct occurred there`,`The agency, as a nurse employer, must report or ensure reporting to the Board`,`No report is required, because she was a contract worker`,`Only the nurse herself has a reporting duty, by self-disclosing the violation at license renewal`],answer:1,
+ why:[`Rule 410-12 names temporary staffing agencies among employers with a duty.`,`Correct.`,`Contract status doesn't remove the duty.`,`Self-reporting isn't the mechanism described.`],
+ rationale:`Rule 410-12-.01: hospitals, nursing homes, temporary staffing agencies, and other nurse employers must report, or ensure reporting of, a nurse terminated (or resigning to avoid termination) for listed conduct, which includes Unprofessional Conduct Rule violations.`,tip:`Know that temporary staffing agencies are on the employer list.`},
+{id:46,type:'mcq',obj:4,topic:'GA Mandatory Reporting',step:'Prioritize Hypotheses',level:'Advanced',
+ stem:`Which finding would most strongly move a single medication error from a "minor incident" toward Board reporting under Georgia's rule?`,
+ options:[`The error happened during a short-staffed shift`,`The nurse says she will keep skipping the required double-check`,`The unit has an active remediation program for errors`,`The patient experienced no adverse effects and was monitored closely afterward`],answer:1,
+ why:[`A contributing/mitigating system factor.`,`Correct. It ignores a substantial risk and shows a lack of accountability.`,`Supports minor-incident handling.`,`Supports minor-incident handling.`],
+ rationale:`Under Rule 410-12-.02, conduct moves beyond a minor incident when the nurse ignores a substantial risk, lacks a conscientious approach or accountability, has nonremediable deficits, or shows a risky pattern.`,tip:`Three of these options SUPPORT minor-incident handling. Look for the one showing ongoing risk or no accountability.`},
+{id:47,type:'mcq',obj:4,topic:'GA Mandatory Reporting',step:'Analyze Cues',level:'Advanced',
+ stem:`A nurse's IV pump programming error, made more likely by a confusing pump interface, contributed to a patient's serious harm. How does Georgia's rule apply?`,
+ options:[`It is a minor incident, because confusing equipment design contributed to the error`,`It is reportable; an error contributing to serious harm is listed conduct`,`It is reportable only if the nurse had a prior error within two years`,`It is not reportable if the pump manufacturer accepts responsibility`],answer:1,
+ why:[`System factors don't convert serious harm into a minor incident.`,`Correct.`,`There's no prior-error requirement for this listed conduct.`,`Manufacturer responsibility doesn't remove the reporting duty.`],
+ rationale:`Rule 410-12-.01 lists an error that contributed to a patient's death or serious harm as reportable conduct. Contributing system factors are relevant context, but the conduct is still listed.`,tip:`System factors MITIGATE minor incidents. They don't erase listed serious-harm conduct.`},
+{id:48,type:'mcq',obj:4,topic:'GA Mandatory Reporting',step:'Recognize Cues',level:'Application',
+ stem:`A Georgia nurse overhears unverified gossip that a coworker "might have let her license lapse." The nurse has no other information. What is the most appropriate action?`,
+ options:[`File a Board report immediately based on the gossip`,`Do nothing, because she has no proof of the lapse`,`Raise it with her supervisor so license status can be verified`,`Ask the coworker in front of others whether her license is currently active`],answer:2,
+ why:[`The duty is triggered by reasonable cause, and unverified gossip may not meet that standard.`,`Ignoring a potential unlicensed-practice risk isn't appropriate either.`,`Correct. This uses the proper channel to establish facts.`,`Public confrontation is unprofessional.`],
+ rationale:`The individual reporting duty arises when a nurse has reasonable cause to believe listed conduct occurred. With only rumor, the appropriate step is to raise the concern through facility channels so the facts can be verified.`,tip:`Rule questions often turn on "reasonable cause." Rumor alone is a gray zone, so verify through the right channel.`},
+{id:49,type:'sata',obj:4,topic:'GA Mandatory Reporting',step:'Analyze Cues',level:'Application',
+ stem:`Which factors support handling a Georgia nursing incident as a minor incident rather than a Board report? <b>Select all that apply.</b>`,
+ options:[`The conduct does not indicate continued practice poses a risk of harm`,`The nurse accepts responsibility and completes remediation`,`The setting has mechanisms to detect patterns and remediate deficits`,`Multiple similar incidents have occurred despite remediation`,`Contributing system factors help explain the event`,`The nurse's competency deficit cannot easily be remediated`],answer:[0,1,2,4],
+ why:[`Correct. This is the core definition.`,`Correct. Accountability.`,`Correct.`,`A pattern moves it toward reporting.`,`Correct. A mitigating factor.`,`A nonremediable deficit moves it toward reporting.`],
+ rationale:`Rule 410-12-.02 contrasts minor incidents (no indication of continued risk, remediable, accountable, mechanisms, system factors) with conduct requiring reporting (patterns, nonremediable deficits, substantial risk, lack of accountability).`,tip:`Sort each factor: does it LOWER or RAISE the risk of continued practice?`},
+{id:50,type:'sata',obj:4,topic:'Impairment & Drug Diversion',step:'Recognize Cues',level:'Foundational',
+ stem:`Which signs of possible chemical impairment in a nurse are listed in the Health Care Law worksheet? <b>Select all that apply.</b>`,
+ options:[`Slurred speech`,`Mood swings`,`Frequent bathroom breaks`,`Documentation errors`,`Requesting a second check on an insulin dose`,`Taking a scheduled meal break during a long shift`],answer:[0,1,2,3],
+ why:[`Correct.`,`Correct.`,`Correct.`,`Correct. Listed in the worksheet summary.`,`Safe practice.`,`Normal.`],
+ rationale:`Worksheet: signs of impairment are slurred speech, mood swings, frequent bathroom breaks, and documentation errors (answer key Short Answer #1 lists the first three).`,tip:`Safety-seeking behavior is never an impairment cue.`},
+/* ---------- VALUES / MORAL ---------- */
+{id:51,type:'mcq',obj:5,topic:'Values & Moral Concepts',step:'Evaluate Outcomes',level:'Application',
+ stem:`A nurse realizes she gave a scheduled antibiotic two hours late. Which statement by the nurse best demonstrates accountability?`,
+ options:[`"Pharmacy delivered it late, so the delay wasn't my error."`,`"No harm occurred, so this doesn't need to be reported."`,`"I gave it late. I've notified the provider and filed the report."`,`"I'll chart it at the scheduled time since the delay was brief and harmless."`],answer:2,
+ why:[`Shifts responsibility, even if pharmacy contributed.`,`Reporting doesn't depend on harm.`,`Correct. Owns it, communicates, reports.`,`This is falsification.`],
+ rationale:`Accountability is the ethical duty to be answerable legally, morally, ethically, and socially for one's own actions.`,tip:`Look for ownership + truthful documentation + communication.`},
+{id:52,type:'mcq',obj:5,topic:'Values & Moral Concepts',step:'Take Actions',level:'Application',
+ stem:`A nurse notices that a surgeon skipped part of the required safety verification before a bedside procedure. Which action best demonstrates moral courage?`,
+ options:[`Speak up in the moment and escalate if it isn't addressed`,`Describe the event in an anonymous post on a nursing forum to raise awareness`,`Mention it to coworkers at the end of the shift`,`Wait to see whether it happens again before saying anything`],answer:0,
+ why:[`Correct. Acts on principle through professional channels despite possible consequences.`,`Not a professional channel, and it risks privacy.`,`Doesn't address the risk.`,`Waiting allows the risk to continue.`],
+ rationale:`Moral courage is standing up and taking action for what is right based on ethical principles. The course emphasizes professional channels and the chain of command.`,tip:`Courage = speaking up through the RIGHT channel, now.`},
+{id:53,type:'mcq',obj:5,topic:'Values & Moral Concepts',step:'Recognize Cues',level:'Application',
+ stem:`A nurse repeatedly feels she cannot advocate for a dying patient's comfort because the team discourages "bothering" the provider at night. She is losing sleep over it. Which concept best describes her experience?`,
+ options:[`Moral resiliency`,`Moral courage`,`Moral distress`,`Veracity`],answer:2,
+ why:[`Resiliency is sustaining values through difficulty. She's describing being blocked.`,`Courage would be acting despite the barrier.`,`Correct. She knows the right action but feels constrained.`,`A principle about truth-telling.`],
+ rationale:`Moral distress arises when the ethically correct action differs from what the nurse is constrained to do. The response is to seek ethical or organizational support.`,tip:`Distress = blocked. Courage = acts anyway. Resiliency = stays grounded over time.`},
+/* ---------- THEORIES / PRINCIPLES ---------- */
+{id:54,type:'mcq',obj:6,topic:'Ethical Principles & Theories',step:'Analyze Cues',level:'Advanced',
+ stem:`During a shortage, a committee allocates a limited supply of antiviral medication to produce the greatest total number of lives saved. Which ethical THEORY is being applied?`,
+ options:[`Justice`,`Deontology`,`Utilitarianism`,`Beneficence`],answer:2,
+ why:[`Justice is a principle about fair distribution. The question asks for a theory.`,`Deontology is duty-based and doesn't weigh total outcomes.`,`Correct. The greatest overall balance of good.`,`A principle, not a theory.`],
+ rationale:`Utilitarianism selects the action producing the greatest overall balance of benefit over harm. Justice (fair distribution) is a related principle, but the question asks for the theory.`,tip:`Read whether the stem asks for a THEORY or a PRINCIPLE.`},
+{id:55,type:'mcq',obj:6,topic:'Ethical Principles & Theories',step:'Analyze Cues',level:'Application',
+ stem:`A patient's RR is 9 and he is difficult to arouse. The nurse holds the scheduled opioid and notifies the provider. Which principle does this action most directly reflect?`,
+ options:[`Beneficence`,`Nonmaleficence`,`Fidelity`,`Autonomy`],answer:1,
+ why:[`Doing good. Here the central aim is avoiding harm.`,`Correct.`,`Keeping promises.`,`Self-determination.`],
+ rationale:`Nonmaleficence is avoiding or reducing harm, such as holding or questioning a potentially harmful intervention.`,tip:`Holding a harmful intervention = nonmaleficence.`},
+{id:56,type:'mcq',obj:6,topic:'Ethical Principles & Theories',step:'Analyze Cues',level:'Application',
+ stem:`A nurse promised a frightened patient she would stay during a bedside procedure. Although the unit becomes busy, she arranges coverage and keeps her word. Which principle is demonstrated?`,
+ options:[`Veracity`,`Justice`,`Fidelity`,`Beneficence`],answer:2,
+ why:[`Truth-telling.`,`Fair distribution.`,`Correct. Keeping commitments.`,`Close, but keeping a promise is fidelity.`],
+ rationale:`Fidelity is keeping promises and commitments, rooted in caring.`,tip:`Promise kept → fidelity. Truth told → veracity.`},
+/* ---------- ANA ---------- */
+{id:57,type:'mcq',obj:6,topic:'ANA Code of Ethics',step:'Analyze Cues',level:'Application',
+ stem:`A charge nurse decides not to delegate an unstable patient's admission assessment to a nursing assistant and owns the decision when questioned. Which ANA provision is most directly reflected?`,
+ options:[`Provision 2`,`Provision 4`,`Provision 6`,`Provision 8`],answer:1,
+ why:[`Primary commitment to recipients of care.`,`Correct. Authority over nursing practice, responsibility, and accountability.`,`Ethical work environment.`,`Collaborative relationships.`],
+ rationale:`Provision 4: nurses have authority over nursing practice and are responsible and accountable for their practice.`,tip:`Delegation decisions plus owning them → P4.`},
+{id:58,type:'mcq',obj:6,topic:'ANA Code of Ethics',step:'Analyze Cues',level:'Application',
+ stem:`A nurse partners with a food bank, a community church, and social workers to support patients with heart failure after discharge. Which ANA provision applies most directly?`,
+ options:[`Provision 3`,`Provision 7`,`Provision 8`,`Provision 10`],answer:2,
+ why:[`Advocacy and trust with individual recipients.`,`Knowledge, standards, and policy development.`,`Correct. Collaboration with healthcare and non-healthcare disciplines and the public.`,`Global and environmental health.`],
+ rationale:`Provision 8: nurses build collaborative relationships and networks with nurses, other healthcare and non-healthcare disciplines, and the public to achieve greater ends.`,tip:`Partnering with non-healthcare groups → P8.`},
+{id:59,type:'sata',obj:6,topic:'ANA Code of Ethics',step:'Analyze Cues',level:'Application',
+ stem:`Which pairings of the 2025 ANA Code provision and its focus are accurate? <b>Select all that apply.</b>`,
+ options:[`Provision 1: compassion and respect for the dignity of every person`,`Provision 5: moral duties to self, including a safe workplace`,`Provision 6: global nursing and environmental health`,`Provision 9: policy and legislation for social justice and health equity`,`Provision 10: participation in the global nursing and health community`,`Provision 7: building collaborative networks with the public`],answer:[0,1,3,4],
+ why:[`Correct.`,`Correct.`,`P6 is the ethical work environment. Global/environmental health is P10.`,`Correct.`,`Correct. New in 2025.`,`That's P8. P7 is knowledge, standards, and policy.`],
+ rationale:`P1 dignity · P2 primary commitment · P3 trust/advocacy · P4 accountability · P5 duties to self · P6 ethical work environment · P7 knowledge/standards/policy · P8 collaboration · P9 social justice legislation · P10 global & environmental health.`,tip:`The commonly swapped pairs are P6/P10 and P7/P8.`},
+/* ---------- DECISION FRAMEWORK ---------- */
+{id:60,type:'mcq',obj:8,topic:'Ethical Decision-Making',step:'Generate Solutions',level:'Application',
+ stem:`A nurse lists three possible responses to a family conflict, considers what each person involved wants, and identifies which ethical principles each option supports or violates. Which step of the Situation Assessment Procedure is this?`,
+ options:[`Identify the ethical issues and problems`,`Identify and analyze available alternatives`,`Select one alternative after weighing the options`,`Justify the selection to the people involved`],answer:1,
+ why:[`Step 1 gathers facts and the human dimension. It doesn't list options yet.`,`Correct. Step 2.`,`Step 3 chooses among the options.`,`Step 4 explains and defends the choice.`],
+ rationale:`Step 2: list reasonable options, identify what affected parties want, connect each alternative to ethical principles, and consider assumptions and new problems each option creates.`,tip:`Listing and weighing options = Step 2. Choosing = Step 3.`}
+];
+
+</script>
+<script>
+(function(){
+'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+const strip=s=>String(s).replace(/<[^>]*>/g,'');
+const L='ABCDEFGH';const QB={};Q.forEach(q=>QB[q.id]=q);
+const KEY='pnc7-exam60-v1';const SEC_PER_Q=72;
+const STEPS=['Recognize Cues','Analyze Cues','Prioritize Hypotheses','Generate Solutions','Take Actions','Evaluate Outcomes'];
+let S=null,storeOK=true,timer=null,theme='light';
+try{const t='__t';localStorage.setItem(t,1);localStorage.removeItem(t);S=JSON.parse(localStorage.getItem(KEY)||'null');theme=localStorage.getItem(KEY+'-theme')||'light';}catch(e){storeOK=false;}
+const save=()=>{if(!storeOK)return;try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}};
+const REVIEW={
+ 'EMTALA':`Screening for all who request emergency care, then stabilization, then transfer only when necessary and appropriate. Payment never comes first. No guaranteed admission. Penalties: up to $50,000 and loss of Medicare funding.`,
+ 'Refusal & AMA':`Ensure the patient understands the risks, document the decision and reasoning, obtain the signed AMA form, notify the provider. Never detain, threaten, or recruit others to change a competent decision.`,
+ 'Negligence & Malpractice':`Duty (relationship), breach (act/omission below standard), causation (link), injury. An alternative-cause argument attacks causation. Vicarious liability applies within the scope of employment. Nurses are personally liable.`,
+ 'Documentation & Incident Reports':`Objective, timed facts. No speculation, blame, or staffing commentary in the chart. Never reference or copy the incident report. Documentation is evidence of care and adherence to standards.`,
+ 'Impairment & Drug Diversion':`Signs: slurred speech, mood swings, frequent bathroom breaks, documentation errors. Diversion: excessive/unwitnessed waste, tampering, falsified records. First: supervisor/manager now, then protocol and Board duties.`,
+ 'GA Mandatory Reporting':`Reasonable cause triggers the individual duty. Employers include temporary staffing agencies (terminated or resigned to avoid termination). Listed: unlicensed practice, fraud, convictions, current OR previous impairment, error → death/serious harm, unprofessional conduct. Minor incident = no indication of continued risk.`,
+ 'PSDA & Advance Directives':`A competent patient decides, even with a POA on file. Agents use substituted judgment when wishes are known. Honor a valid DNR despite family objection. Advance directives: DNR, living will, POA.`,
+ 'Ethical Decision-Making':`Identify → analyze alternatives → select → justify. Ethics committees consult but never issue binding decisions.`,
+ 'Sources of Law':`Statutory (legislature), administrative (agency rules, e.g., CMS CoPs, BON rules), common (courts). Civil = private damages. Criminal = government prosecution. The BON acts on the license. Legal ≠ ethical.`,
+ 'ACA & Nurse Practice Act':`ACA: access, value-based purchasing, readmission/HAC penalties, marketplace, pre-existing-condition protection. NPA defines scope. The BON can fine, place on probation, suspend, or revoke.`,
+ 'Scope, Competence & Orders':`Hold → clarify → chain of command for unsafe orders. Practice within competence when floating. Unsafe staffing: accept, escalate specific risks, document. California is the only state with all-unit ratios.`,
+ 'Torts':`Assault = threat. Battery = unwanted touch, even therapeutic. False imprisonment = holding without lawful authority (restraints without an order). Bed rails forgotten = unintentional. Confidentiality: answer sheet says quasi-intentional; summary and textbook say intentional.`,
+ 'Informed Consent':`Provider discloses nature, benefits, risks, alternatives, and risks of NOT having it. Never delegated to the RN, even when the nurse knows the answer. Stop, notify, document, escalate.`,
+ 'HIPAA & Social Media':`Access requires a job role, and patient permission doesn't create one. Minimum necessary. Private groups and "no names" posts aren't safe. Consequences: fines, job loss, loss of licensure.`,
+ 'Values & Moral Concepts':`Accountability = own it and chart truthfully. Moral courage = speak up through proper channels now. Moral distress = knowing what's right but being blocked.`,
+ 'Ethical Principles & Theories':`Theory vs. principle: utilitarianism (greatest total good) vs. justice (fair distribution). Holding harm = nonmaleficence. Promise kept = fidelity.`,
+ 'ANA Code of Ethics':`P1 dignity · P2 primary commitment · P3 advocacy · P4 accountability/delegation · P5 self · P6 work environment · P7 knowledge/standards/policy · P8 collaboration · P9 social justice legislation · P10 global & environmental.`
+};
+function modal(html,btns){return new Promise(res=>{const bg=document.createElement('div');bg.className='modalbg';bg.innerHTML=`<div class="modal" role="dialog" aria-modal="true">${html}<div class="row" style="justify-content:flex-end;margin-top:16px">${btns.map((b,i)=>`<button class="btn ${b.c||''}" data-i="${i}">${b.t}</button>`).join('')}</div></div>`;document.body.appendChild(bg);const close=v=>{bg.remove();res(v);};$$('[data-i]',bg).forEach(b=>b.onclick=()=>close(btns[+b.dataset.i].v));bg.addEventListener('keydown',e=>{if(e.key==='Escape')close(null);});$$('[data-i]',bg).pop().focus();});}
+function setTheme(t){theme=t;document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem(KEY+'-theme',t);}catch(e){}$('#themeBtn').setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode');$('#themeBtn').textContent=t==='dark'?'Light':'Dark';}
+const fmt=s=>{s=Math.max(0,Math.round(s));const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return (h?h+':'+String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0');};
+
+function buildOrder(rand,subset){const ids=subset||Q.map(q=>q.id);if(!rand)return ids.slice();const blocks=[],seen={};ids.forEach(id=>{const c=QB[id].case;if(c){if(!seen[c]){seen[c]=[];blocks.push(seen[c]);}seen[c].push(id);}else blocks.push([id]);});return shuffle(blocks).flat();}
+function newSession(mode,rand,timed,subset){const order=buildOrder(rand,subset);const perm={};order.forEach(id=>perm[id]=shuffle(QB[id].options.map((_,i)=>i)));
+ S={mode,rand,timed,subset:subset||null,order,perm,resp:{},checked:{},flags:{},idx:0,submitted:false,elapsed:0,limit:timed?order.length*SEC_PER_Q:0,started:Date.now()};save();}
+const isOk=(q,r)=>q.type==='mcq'?r===q.answer:(Array.isArray(r)&&r.length===q.answer.length&&r.every(x=>q.answer.includes(x)));
+const answered=id=>{const r=S.resp[id];return QB[id].type==='mcq'?r!=null:Array.isArray(r)&&r.length>0;};
+function stopTimer(){if(timer){clearInterval(timer);timer=null;}}
+function startTimer(){stopTimer();const el=$('#htime');el.hidden=false;const upd=()=>{el.textContent=S.timed?`Time remaining ${fmt(S.limit-S.elapsed)}`:`Elapsed ${fmt(S.elapsed)}`;};upd();
+ timer=setInterval(()=>{S.elapsed++;upd();if(S.elapsed%5===0)save();if(S.timed&&S.elapsed>=S.limit){stopTimer();submit();}},1000);}
+
+/* ---------- start ---------- */
+function vStart(){
+ stopTimer();$('#hmode').hidden=true;$('#htime').hidden=true;
+ const inProg=S&&S.order&&!S.submitted;
+ $('#app').innerHTML=`<section class="panel"><h1>Module 7 Practice Examination</h1><p class="lead">Sixty application-level items on healthcare law, patient rights, professional accountability, nursing ethics, and Georgia mandatory reporting. Every option is written to be plausible, so expect to choose between two reasonable-sounding actions the way you would on a nursing-school or NCLEX-style exam.</p>
+ <div class="facts"><div class="fact"><b>60</b><span>Questions</span></div><div class="fact"><b>48 / 12</b><span>Multiple choice / SATA</span></div><div class="fact"><b>4</b><span>Case sets (3 items each)</span></div><div class="fact"><b>87%</b><span>Application or higher</span></div></div></section>
+ ${inProg?`<section class="panel" style="border-color:var(--brand2)"><div class="spread"><div><b>Attempt in progress</b><div class="small muted">${S.mode==='study'?'Study':'Exam'} mode · ${S.order.filter(answered).length} of ${S.order.length} answered${S.timed?` · ${fmt(S.limit-S.elapsed)} remaining`:''}${S.subset?' · retake of incorrect items':''}</div></div><div class="row"><button class="btn" id="resume">Resume</button><button class="btn sec sm" id="discard">Discard</button></div></div></section>`:''}
+ ${S&&S.submitted&&S.report?`<section class="panel flat"><div class="spread"><span><b>Most recent result:</b> ${S.report.pct}% (${S.report.c}/${S.report.n})</span><button class="btn sec sm" id="lastrep">View report</button></div></section>`:''}
+ <section class="panel"><h2>Exam settings</h2>
+  <label class="choice"><input type="radio" name="mode" value="exam" checked><span><b>Exam mode</b><br><span class="small muted">Answers, rationales, and the concept tested stay hidden until you submit all 60. You can change answers until then.</span></span></label>
+  <label class="choice"><input type="radio" name="mode" value="study"><span><b>Study mode</b><br><span class="small muted">Check each item for immediate feedback: correct answer, rationale for every option, test-taking tip, and the objective and concept tested.</span></span></label>
+  <label class="choice"><input type="checkbox" id="rand" checked><span><b>Randomize question order</b><br><span class="small muted">Case sets stay together and in sequence. Answer choices are always shuffled.</span></span></label>
+  <label class="choice"><input type="checkbox" id="timed"><span><b>Timed</b><br><span class="small muted">72 minutes for 60 items (72 seconds each). The exam submits automatically at 0:00. Untimed attempts still show elapsed time.</span></span></label>
+  <div class="row" style="margin-top:12px"><button class="btn" id="go">Begin examination</button></div>
+  <p class="tiny muted" style="margin-top:12px">Scoring: each item is worth 1 point. SATA items are scored all-or-nothing: you must select every correct option and no incorrect ones. Feedback shows how many correct options you identified.</p></section>
+ <section class="panel flat small"><b>Content basis.</b> Items are written from your Module 7 notes (textbook packet, Georgia Rule 410-12, the 2025 ANA provisions) and the Health Care Law Study Guide &amp; Worksheet with its Answer Sheet, with worksheet topics weighted heavily. Where sources disagree (breach of confidentiality: answer sheet = quasi-intentional; worksheet summary and textbook = intentional), the item names the source being tested. None of these items repeat the earlier 50-question exam.</section>`;
+ $('#go').onclick=async()=>{if(inProg&&!(await modal('<h3>Start a new attempt?</h3><p>Your attempt in progress will be discarded.</p>',[{t:'Cancel',c:'sec',v:false},{t:'Start new',v:true}])))return;newSession($('input[name=mode]:checked').value,$('#rand').checked,$('#timed').checked);vExam();};
+ if(inProg){$('#resume').onclick=vExam;$('#discard').onclick=async()=>{if(await modal('<h3>Discard this attempt?</h3>',[{t:'Cancel',c:'sec',v:false},{t:'Discard',v:true}])){S.order=null;save();vStart();}};}
+ const lr=$('#lastrep');if(lr)lr.onclick=vReport;
+}
+
+/* ---------- exam ---------- */
+function vExam(){
+ $('#hmode').hidden=false;$('#hmode').textContent=S.mode==='study'?'Study mode':'Exam mode';if(!timer)startTimer();
+ const N=S.order.length,id=S.order[S.idx],q=QB[id],perm=S.perm[id];
+ const locked=(S.mode==='study'&&S.checked[id])||S.submitted;const r=S.resp[id];
+ const sel=i=>q.type==='mcq'?r===i:Array.isArray(r)&&r.includes(i);
+ const done=S.order.filter(answered).length;const flagged=S.order.filter(x=>S.flags[x]);
+ let c=0,w=0;Object.keys(S.checked).forEach(k=>{isOk(QB[k],S.resp[k])?c++:w++;});
+ const cq=q.case?S.order.filter(x=>QB[x].case===q.case):[];
+ $('#app').innerHTML=`<div class="layout"><div>
+  <section class="panel" aria-labelledby="qn">
+   <div class="qhead"><span class="qnum" id="qn">Question ${S.idx+1} of ${N}</span><span class="row"><span class="pill">${q.type==='sata'?'Select all that apply':'Multiple choice'}</span><button class="btn sm ${S.flags[id]?'on':'sec'}" id="flag" aria-pressed="${!!S.flags[id]}">${S.flags[id]?'Flagged':'Flag for review'}</button></span></div>
+   ${q.case?`<div class="casebox"><b>${CASES[q.case].title} · item ${cq.indexOf(id)+1} of ${cq.length}</b>${CASES[q.case].text}</div>`:''}
+   <p class="stem">${q.stem.replace(/ <b>Select all that apply\.<\/b>/,'')}</p>
+   ${q.type==='sata'?'<p class="instr">Select all that apply. More than one option may be correct.</p>':''}
+   <fieldset class="opts" ${locked?'disabled':''}><legend style="position:absolute;left:-9999px">Answer options</legend>${perm.map((oi,di)=>`<label class="opt ${sel(oi)?'sel':''}" data-oi="${oi}"><input type="${q.type==='mcq'?'radio':'checkbox'}" name="ans" value="${oi}" ${sel(oi)?'checked':''}><span class="L">${L[di]}</span><span>${q.options[oi]}${locked&&sel(oi)?'<span class="yours">Your answer</span>':''}<span class="why" hidden></span></span></label>`).join('')}</fieldset>
+   ${S.mode==='study'&&!locked?`<button class="btn" id="check" ${answered(id)?'':'disabled'}>Check answer</button>`:''}
+   <div id="fb" aria-live="polite"></div>
+   <div class="navrow"><button class="btn sec" id="prev" ${S.idx===0?'disabled':''}>Previous</button><button class="btn" id="next" ${S.idx===N-1?'disabled':''}>Next</button></div>
+  </section></div>
+  <aside class="side"><div class="panel">
+   <div class="spread small"><b>Progress</b><span class="muted">${done}/${N}</span></div><div class="bar"><i style="width:${done/N*100}%"></i></div>
+   ${S.mode==='study'?`<div class="row" style="margin:8px 0 2px"><span class="pill good">Correct ${c}</span><span class="pill bad">Incorrect ${w}</span><span class="pill strong">${c+w?Math.round(c/(c+w)*100):0}%</span></div>`:`<p class="tiny muted" style="margin:6px 0">Score is withheld until you submit.</p>`}
+   <div class="ngrid" role="navigation" aria-label="Question navigator">${S.order.map((x,i)=>{const ck=S.mode==='study'&&S.checked[x];return `<button data-go="${i}" class="${answered(x)?'a':''} ${i===S.idx?'cur':''} ${S.flags[x]?'f':''} ${ck?(isOk(QB[x],S.resp[x])?'ok':'no'):''}" aria-label="Question ${i+1}${answered(x)?', answered':''}${S.flags[x]?', flagged':''}">${i+1}</button>`;}).join('')}</div>
+   <div class="legend"><span><i class="sw" style="background:var(--brandsoft);border-color:var(--brand2)"></i>Answered</span><span><i class="sw" style="background:var(--accent);border-radius:50%"></i>Flagged</span>${S.mode==='study'?'<span><i class="sw" style="background:var(--goodbg);border-color:var(--good)"></i>Correct / <i class="sw" style="background:var(--badbg);border-color:var(--bad)"></i>Incorrect</span>':''}</div>
+   <div style="display:grid;gap:6px;margin-top:12px">
+    <button class="btn sec sm" id="nextflag" ${flagged.length?'':'disabled'}>Review flagged (${flagged.length})</button>
+    <button class="btn sec sm" id="randb">Randomize &amp; restart</button>
+    <button class="btn sec sm" id="reset">Reset exam</button>
+    <button class="btn sm" id="finish">${S.mode==='study'?'Finish &amp; view report':'Submit exam'}</button>
+   </div></div></aside></div>`;
+ if(S.mode==='study'&&S.checked[id])feedback(q,$('#app'));
+ $$('input[name=ans]').forEach(inp=>inp.onchange=()=>{const v=+inp.value;if(q.type==='mcq')S.resp[id]=v;else{const cur=S.resp[id]||[];S.resp[id]=inp.checked?[...new Set([...cur,v])]:cur.filter(x=>x!==v);}
+  $$('.opt').forEach(l=>{const oi=+l.dataset.oi;l.classList.toggle('sel',q.type==='mcq'?S.resp[id]===oi:(S.resp[id]||[]).includes(oi));});save();
+  const ck=$('#check');if(ck)ck.disabled=!answered(id);const d=S.order.filter(answered).length;$('.bar i').style.width=d/N*100+'%';$('.side .spread .muted').textContent=d+'/'+N;
+  const nb=$(`.ngrid [data-go="${S.idx}"]`);nb.classList.toggle('a',answered(id));});
+ const go=i=>{S.idx=i;save();vExam();window.scrollTo({top:0});};
+ $$('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+ $('#prev').onclick=()=>go(S.idx-1);$('#next').onclick=()=>go(S.idx+1);
+ $('#flag').onclick=()=>{S.flags[id]=!S.flags[id];save();vExam();};
+ $('#nextflag').onclick=()=>{const fl=S.order.map((x,i)=>S.flags[x]?i:-1).filter(i=>i>=0);const nx=fl.find(i=>i>S.idx);go(nx!==undefined?nx:fl[0]);};
+ const ck=$('#check');if(ck)ck.onclick=()=>{S.checked[id]=true;save();vExam();};
+ $('#reset').onclick=async()=>{if(await modal('<h3>Reset this exam?</h3><p>All answers, flags, and time for this attempt will be cleared. Your settings are kept.</p>',[{t:'Cancel',c:'sec',v:false},{t:'Reset',v:true}])){stopTimer();newSession(S.mode,S.rand,S.timed,S.subset);vExam();}};
+ $('#randb').onclick=async()=>{if(await modal('<h3>Randomize and restart?</h3><p>The question order is reshuffled (case sets stay together) and your current answers are cleared.</p>',[{t:'Cancel',c:'sec',v:false},{t:'Randomize',v:true}])){stopTimer();newSession(S.mode,true,S.timed,S.subset);vExam();}};
+ $('#finish').onclick=async()=>{const un=N-done,fl=flagged.length;const v=await modal(`<h3>${S.mode==='study'?'Finish and view report?':'Submit examination?'}</h3><p>${un?`<b>${un}</b> unanswered item(s) will be scored incorrect. `:'All items answered. '}${fl?`<b>${fl}</b> item(s) still flagged.`:''}</p>`,[{t:'Return to exam',c:'sec',v:false},{t:S.mode==='study'?'Finish':'Submit',v:true}]);if(v)submit();};
+}
+function feedback(q,root){
+ const r=S.resp[q.id];const ok=isOk(q,r);const key=q.type==='mcq'?[q.answer]:q.answer;const ch=q.type==='mcq'?(r==null?[]:[r]):(r||[]);
+ $$('.opt',root).forEach(l=>{const oi=+l.dataset.oi,k=key.includes(oi),c=ch.includes(oi);l.classList.remove('sel');if(k&&c)l.classList.add('ok');else if(c)l.classList.add('no');else if(k)l.classList.add('miss');const wEl=$('.why',l);wEl.hidden=false;wEl.textContent=/^Correct/.test(q.why[oi])?q.why[oi]:(k?'Correct option. ':'Incorrect. ')+q.why[oi];});
+ const corr=ch.filter(x=>key.includes(x)).length,wrong=ch.length-corr;
+ const letters=S.perm[q.id].map((oi,di)=>key.includes(oi)?L[di]:null).filter(Boolean).join(', ');
+ $('#fb',root).innerHTML=`<div class="fb ${ok?'ok':'no'}"><span class="v">${ok?'Correct':ch.length?'Incorrect':'Not answered'}</span><b>Correct answer${key.length>1?'s':''}:</b> ${letters}${q.type==='sata'?` <span class="small muted">· You selected ${corr} of ${key.length} correct options${wrong?` and ${wrong} incorrect`:''}.</span>`:''}
+  <span class="k"><b>Rationale:</b> ${q.rationale}</span>${q.tip?`<div class="tip small"><b>Test-taking tip:</b> ${q.tip}</div>`:''}
+  <div class="meta"><span class="pill">Objective ${q.obj}: ${OBJ[q.obj]}</span><span class="pill">${q.topic}</span><span class="pill">NCJMM: ${q.step}</span><span class="pill">${q.level}</span></div></div>`;
+}
+
+/* ---------- report ---------- */
+function submit(){stopTimer();S.submitted=true;S.ended=Date.now();const res=S.order.map(id=>({id,ok:answered(id)&&isOk(QB[id],S.resp[id])}));const c=res.filter(x=>x.ok).length;
+ S.report={c,n:res.length,pct:Math.round(c/res.length*100),wrong:res.filter(x=>!x.ok).map(x=>x.id)};save();vReport();}
+function group(by){const g={};S.order.forEach(id=>{const q=QB[id],k=by(q);g[k]=g[k]||{c:0,n:0};g[k].n++;if(answered(id)&&isOk(q,S.resp[id]))g[k].c++;});return g;}
+const col=p=>p>=.9?'var(--good)':p>=.8?'var(--brand2)':p>=.7?'var(--accent)':'var(--bad)';
+const tbl=(g,head,lab,order)=>`<table class="rep"><thead><tr><th>${head}</th><th style="width:38%">Performance</th><th class="n">Score</th></tr></thead><tbody>${(order||Object.keys(g)).filter(k=>g[k]).map(k=>{const v=g[k],p=v.c/v.n;return `<tr><td>${lab?lab(k):k}</td><td><div class="mbar"><i style="width:${p*100}%;background:${col(p)}"></i></div></td><td class="n">${v.c}/${v.n} · ${Math.round(p*100)}%</td></tr>`;}).join('')}</tbody></table>`;
+function vReport(){
+ stopTimer();$('#hmode').hidden=true;$('#htime').hidden=true;const R=S.report,p=R.pct;
+ const band=p>=90?['Exam-ready','var(--good)','Strong command of Module 7 legal and ethical judgment.']:p>=80?['Proficient','var(--brand2)','Solid performance. Target the weaker topics below before the exam.']:p>=70?['Developing','var(--accent)','Several high-yield distinctions need review. Use the topic recommendations below.']:['Needs focused review','var(--bad)','Revisit your notes and the worksheet topics below, then retake the incorrect items.'];
+ const byType=group(q=>q.type==='mcq'?'Multiple choice':'Select all that apply'),byObj=group(q=>q.obj),byTopic=group(q=>q.topic),byStep=group(q=>q.step),byLevel=group(q=>q.level);
+ const tops=Object.keys(byTopic).map(k=>({k,p:byTopic[k].c/byTopic[k].n,n:byTopic[k].n}));
+ const strong=tops.filter(t=>t.p>=.8).sort((a,b)=>b.p-a.p||b.n-a.n).slice(0,5),weak=tops.filter(t=>t.p<.8).sort((a,b)=>a.p-b.p||b.n-a.n).slice(0,6);
+ const C=2*Math.PI*54;
+ $('#app').innerHTML=`<section class="panel"><div class="score"><svg class="ring" viewBox="0 0 132 132" role="img" aria-label="Score ${p} percent"><circle cx="66" cy="66" r="54" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="66" cy="66" r="54" fill="none" stroke="${band[1]}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C*p/100} ${C}" transform="rotate(-90 66 66)"/><text x="66" y="74" text-anchor="middle" font-size="28" font-weight="700" fill="var(--text)">${p}%</text></svg>
+  <div><h1 style="margin:0 0 6px">Examination report</h1><span class="band" style="background:${band[1]};color:var(--panel)">${band[0]}</span><p style="margin:8px 0">${band[2]}</p><p class="small muted">${R.c} correct · ${R.n-R.c} incorrect · ${R.n} items · ${S.mode==='study'?'Study':'Exam'} mode${S.timed?' · timed':''} · time used ${fmt(S.elapsed)}${S.subset?' · retake of incorrect items':''}</p>
+  <div class="row"><button class="btn" id="rv" ${R.wrong.length?'':'disabled'}>Review incorrect (${R.wrong.length})</button><button class="btn sec" id="rt" ${R.wrong.length?'':'disabled'}>Retake incorrect only</button><button class="btn sec" id="nw">New attempt</button></div></div></div></section>
+ <section class="panel"><h2>Item type and cognitive level</h2>${tbl(Object.assign({},byType,byLevel),'Category',null,['Multiple choice','Select all that apply','Foundational','Application','Advanced'])}</section>
+ <section class="panel"><h2>Strengths and areas for review</h2><p class="small"><b>Strongest:</b> ${strong.length?strong.map(t=>`${t.k} (${Math.round(t.p*100)}%)`).join(' · '):'No topic reached 80% on this attempt.'}</p>
+  ${weak.length?weak.map(t=>`<div class="tip" style="margin:10px 0"><b>${t.k}</b> · ${Math.round(t.p*100)}%<div class="small" style="margin-top:4px">${REVIEW[t.k]||''}</div></div>`).join(''):'<p class="small">All topics are at or above 80%.</p>'}</section>
+ <section class="panel"><h2>By learning objective</h2>${tbl(byObj,'Objective',k=>`${k}. ${OBJ[k]}`,Object.keys(OBJ))}</section>
+ <section class="panel"><h2>By content topic</h2>${tbl(byTopic,'Topic')}</section>
+ <section class="panel"><h2>By NCJMM clinical judgment step</h2>${tbl(byStep,'Step',null,STEPS)}</section>
+ <section class="panel"><h2>Incorrect items (${R.wrong.length})</h2><p class="small muted">Expand an item to see your answer, the correct answer, and the full rationale.</p><div id="ml"></div></section>`;
+ const ml=$('#ml');R.wrong.forEach(id=>{const q=QB[id];const d=document.createElement('details');d.className='miss';d.innerHTML=`<summary>Q${S.order.indexOf(id)+1} · ${q.topic}: ${strip(q.stem).slice(0,90)}…</summary><div class="in"></div>`;d.addEventListener('toggle',()=>{if(d.open&&!d.dataset.r){d.dataset.r=1;$('.in',d).appendChild(staticQ(q));}});ml.appendChild(d);});
+ if(!R.wrong.length)ml.innerHTML='<p>No incorrect items.</p>';
+ $('#rv').onclick=()=>vReview(0);$('#rt').onclick=()=>{newSession('study',false,false,R.wrong.slice());vExam();};$('#nw').onclick=()=>{S.order=null;save();vStart();};
+}
+function staticQ(q){const el=document.createElement('div');const r=S.resp[q.id];const sel=i=>q.type==='mcq'?r===i:Array.isArray(r)&&r.includes(i);
+ el.innerHTML=`${q.case?`<div class="casebox"><b>${CASES[q.case].title}</b>${CASES[q.case].text}</div>`:''}<p class="stem">${q.stem}</p><div class="opts">${S.perm[q.id].map((oi,di)=>`<div class="opt" data-oi="${oi}"><span class="L">${L[di]}</span><span>${q.options[oi]}${sel(oi)?'<span class="yours">Your answer</span>':''}<span class="why" hidden></span></span></div>`).join('')}</div><div id="fb"></div>`;feedback(q,el);return el;}
+function vReview(i){const W=S.report.wrong,id=W[i],q=QB[id];
+ $('#app').innerHTML=`<section class="panel"><div class="qhead"><span class="qnum">Incorrect item ${i+1} of ${W.length} <span class="muted small">(Q${S.order.indexOf(id)+1})</span></span><button class="btn sec sm" id="back">Back to report</button></div><div id="sq"></div><div class="navrow"><button class="btn sec" id="p" ${i===0?'disabled':''}>Previous</button><button class="btn" id="n" ${i===W.length-1?'disabled':''}>Next</button></div></section>`;
+ $('#sq').appendChild(staticQ(q));$('#back').onclick=vReport;$('#p').onclick=()=>vReview(i-1);$('#n').onclick=()=>vReview(i+1);window.scrollTo({top:0});}
+
+/* ---------- boot ---------- */
+setTheme(theme);$('#themeBtn').onclick=()=>setTheme(theme==='dark'?'light':'dark');
+document.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)||$('.modalbg'))return;if(!S||!S.order||S.submitted||!$('#next'))return;if(e.key==='ArrowRight'&&!$('#next').disabled)$('#next').click();if(e.key==='ArrowLeft'&&!$('#prev').disabled)$('#prev').click();});
+window.addEventListener('beforeunload',e=>{save();if(S&&S.order&&!S.submitted&&S.order.some(answered)){e.preventDefault();e.returnValue='';}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)save();});
+window.__exam={get S(){return S;},Q,isOk};
+vStart();
+})();
+
+</script>
+</body>
+</html>
